@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="110" id="zih-s4-sUl" customClass="ProfileCell" customModule="SocialApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="83"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zih-s4-sUl" id="JIa-bN-zGF">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="83"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOH-LZ-DRX">
+                        <rect key="frame" x="0.0" y="0.0" width="417" height="83"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULe-wS-Ljl">
+                                <rect key="frame" x="0.0" y="5" width="407" height="73"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avionics/Equipment" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcc-9V-dVb">
+                                        <rect key="frame" x="10" y="27" width="347" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-0q-hyU">
+                                        <rect key="frame" x="367" y="16.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="TxM-Yo-FVD"/>
+                                            <constraint firstAttribute="width" constant="40" id="eeZ-pu-t4Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" name="ThemeColour(#BD93D3)"/>
+                                        <state key="normal" image="dry-clean">
+                                            <color key="titleColor" red="0.043137254899999998" green="0.78823529410000004" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="radio-on-button"/>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dry-clean" translatesAutoresizingMaskIntoConstraints="NO" id="DnR-1F-w2v">
+                                        <rect key="frame" x="372" y="24" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="Plu-QE-7eh"/>
+                                            <constraint firstAttribute="height" constant="25" id="wa6-nw-W8D"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DnR-1F-w2v" secondAttribute="trailing" constant="10" id="IBt-G7-NGa"/>
+                                    <constraint firstItem="zuh-0q-hyU" firstAttribute="leading" secondItem="Fcc-9V-dVb" secondAttribute="trailing" constant="10" id="Im2-1a-9rb"/>
+                                    <constraint firstAttribute="trailing" secondItem="zuh-0q-hyU" secondAttribute="trailing" id="Kwb-Si-FCn"/>
+                                    <constraint firstItem="Fcc-9V-dVb" firstAttribute="centerY" secondItem="ULe-wS-Ljl" secondAttribute="centerY" id="c0p-9l-se0"/>
+                                    <constraint firstItem="zuh-0q-hyU" firstAttribute="centerY" secondItem="ULe-wS-Ljl" secondAttribute="centerY" id="dLJ-cg-ecY"/>
+                                    <constraint firstAttribute="width" constant="407" id="g4u-Rw-MWN"/>
+                                    <constraint firstItem="Fcc-9V-dVb" firstAttribute="leading" secondItem="ULe-wS-Ljl" secondAttribute="leading" constant="10" id="nTz-R4-ldp"/>
+                                    <constraint firstItem="DnR-1F-w2v" firstAttribute="centerY" secondItem="ULe-wS-Ljl" secondAttribute="centerY" id="nct-te-AKj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ULe-wS-Ljl" secondAttribute="trailing" constant="10" id="apu-JH-TvW"/>
+                            <constraint firstAttribute="bottom" secondItem="ULe-wS-Ljl" secondAttribute="bottom" constant="5" id="hun-zy-DQf"/>
+                            <constraint firstItem="ULe-wS-Ljl" firstAttribute="top" secondItem="AOH-LZ-DRX" secondAttribute="top" constant="5" id="igY-k8-b5X"/>
+                            <constraint firstItem="ULe-wS-Ljl" firstAttribute="leading" secondItem="AOH-LZ-DRX" secondAttribute="leading" id="sWX-bn-lOh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="AOH-LZ-DRX" firstAttribute="leading" secondItem="JIa-bN-zGF" secondAttribute="leading" id="JYy-Q8-aSD"/>
+                    <constraint firstItem="AOH-LZ-DRX" firstAttribute="top" secondItem="JIa-bN-zGF" secondAttribute="top" id="Mw5-V7-aqx"/>
+                    <constraint firstAttribute="bottom" secondItem="AOH-LZ-DRX" secondAttribute="bottom" id="am6-hK-Iqm"/>
+                    <constraint firstAttribute="trailing" secondItem="AOH-LZ-DRX" secondAttribute="trailing" id="xdg-rB-Lb7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnSelect" destination="zuh-0q-hyU" id="Xgv-iF-Wa5"/>
+                <outlet property="imgSelect" destination="DnR-1F-w2v" id="gDA-cb-zfO"/>
+                <outlet property="lblTypeName" destination="Fcc-9V-dVb" id="chu-Uw-3UL"/>
+            </connections>
+            <point key="canvasLocation" x="-69.599999999999994" y="-371.96401799100454"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dry-clean" width="16" height="16"/>
+        <image name="radio-on-button" width="32" height="32"/>
+        <namedColor name="ThemeColour(#BD93D3)">
+            <color red="0.74117647058823533" green="0.57647058823529407" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
