@@ -72,6 +72,7 @@ let kAcceptSDKDemoSlash:String = "/"
 class CardDetailVC: UIViewController, UITextFieldDelegate {
     
     var selectedAmount = ""
+    var planType = 6
     
     @IBOutlet weak var cardNumberTextField:UITextField!
     @IBOutlet weak var expirationMonthTextField:UITextField!
@@ -640,6 +641,7 @@ extension CardDetailVC{
         let parameters: [String: Any] = ["fb_id" : Defaults[PDUserDefaults.UserID],
                                          "purchased":"1",
                                          "device" : "ios",
+                                         "plan_type": planType,
                                          "transactionId":transactionId,
                                          "responseCode":responseCode,
                                          "amount":amount,

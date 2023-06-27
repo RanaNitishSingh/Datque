@@ -104,7 +104,7 @@ class MyProfileVC: UIViewController,UIImagePickerControllerDelegate & UINavigati
     
     @IBAction func ActionPopularityVeryLow(_ sender: Any) {
         if self.userPurchasedData?.purchased == "0" {
-             let VC = self.storyboard?.instantiateViewController(withIdentifier: "ScreenBoostVC" ) as! ScreenBoostVC
+             let VC = self.storyboard?.instantiateViewController(withIdentifier: "SelectPlaneVC" ) as! SelectPlaneVC
              self.navigationController?.pushViewController(VC, animated: true)
         }else if  self.userPurchasedData?.purchased == "1"{
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "ScreenBoostVC" ) as! ScreenBoostVC

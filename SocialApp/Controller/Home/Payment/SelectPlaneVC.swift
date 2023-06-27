@@ -18,6 +18,7 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
     var arrValidity = ["Per Year","Per Month"]
     var selectPlane = ""
     var selectIndex = Int()
+    var plantype = Int()
     var selectValidation = ""
     let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "KeykeyAnnual"
     let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "KeyKeyhalfyearly"
@@ -37,6 +38,7 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         ContinueButton.layer.cornerRadius =  25
         selectIndex = 1
+        plantype = 6
     }
 
     @IBAction func ActionContinue(_ sender: Any) {
@@ -49,6 +51,9 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
                 IAPHandler.shared.purchaseMyProduct(index: selectIndex)
                 self.purchase(strProductId: selectPlane)
             }
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailVC") as? CardDetailVC
+            vc?.planType = self.plantype
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 
@@ -145,6 +150,7 @@ extension SelectPlaneVC {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY
             selectIndex = 1
+            plantype = 1
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewMonths.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
             self.ViewYear.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -158,6 +164,7 @@ extension SelectPlaneVC {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER
             selectIndex = 0
+            plantype = 6
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewQuarter.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
             self.ViewYear.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -171,6 +178,7 @@ extension SelectPlaneVC {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL
             selectIndex = 2
+            plantype = 12
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewYear.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
             self.ViewQuarter.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
