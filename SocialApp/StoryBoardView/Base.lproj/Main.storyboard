@@ -8724,14 +8724,14 @@ Unlimited filter use</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcw-se-mJM">
                                                                 <rect key="frame" x="0.0" y="90" width="275" height="60"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Someone I'm no longer matched with" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-Qa-Zdr">
-                                                                        <rect key="frame" x="35" y="1" width="220" height="38.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Someone I'm no longer matched with" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-Qa-Zdr">
+                                                                        <rect key="frame" x="35" y="1" width="220" height="38.666666666666664"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ka3-q9-4Gd">
-                                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka3-q9-4Gd">
+                                                                        <rect key="frame" x="5" y="10.333333333333314" width="20" height="20"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="untick" translatesAutoresizingMaskIntoConstraints="NO" id="YdH-4o-mB5">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -8778,6 +8778,8 @@ Unlimited filter use</string>
                                                                     <constraint firstAttribute="height" constant="60" id="LWG-aQ-dHD"/>
                                                                     <constraint firstItem="XYe-Qa-Zdr" firstAttribute="leading" secondItem="Jcw-se-mJM" secondAttribute="leading" constant="35" id="Lq4-cw-cpa"/>
                                                                     <constraint firstAttribute="trailing" secondItem="XYe-Qa-Zdr" secondAttribute="trailing" constant="20" id="PvE-jW-qQF"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="XYe-Qa-Zdr" secondAttribute="bottom" constant="20.5" id="Q6c-ps-5mC"/>
+                                                                    <constraint firstItem="XYe-Qa-Zdr" firstAttribute="top" secondItem="Jcw-se-mJM" secondAttribute="top" constant="1" id="aOt-u5-lD1"/>
                                                                     <constraint firstItem="Ka3-q9-4Gd" firstAttribute="leading" secondItem="Jcw-se-mJM" secondAttribute="leading" constant="5" id="wFc-Q5-5kw"/>
                                                                 </constraints>
                                                             </view>

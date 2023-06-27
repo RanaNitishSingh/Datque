@@ -37,6 +37,10 @@ class AppUrl : NSObject {
     class func ReportURL () -> String {
         return mainDomain+"report_user"
     }
+    class func userLikeDislikeURL () -> String {
+        return mainDomain+"user_like_dislike"
+    }//http://52.90.40.219/xodating/API//index.php?p=user_like_dislike
+    
     class func userNearByMeURL () -> String {
         return mainDomain+"userNearByMe"
     }//http://52.90.40.219/xodating/API//index.php?p=userNearByMe
@@ -128,6 +132,21 @@ class AppUrl : NSObject {
         return mainDomain+"unMatch"
     }//http://52.90.40.219/xodating/API//index.php?p=unMatch
    
+    class func blockUserProfileURL () -> String {
+        return mainDomain+"block_user_profile"
+    }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func blockUserChatURL () -> String {
+        return mainDomain+"block_user_chat"
+    }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func userChatBlockedURL () -> String {
+        return mainDomain+"user_chat_blocked"
+    }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func blockUsersListURL () -> String {
+        return mainDomain+"block_users_list"
+    }//https://datque.zeroitsolutions.com/API/index.php
 }
 
 

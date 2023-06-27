@@ -45,7 +45,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     var threedays = false
     var cureent = true
     var payment =  true
-    
+    var strLat = ""
+    var strLon = ""
+    var color_Index = 0
     //MARK: Outlets
     @IBOutlet weak var imgUserRadioWave: UIImageViewX!
     @IBOutlet weak var viewAnimated: UIRadioWaveAnimationView!
@@ -68,15 +70,15 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     
     //MARK: LifeCycle and Layout Subviews
     func viewDidLayoutSubviewsa() {
-        if self.arrDicNearbyUser.count < 4 {
-            swipeableView.numberOfActiveView = UInt(self.arrDicNearbyUser.count)
-        } else {
+        if self.arrDicNearbyUser.count < 1 {
             swipeableView.numberOfActiveView = 4
+        } else {
+            swipeableView.numberOfActiveView = UInt(self.arrDicNearbyUser.count)
         }
         swipeableView.nextView = {
             if self.arrDicNearbyUser.count >= 1 {
+               //  self.viewCard.superview?.bringSubviewToFront(self.viewCard)
                 return self.nextCardView()
-                self.viewCard.superview?.bringSubviewToFront(self.viewCard)
             }else if self.arrDicNearbyUser.count < 1 {
                 self.viewUserRadioWave.superview?.bringSubviewToFront(self.viewUserRadioWave)
             }
@@ -87,8 +89,14 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewAnimated.startAnimation(setThemeColor: true)
+        if Defaults[PDUserDefaults.ResetFilter] == "ResetFilter"{
+            currentdate()
+            userNearByMeServices()
+        }else{
+            currentdate()
+            getCurrentLocation()
+        }
         self.getCurrentLocation()
-        self.deleteUser()
         viewThreeDots.isHidden = true
         viewThreeDots.frame = view.bounds
         view.addSubview(viewThreeDots)
@@ -126,18 +134,18 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
                 self.numberView = self.numberView + 1
                 var index = Int()
                 if self.colorIndex >= self.arrDicNearbyUser.count {
-                    index = (self.colorIndex - 1)
+                    index = (self.colorIndex - self.arrDicNearbyUser.count)
                 }else{
-                    index = (self.colorIndex - 4)
+                    index = (self.colorIndex - self.arrDicNearbyUser.count)
                 }
                 self.dislikeLeftSwipe(Index: index)
             } else if direction == .Right {
                 self.numberView = self.numberView + 1
                 var index = Int()
                 if self.colorIndex >= self.arrDicNearbyUser.count {
-                    index = (self.colorIndex - 1)
+                    index = (self.colorIndex - self.arrDicNearbyUser.count)
                 }else{
-                    index = (self.colorIndex - 4)
+                    index = (self.colorIndex - self.arrDicNearbyUser.count)
                 }
                 self.likeRightSwipe(Index:index)
             }
@@ -153,9 +161,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
         swipeableView.didTap = {view, location in
             var index = Int()
             if self.colorIndex >= self.arrDicNearbyUser.count {
-                index = (self.colorIndex - 1)
+                index = (self.colorIndex - self.arrDicNearbyUser.count)
             }else{
-                index = (self.colorIndex - 4)
+                index = (self.colorIndex - self.arrDicNearbyUser.count)
             }
             self.infoTapSwipe(Index:index )
         }
@@ -168,7 +176,6 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             view1.top == view2.top + 95
             view1.bottom == view2.bottom - 100
         }
-        currentdate()
         let user_id  = UserDefaults.standard.value(forKey: "liveUsers") as? String
         let defaultID = "\(Defaults[PDUserDefaults.UserID])"
         if user_id ?? ""  == defaultID {
@@ -177,8 +184,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             Database.database().reference().child("LiveUsers").child("\(defaultID )").removeValue()
         }
     }
-    
-    @objc func displayMyAlertMessage(){
+  @objc func displayMyAlertMessage(){
         let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
             let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -232,14 +238,33 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         self.viewAnimated.startAnimation(setThemeColor: true)
-        currentdate()
-        getCurrentLocation()
-        deleteUser()
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("ChatAtLawyerNotification"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowChatNotificationScreen(notification:)), name: NSNotification.Name("ChatAtLawyerNotification"), object: nil)
-        self.tabBarController?.tabBar.unselectedItemTintColor = .black
-        self.tabBarController?.tabBar.tintColor = .black
-        let expire =  UserDefaults.standard.string(forKey: "ExpireDate")
+        if Defaults[PDUserDefaults.ResetFilter] == "ResetFilter"{
+            if self.arrDicNearbyUser.count < 1 {
+                swipeableView.numberOfActiveView = 4
+            } else {
+                swipeableView.numberOfActiveView = UInt(self.arrDicNearbyUser.count)
+            }
+            swipeableView.nextView = {
+                if self.arrDicNearbyUser.count >= 1 {
+                   //  self.viewCard.superview?.bringSubviewToFront(self.viewCard)
+                    return self.nextCardView()
+                }else if self.arrDicNearbyUser.count < 1 {
+                    self.viewUserRadioWave.superview?.bringSubviewToFront(self.viewUserRadioWave)
+                }
+                return nil
+            }
+            currentdate()
+            userNearByMeServices()
+        }else{
+            currentdate()
+            getCurrentLocation()
+        }
+        
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("ChatAtLawyerNotification"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowChatNotificationScreen(notification:)), name: NSNotification.Name("ChatAtLawyerNotification"), object: nil)
+//        self.tabBarController?.tabBar.unselectedItemTintColor = .black
+//        self.tabBarController?.tabBar.tintColor = .black
+//        let expire =  UserDefaults.standard.string(forKey: "ExpireDate")
     }
     
     @objc func ShowChatNotificationScreen(notification: NSNotification){
@@ -287,8 +312,28 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func ActionFilter(_ sender: Any) {
+        Defaults[PDUserDefaults.ResetFilter] = ""
+        Defaults[PDUserDefaults.Distance] = ""
+        Defaults[PDUserDefaults.Gender] = ""
+        Defaults[PDUserDefaults.AgeMin] = ""
+        Defaults[PDUserDefaults.AgeMax] = ""
+        Defaults[PDUserDefaults.MarriedStatus] = ""
+        Defaults[PDUserDefaults.Height] = ""
+        Defaults[PDUserDefaults.Weight] = ""
+        Defaults[PDUserDefaults.BloodGroup] = ""
+        Defaults[PDUserDefaults.SkinType] = ""
+        Defaults[PDUserDefaults.Language] = ""
+        Defaults[PDUserDefaults.Profession] = ""
+        Defaults[PDUserDefaults.Religion] = ""
+        Defaults[PDUserDefaults.Education] = ""
+        Defaults[PDUserDefaults.BodyType] = ""
+        Defaults[PDUserDefaults.HairColor] = ""
+        Defaults[PDUserDefaults.EyeColor] = ""
         let VC = self.storyboard?.instantiateViewController(withIdentifier: "filterVC" ) as! filterVC
+//        VC.strLat = self.strLat
+//        VC.strLon = self.strLon
         self.navigationController?.pushViewController(VC, animated: true)
+        
     }
     
     @IBAction func ActionBlockUser(_ sender: UIButton) {
@@ -314,10 +359,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
         if sender.tag == 0 {
             sender.tag = 1
             btnReport.isEnabled = true
-            self.ImgTik.image = #imageLiteral(resourceName: "deselect")
+            self.ImgTik.image = #imageLiteral(resourceName: "checkbox.png")
         }else{
             sender.tag = 0
-            self.ImgTik.image = #imageLiteral(resourceName: "untick")
+            self.ImgTik.image = #imageLiteral(resourceName: "untick.png")
             btnReport.isEnabled = false
         }
     }
@@ -350,116 +395,142 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
         let cardView = CardView(frame: swipeableView.bounds)
         cardView.backgroundColor = .clear
         if colorIndex >= self.arrDicNearbyUser.count {
-            //colorIndex = 0
+           // colorIndex = 0
+            colorIndex += 1
+            color_Index = colorIndex - self.arrDicNearbyUser.count
         }else{
             colorIndex += 1
+            color_Index = colorIndex - 1
         }
         print(colorIndex,"colorIndex2")
-        let index = colorIndex - 1
-        print(index, "index")
-        let images = #imageLiteral(resourceName: "avatar")
-        let imageView = UIImageView(image: images)
-        let dicNearbyUser = self.arrDicNearbyUser[index]
-        let strUserImg = dicNearbyUser.image1!
-        if strUserImg != "0" && strUserImg != "" {
-            var image = dicNearbyUser.image1!
-            image = image.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
-            imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named:"AppIcon"))
-        } else {
-            imageView.image = #imageLiteral(resourceName: "avatar")
+        print(color_Index, "index")
+        if self.numberView == self.arrDicNearbyUser.count {
+            self.viewCard.isHidden = true
+            self.viewUserRadioWave.superview?.bringSubviewToFront(self.viewUserRadioWave)
+        }else{
+            let images = #imageLiteral(resourceName: "ic_avatar.png")
+            let imageView = UIImageView(image: images)
+            let dicNearbyUser = self.arrDicNearbyUser[color_Index]
+            let strUserImg = dicNearbyUser.image1!
+            if strUserImg != "0" && strUserImg != "" {
+                var image = dicNearbyUser.image1!
+                image = image.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
+                imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named:"AppIcon"))
+            } else {
+                imageView.image = #imageLiteral(resourceName: "ic_avatar.png")
+            }
+            
+            imageView.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40 )
+            imageView.layer.cornerRadius = 10.0;
+            imageView.clipsToBounds = true
+            cardView.addSubview(imageView)
+            //bgImageView
+            let images1 =  #imageLiteral(resourceName: "cardbg.png")
+            let imageView1 = UIImageView(image: images1)
+            imageView1.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40)
+            imageView1.layer.cornerRadius = 10.0;
+            imageView1.clipsToBounds = true
+            //get nameStatusView
+            let nameStatusView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 70, width: cardView.frame.size.width, height: 70))
+            nameStatusView.layer.cornerRadius = 10.0;
+            imageView1.addSubview(nameStatusView)
+            //get namelabel
+            ReceiverID = dicNearbyUser.fbID!
+            let strUserName = dicNearbyUser.firstName! + " " + dicNearbyUser.lastName!
+            print("strUserName_is",strUserName)
+            let namelabel = UILabel(frame: CGRect(x: 5, y: -5, width: nameStatusView.frame.size.width, height: 20))
+            namelabel.text = "\(strUserName)"
+            namelabel.textColor = .white
+            namelabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+            nameStatusView.addSubview(namelabel)
+            ReceiverName = "\(strUserName)"
+            //get statuslabel
+            let strStatus = dicNearbyUser.distance ?? ""
+            let statuslabel = UILabel(frame: CGRect(x: 5, y: 15, width: nameStatusView.frame.size.width, height: 20))
+            statuslabel.text = "\(strStatus)"
+            statuslabel.textColor = .white
+            statuslabel.font = statuslabel.font.withSize(15)
+            nameStatusView.addSubview(statuslabel)
+            //MOREBUTTOn
+            let MoreBtnView =  UIView(frame: CGRect(x: (cardView.frame.size.width / 2) + 120 , y: imageView.frame.size.height - 80, width: cardView.frame.size.width, height: 50))
+            MoreBtnView.backgroundColor = UIColor.clear
+            cardView.addSubview(MoreBtnView)
+            let btnView2 = UIView()
+            btnView2.layer.cornerRadius = 25
+            btnView2.frame = CGRect(x: 0 , y: 0, width: 50, height: 50)
+            MoreBtnView.addSubview(btnView2)
+            let newBtnView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 45, width: cardView.frame.size.width, height: 70))
+            newBtnView.backgroundColor = UIColor.clear
+            cardView.addSubview(newBtnView)
+            let btnView = UIView()
+            btnView.layer.cornerRadius = 30
+            btnView.backgroundColor = .clear
+            btnView.frame = CGRect(x: (cardView.frame.size.width / 2) - 30   , y: 10, width: 60, height: 60)
+            let myFirstButton = UIButton()
+            //        myFirstButton.setTitle("Yes", for: .normal)
+            //        myFirstButton.titleLabel?.font = .systemFont(ofSize: 12)
+            //        myFirstButton.setTitleColor(UIColor.red, for: .normal)
+            //        myFirstButton.backgroundColor = .black
+            //        if let image = UIImage(named: "") {
+            //            myFirstButton.setImage(image, for: .normal)
+            //        }
+            if let image = UIImage(named: "homeHeart") {
+                myFirstButton.setImage(image, for: .normal)
+            }
+            myFirstButton.tag = colorIndex
+            myFirstButton.frame = CGRect(x: 0 , y: 0, width: 60, height: 60)
+            myFirstButton.addTarget(self, action: #selector(btnlikepressed(_:)), for: .touchUpInside)
+            btnView.addSubview(myFirstButton)
+            newBtnView.addSubview(btnView)
+            let btnView1 = UIView()
+            btnView1.layer.cornerRadius = 27.5
+            btnView1.backgroundColor = .clear
+            btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 110 , y: 10, width: 55, height: 55)
+            let mySecondButton = UIButton()
+            //        mySecondButton.setTitle("No", for: .normal)
+            //        mySecondButton.titleLabel?.font = .systemFont(ofSize: 12)
+            //        mySecondButton.setTitleColor(UIColor.red, for: .normal)
+            //        if let image = UIImage(named: "") {
+            //            mySecondButton.setImage(image, for: .normal)
+            //        }
+            if let image = UIImage(named: "homeClose") {
+                mySecondButton.setImage(image, for: .normal)
+            }
+            
+            mySecondButton.tag = colorIndex
+            mySecondButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
+            mySecondButton.addTarget(self, action: #selector(btnDislikepressed(_:)), for: .touchUpInside)
+            btnView1.addSubview(mySecondButton)
+            newBtnView.addSubview(btnView1)
+            let MAYBEBtnView = UIView(frame: CGRect(x: 5, y: 5 , width: cardView.frame.size.width, height: 60))
+            MAYBEBtnView.backgroundColor = UIColor.clear
+            cardView.addSubview(MAYBEBtnView)
+            let btnView3 = UIView()
+            btnView3.layer.cornerRadius = 27.5
+            btnView3.backgroundColor = .clear
+            btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 55 , y: 10, width: 55, height: 55)
+            let maybeButton = UIButton()
+            //        maybeButton.setTitle("Maybe", for: .normal)
+            //        maybeButton.titleLabel?.font = .systemFont(ofSize: 12)
+            //        maybeButton.setTitleColor(UIColor.red, for: .normal)
+            //        if let image = UIImage(named: "homeMaybe") {
+            //            maybeButton.setImage(image, for: .normal)
+            //        }
+            if let image = UIImage(named: "homeMaybe") {
+                maybeButton.setImage(image, for: .normal)
+            }
+            maybeButton.tag = colorIndex
+            maybeButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
+            maybeButton.addTarget(self, action: #selector(btnMaybepressed(_:)), for: .touchUpInside)
+            btnView3.addSubview(maybeButton)
+            newBtnView.addSubview(btnView3)
+            Utils.Addshadow(mySecondButton)
+            Utils.Addshadow(myFirstButton)
+            Utils.Addshadow(maybeButton)
+            mySecondButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+            myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+            maybeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         }
-        
-        imageView.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40 )
-        imageView.layer.cornerRadius = 10.0;
-        imageView.clipsToBounds = true
-        cardView.addSubview(imageView)
-        //bgImageView
-        let images1 = #imageLiteral(resourceName: "cardbg")
-        let imageView1 = UIImageView(image: images1)
-        imageView1.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40)
-        imageView1.layer.cornerRadius = 10.0;
-        imageView1.clipsToBounds = true
-        //get nameStatusView
-        let nameStatusView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 70, width: cardView.frame.size.width, height: 70))
-        nameStatusView.layer.cornerRadius = 10.0;
-        imageView1.addSubview(nameStatusView)
-        //get namelabel
-        ReceiverID = dicNearbyUser.fbID!
-        let strUserName = dicNearbyUser.firstName! + " " + dicNearbyUser.lastName!
-        print("strUserName_is",strUserName)
-        let namelabel = UILabel(frame: CGRect(x: 5, y: -5, width: nameStatusView.frame.size.width, height: 20))
-        namelabel.text = "\(strUserName)"
-        namelabel.textColor = .white
-        namelabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        nameStatusView.addSubview(namelabel)
-        ReceiverName = "\(strUserName)"
-        //get statuslabel
-        let strStatus = dicNearbyUser.distance ?? ""
-        let statuslabel = UILabel(frame: CGRect(x: 5, y: 15, width: nameStatusView.frame.size.width, height: 20))
-        statuslabel.text = "\(strStatus)"
-        statuslabel.textColor = .white
-        statuslabel.font = statuslabel.font.withSize(15)
-        nameStatusView.addSubview(statuslabel)
-        //MOREBUTTOn
-        let MoreBtnView =  UIView(frame: CGRect(x: (cardView.frame.size.width / 2) + 120 , y: imageView.frame.size.height - 80, width: cardView.frame.size.width, height: 50))
-        MoreBtnView.backgroundColor = UIColor.clear
-        cardView.addSubview(MoreBtnView)
-        let btnView2 = UIView()
-        btnView2.layer.cornerRadius = 25
-        btnView2.frame = CGRect(x: 0 , y: 0, width: 50, height: 50)
-        MoreBtnView.addSubview(btnView2)
-        let newBtnView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 45, width: cardView.frame.size.width, height: 70))
-        newBtnView.backgroundColor = UIColor.clear
-        cardView.addSubview(newBtnView)
-        let btnView = UIView()
-        btnView.layer.cornerRadius = 30
-        btnView.backgroundColor = .clear
-        btnView.frame = CGRect(x: (cardView.frame.size.width / 2) - 30   , y: 10, width: 60, height: 60)
-        let myFirstButton = UIButton()
-        if let image = UIImage(named: "homeHeart") {
-            myFirstButton.setImage(image, for: .normal)
-        }
-        myFirstButton.tag = colorIndex
-        myFirstButton.frame = CGRect(x: 0 , y: 0, width: 60, height: 60)
-        myFirstButton.addTarget(self, action: #selector(btnlikepressed(_:)), for: .touchUpInside)
-        btnView.addSubview(myFirstButton)
-        newBtnView.addSubview(btnView)
-        let btnView1 = UIView()
-        btnView1.layer.cornerRadius = 27.5
-        btnView1.backgroundColor = .clear
-        btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 110 , y: 10, width: 55, height: 55)
-        let mySecondButton = UIButton()
-        if let image = UIImage(named: "homeClose") {
-            mySecondButton.setImage(image, for: .normal)
-        }
-        mySecondButton.tag = colorIndex
-        mySecondButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
-        mySecondButton.addTarget(self, action: #selector(btnDislikepressed(_:)), for: .touchUpInside)
-        btnView1.addSubview(mySecondButton)
-        newBtnView.addSubview(btnView1)
-        let MAYBEBtnView = UIView(frame: CGRect(x: 5, y: 5 , width: cardView.frame.size.width, height: 60))
-        MAYBEBtnView.backgroundColor = UIColor.clear
-        cardView.addSubview(MAYBEBtnView)
-        let btnView3 = UIView()
-        btnView3.layer.cornerRadius = 27.5
-        btnView3.backgroundColor = .clear
-        btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 55 , y: 10, width: 55, height: 55)
-        let maybeButton = UIButton()
-        if let image = UIImage(named: "homeMaybe") {
-            maybeButton.setImage(image, for: .normal)
-        }
-        maybeButton.tag = colorIndex
-        maybeButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
-        maybeButton.addTarget(self, action: #selector(btnMaybepressed(_:)), for: .touchUpInside)
-        btnView3.addSubview(maybeButton)
-        newBtnView.addSubview(btnView3)
-        Utils.Addshadow(mySecondButton)
-        Utils.Addshadow(myFirstButton)
-        Utils.Addshadow(maybeButton)
-        mySecondButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 10, bottom: 10, right: 10)
-        maybeButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
         if loadCardsFromXib {
             let contentView = Bundle.main.loadNibNamed("CardContentView", owner: self, options: nil)?.first! as! UIView
             contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -686,6 +757,36 @@ extension HomeVC {
             }
         }
     }
+//    func likeDislikeUser(UserID: String, UserType: String){
+//        let url = AppUrl.userLikeDislikeURL()
+//
+//        var strSendPushUserImg1 = ""
+//        var strSendPushUserFirstName = ""
+//        var strSendPushMessage = ""
+//        var strSendPushActionType = ""
+//
+//        if UserType == "like" {
+//            strSendPushMessage = "Like you"
+//            strSendPushActionType = "like"
+//        } else if UserType == "dislike" {
+//            strSendPushMessage = "dislike you"
+//            strSendPushActionType = "dislike"r
+//        }
+//        let parameters: [String: Any] =  ["fb_id" : "\(Defaults[PDUserDefaults.UserID])",
+//                                          "other_id" : "\(strSendPushUserImg1)" ,
+//                                          "action_type" : "\(strSendPushActionType)"]
+//
+//        print("Url_sendPushNotification_is_here:-" , url)
+//        print("Param_sendPushNotification_is_here:-" , parameters)
+//
+//        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default).responseJSON { (response) in
+//            print("Response",response)
+//            if response.data != nil {
+//
+//            }
+//
+//        }
+//    }
     
     //call API Update From Firebase
     func updateFromFirbaseServices(){
@@ -726,7 +827,7 @@ extension HomeVC {
                     
                 } else {
                     print("image_user_Nil")
-                    self.imgUserRadioWave.image = #imageLiteral(resourceName: "ic_avatar")
+                    self.imgUserRadioWave.image = #imageLiteral(resourceName: "ic_avatar.png")
                 }
                 
                 if Defaults[PDUserDefaults.UserID] != nil || Defaults[PDUserDefaults.UserID] != "" {
@@ -811,6 +912,7 @@ extension HomeVC {
                 if responseJson["code"] == "200" {
                     if let responseData = response.data {
                         do {
+                            self.arrDicNearbyUser.removeAll()
                             let decodeJSON = JSONDecoder()
                             let dicData = try decodeJSON.decode(userNearByMeData.self, from: responseData)
                             self.arrDicNearbyUser = dicData.msg!
@@ -829,11 +931,13 @@ extension HomeVC {
                                     let strUserNumber = dicNearbyUser.fbID!
                                     print("position_is ",i ," User_name_is ",strUserName,"UserNumber ",strUserNumber)
                                 }
+                                self.viewCard.isHidden = false
                                 self.viewCard.superview?.bringSubviewToFront(self.viewCard)
+                                self.viewDidLayoutSubviewsa()
+                                self.reloadButtonAction()
                             } else if self.arrDicNearbyUser.count < 1 {
                                 self.viewUserRadioWave.superview?.bringSubviewToFront(self.viewUserRadioWave)
                             }
-                            
                             self.reloadButtonAction()
                             self.viewDidLayoutSubviewsa()
                         } catch {
@@ -847,44 +951,6 @@ extension HomeVC {
                 }
             }
         }
-    }
-    func deleteUser(){
-        
-        let url = AppUrl.is_user_existURL()
-        
-        let parameters: [String: String] =
-        ["fb_id" : "\(Defaults[PDUserDefaults.UserID])",
-         "device" : "ios"]
-        
-        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
-            PKHUD.sharedHUD.hide()
-            
-            print("Response",response)
-            if response.value != nil {
-                let responseJson = JSON(response.value!)
-                print("Code is",responseJson["code"])
-                               
-                if responseJson["code"] == "200" {
-                print("user exist")
-                }else if responseJson["code"] == "201" {
-                    
-                    self.signOut()
-//
-                }else{
-                    print("Something went wrong")
-                }
-            }
-            
-        }
-    }
-    func signOut(){
-        
-        let temStrFCM = "\(Defaults[PDUserDefaults.FCMToken])"
-        Utils.RemovePersistentData() // to remove all default data in application
-        Defaults[PDUserDefaults.FCMToken] = temStrFCM
-        
-        let VC = self.storyboard!.instantiateViewController(withIdentifier: "SpleshVC") as! SpleshVC
-        self.navigationController!.pushViewController(VC, animated: true)
     }
 }
 
@@ -904,8 +970,7 @@ extension HomeVC {
         let url = AppUrl.getUserInfoURL()
         
         let strPhone = phone.replacingOccurrences(of: "+", with: "")
-        let parameters: [String: Any] = ["fb_id" : strPhone,
-                                         "device" : "ios"]
+        let parameters: [String: Any] = ["fb_id" : strPhone]
         
         print("Url_getUserInfoURL_is_here:-" , url)
         print("Param_getUserInfoURL_is_here:-" , parameters)
@@ -972,10 +1037,10 @@ extension HomeVC {
                 if PaymentSuccessed == true{
                     self.getUserInfoService(phone: "\(Defaults[PDUserDefaults.UserID])")
                 }
-                if ThreeDays == true{
-                    
-                    displayMyAlertMessage()
-                }
+//                if ThreeDays == true{
+//
+//                    displayMyAlertMessage()
+//                }
                 if currentLogin == true{
                     self.getUserInfoService(phone: "\(Defaults[PDUserDefaults.UserID])")
                 }

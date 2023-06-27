@@ -436,7 +436,7 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
         let tag = tag
         if tag == 0{//select
             btnName.tag = 1
-            viwName.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            viwName.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             let BloodGroup = "'\(BloodGroupName)'"
             self.sletArrBloodgroup.append("\(BloodGroup)")
             
@@ -460,7 +460,7 @@ extension filterVC {
         self.lblDistance.text = "10000" + "km"
         Defaults[PDUserDefaults.Distance] = "10000"
         self.sletDistance = "10000"
-        self.btnBoth.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        self.btnBoth.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
         self.sletGender = "all"
         self.ageRangeSlider.lowerValue = 18
         self.ageRangeSlider.upperValue = 65
@@ -710,10 +710,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.SkinType] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.SkinType] = "All"
                 self.sletSkinType = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrSkinType[indexPath.row] == Defaults[PDUserDefaults.SkinType] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletSkinType = Defaults[PDUserDefaults.SkinType]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -728,10 +728,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.Language] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.Language] = "All"
                 self.sletLanguage = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrLanguage[indexPath.row] == Defaults[PDUserDefaults.Language] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletLanguage = Defaults[PDUserDefaults.Language]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -746,10 +746,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.Profession] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.Profession] = "All"
                 self.sletProfession = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrProfession[indexPath.row] == Defaults[PDUserDefaults.Profession] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletProfession = Defaults[PDUserDefaults.Profession]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -764,10 +764,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.Religion] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.Religion] = "All"
                 self.sletReligion = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrReligion[indexPath.row] == Defaults[PDUserDefaults.Religion] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletReligion = Defaults[PDUserDefaults.Religion]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -782,10 +782,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.Education] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.Education] = "All"
                 self.sletEducation = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrEducation[indexPath.row] == Defaults[PDUserDefaults.Education] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletEducation = Defaults[PDUserDefaults.Education]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -800,10 +800,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.BodyType] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.BodyType] = "All"
                 self.sletBodyType = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrBodyType[indexPath.row] == Defaults[PDUserDefaults.BodyType] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletBodyType = Defaults[PDUserDefaults.BodyType]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -818,10 +818,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.HairColor] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.HairColor] = "All"
                 self.sletHairColor = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrHairColor[indexPath.row] == Defaults[PDUserDefaults.HairColor] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletHairColor = Defaults[PDUserDefaults.HairColor]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -836,10 +836,10 @@ extension filterVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if Defaults[PDUserDefaults.EyeColor] == "" && indexPath.row == 0{
                 Defaults[PDUserDefaults.EyeColor] = "All"
                 self.sletEyeColor = "All"
-                cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 if self.arrEyeColor[indexPath.row] == Defaults[PDUserDefaults.EyeColor] {
-                    cell.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
                     self.sletEyeColor = Defaults[PDUserDefaults.EyeColor]
                 }else{
                     cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -894,7 +894,7 @@ extension filterVC{
             if i == selectIndex {
                 
                 let cell = collectionView.cellForItem(at: newindexPath as IndexPath) as? CollectionViewCell
-                cell?.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                cell?.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             }else{
                 let cell = collectionView.cellForItem(at: newindexPath as IndexPath) as? CollectionViewCell
                 cell?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -909,42 +909,42 @@ extension filterVC{
     func selectShowMe(tag: Int){
         if tag == 0 {
             // print("tag is zeor")
-            self.btnMale.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnMale.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.btnFemale.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.btnBoth.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletGender = "Male"
         }else if tag == 1 {
             // print("tag is one")
             self.btnMale.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.btnFemale.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnFemale.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.btnBoth.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletGender = "Female"
         }else if tag == 2 {
             //  print("tag is two")
             self.btnMale.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.btnFemale.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.btnBoth.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnBoth.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.sletGender = "all"
         }
     }
     func selectFilterby(tag: Int){
         if tag == 0 {
             // print("tag is zeor")
-            self.btnAll.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnAll.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.btnOnline.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.btnNew.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletFilterBy = "Male"
         }else if tag == 1 {
             // print("tag is one")
             self.btnAll.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.btnOnline.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnOnline.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.btnNew.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletFilterBy = "Female"
         }else if tag == 2 {
             //  print("tag is two")
             self.btnAll.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.btnOnline.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.btnNew.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.btnNew.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.sletFilterBy = "all"
         }
     }
@@ -955,7 +955,7 @@ extension filterVC{
     func selectMarriedStatus(tag: Int){
         if tag == 0 {
             // print("tag is zeor")
-            self.UnMarried.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.UnMarried.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.Married.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.Divorce.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.AllMarriedStatus.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -963,7 +963,7 @@ extension filterVC{
         }else if tag == 1 {
             // print("tag is one")
             self.UnMarried.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.Married.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.Married.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.Divorce.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.AllMarriedStatus.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletMarriedStatus = "Married"
@@ -971,7 +971,7 @@ extension filterVC{
             //  print("tag is two")
             self.UnMarried.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.Married.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.Divorce.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.Divorce.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.AllMarriedStatus.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.sletMarriedStatus = "Divorce"
         }else if tag == 3 {
@@ -979,7 +979,7 @@ extension filterVC{
             self.UnMarried.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.Married.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.Divorce.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.AllMarriedStatus.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.AllMarriedStatus.backgroundColor = #colorLiteral(red: 0.6021463275, green: 0.1173610315, blue: 0.8998103738, alpha: 1)
             self.sletMarriedStatus = "All"
         }
     }

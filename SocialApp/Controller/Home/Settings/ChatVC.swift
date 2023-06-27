@@ -223,7 +223,8 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     }
     
     @IBAction func ActionBlockUser(_ sender: UIButton) {
-        self.BlockUserServices(senderID: "\(Defaults[PDUserDefaults.UserID])", receiverId: "\(ReceiverID)", btnTag: "\(sender.tag)")
+        BlockUserChat(receiverId: "\(ReceiverID)")
+//        self.BlockUserServices(senderID: "\(Defaults[PDUserDefaults.UserID])", receiverId: "\(ReceiverID)", btnTag: "\(sender.tag)")
     }
     @IBAction func ActionReportUser(_ sender: UIButton) {
         lblReportTitle.text = "Report \(ReceiverName)?"
@@ -1575,6 +1576,50 @@ extension ChatVC{
         }
     }
     
+    func BlockUserChat(receiverId: String){
+        
+        print("Block_Report_User_API _Call")
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.blockUserChatURL()
+        let parameters: [String: Any] = ["action_type" : "block",
+                                         "fb_id" : "\(UserId)",
+                                         "other_id" : " \(ReceiverID)",
+                                         "device" : "ios"]
+        
+        print("Url_blockReportUser_is_here:-" , url)
+        print("Param_blockReportUser_is_here:-" , parameters)
+
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_blockReportUser",responseJson["code"])
+                
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetFlatUserData.self, from: responseData)
+                            //print("dicData = \(String(describing: dicData.msg?.first))")
+                            let message = dicData.msg?.first
+                            let response = message?.response!
+                            self.view.makeToast("\(response!)")
+                            
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+    }
     
 }
 

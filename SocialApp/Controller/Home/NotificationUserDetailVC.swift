@@ -40,12 +40,21 @@ class NotificationUserDetailVC: UIViewController {
     
     @IBAction func ActionBlockreport(_ sender: Any) {
         
-        let userId = self.dicGetUserNotifications?.fbID!
-        print("userId_is_here:- ",userId!)
+        let alert = UIAlertController(title: "Datque", message: "Are you sure you want to Blocked User?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+             UserDefaults.standard.removeObject(forKey: "userID")
+            let userId = self.dicGetUserNotifications?.fbID!
+            print("userId_is_here:- ",userId!)
 
-        if userId != "" && userId != nil {
-            self.blockReportUser(UserId: "\(userId!)")
-        }
+            if userId != "" && userId != nil {
+                self.blockReportUser(UserId: "\(userId!)")
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
+        
     }
     
     @IBAction func ActionLike(_ sender: Any) {
@@ -110,10 +119,11 @@ extension NotificationUserDetailVC{
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
         
-        let url = AppUrl.flat_userURL()
+        let url = AppUrl.blockUserProfileURL()
         
-        let parameters: [String: Any] = ["my_id" : Defaults[PDUserDefaults.UserID],
+        let parameters: [String: Any] = ["action_type" : "block",
                                          "fb_id" : "\(UserId)",
+                                         "other_id" : "\(UserId)",
                                          "device" : "ios"]
         
         print("Url_blockReportUser_is_here:-" , url)
