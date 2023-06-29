@@ -185,7 +185,7 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
     @IBAction func ActionSave(_ sender: Any) {
         let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
         let currentLogin = UserDefaults.standard.bool(forKey: "current")
-        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
+       // let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
         
         if currentLogin ==  true{
             
@@ -223,11 +223,11 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
             self.navigationController?.popViewController(animated: true)
         }
         }
-        if ThreeDays ==  true{
-            
-        displayMyAlertMessage()
-        
-        }
+//        if ThreeDays ==  true{
+//
+//        displayMyAlertMessage()
+//
+//        }
         if PaymentSuccessed ==  true{
             
         

@@ -8,11 +8,6 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     //MARK: - tblViewSettings Outlet
     @IBOutlet weak var imgTblViewSettings: UIImageView!
@@ -45,7 +40,7 @@ class TableViewCell: UITableViewCell {
     //MARK: - tblBlockedUser Outlet
     @IBOutlet weak var imgProfileTblBlockedUser: UIImageViewX!
     @IBOutlet weak var lblNameTblBlockedUser: UILabel!
-    
+    @IBOutlet weak var tblBlockUserView: UIView!
     //MARK: - tblViewSettingInbox Outlet
     @IBOutlet weak var imgTblViewSettingInbox: UIImageViewX!
     @IBOutlet weak var lblNameTblViewSettingInbox: UILabel!
@@ -54,6 +49,11 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var imgStarTblViewSettingInbox: UIImageView!
     @IBOutlet weak var btnLikeTblViewSettingInbox: UIButton!
     
+  
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code       
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -61,4 +61,5 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
 }

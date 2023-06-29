@@ -58,11 +58,13 @@ class NotificationUserDetailVC: UIViewController {
     }
     
     @IBAction func ActionLike(_ sender: Any) {
-        self.likeUser()
+        let userId = self.dicGetUserNotifications?.fbID!
+        self.likeDislikeUser(UserId: userId ?? "" , likeDislike: "like")
     }
     
     @IBAction func ActionDislike(_ sender: Any) {
-        self.dislikeUser()
+        let userId = self.dicGetUserNotifications?.fbID!
+        self.likeDislikeUser(UserId: userId ?? "" , likeDislike: "dislike")
     }
     
     @IBAction func ActionStartConversation(_ sender: Any) {
@@ -122,7 +124,7 @@ extension NotificationUserDetailVC{
         let url = AppUrl.blockUserProfileURL()
         
         let parameters: [String: Any] = ["action_type" : "block",
-                                         "fb_id" : "\(UserId)",
+                                         "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
                                          "other_id" : "\(UserId)",
                                          "device" : "ios"]
         
@@ -145,7 +147,9 @@ extension NotificationUserDetailVC{
                             let message = dicData.msg?.first
                             let response = message?.response!
                             self.view.makeToast("\(response!)")
-                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                self.dismiss(animated: true, completion: nil)
+                            }
                         } catch {
                             print("Something went wrong in json.")
                         }
@@ -159,6 +163,59 @@ extension NotificationUserDetailVC{
         }
         
     }
+
+    
+    func likeDislikeUser(UserId: String , likeDislike: String){
+        print("Block_Report_User_API _Call")
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.likeUser()
+        
+        let parameters: [String: Any] = ["action_type" : likeDislike,
+                                         "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
+                                         "other_id" : "\(UserId)",
+                                         "device" : "ios"]
+        
+        print("Url_blockReportUser_is_here:-" , url)
+        print("Param_blockReportUser_is_here:-" , parameters)
+        
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_blockReportUser",responseJson["code"])
+                               
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetFlatUserData.self, from: responseData)
+                            //print("dicData = \(String(describing: dicData.msg?.first))")
+                            let message = dicData.msg?.first
+                            let response = message?.response!
+                            self.view.makeToast("\(response!)")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    
 }
 
 //MARK: extension for like Dislike User

@@ -378,7 +378,6 @@ extension LikesVC {
     
     func dropDown() {
         // dropDownCareGiver list of array to display. Can be changed dynamically
-        
         DropDownFilter.optionArray = arrFilter
         DropDownFilter.didSelect{(selectedText , index ,id) in
         print("selected Filter is..",selectedText)
@@ -413,7 +412,7 @@ extension LikesVC {
         let url = AppUrl.myMatchURL()
         
         let parameters: [String: Any] = ["fb_id" : Defaults[PDUserDefaults.UserID],
-                                         "device" : "ios"]
+                                         "device" : "ios"] 
         
         print("Url_myMatchURL_is_here:-" , url)
         print("Param_myMatchURL_is_here:-" , parameters)
