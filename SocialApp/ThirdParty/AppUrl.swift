@@ -147,6 +147,10 @@ class AppUrl : NSObject {
     class func blockUsersListURL () -> String {
         return mainDomain+"block_users_list"
     }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func likeUser () -> String {
+        return mainDomain+"user_like_dislike"
+    }//https://datque.zeroitsolutions.com/API/index.php
 }
 
 

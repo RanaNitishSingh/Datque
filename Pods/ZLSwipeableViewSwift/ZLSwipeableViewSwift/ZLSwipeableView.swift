@@ -36,7 +36,7 @@ public struct Movement {
 open class ZLSwipeableView: UIView {
 
     // MARK: Data Source
-    open var numberOfActiveView = UInt(4)
+    open var numberOfActiveView = UInt(0)
     open var nextView: NextViewHandler? {
         didSet {
             loadViews()
@@ -140,11 +140,35 @@ open class ZLSwipeableView: UIView {
     }
 
     open func loadViews() {
-        for _ in UInt(activeViews().count) ..< numberOfActiveView {
-            if let nextView = nextView?() {
-                insert(nextView, atIndex: 0)
+//        for _ in UInt(activeViews().count) ..< numberOfActiveView {
+//            if let nextView = nextView?() {
+//                insert(nextView, atIndex: 0)
+//            }
+//        }
+        
+        
+        let count = UInt(activeViews().count)
+        
+        if count <= numberOfActiveView {
+            for _ in count ..< numberOfActiveView {
+                // Your code here
+                if let nextView = nextView?() {
+                    insert(nextView, atIndex: 0)
+                }
             }
+        } else {
+            // Handle the case when count is greater than numberOfActiveView
+            print("Invalid range: count > numberOfActiveView")
         }
+        
+        
+        
+//        for _ in count ..< numberOfActiveView {
+//            // Your code here
+//            if let nextView = nextView?() {
+//                insert(nextView, atIndex: 0)
+//            }
+//        }
         updateViews()
     }
 

@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
        
         application.registerForRemoteNotifications()
         getDate()
-        registerForPushNotifications()
+        registerForPushNotifications()        
         //MARK:INAPP_SETUP
         #if DEBUG
         isDebugMode = true

@@ -118,6 +118,9 @@
 		3774C0E92A38772F00070036 /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3774C0E82A38772F00070036 /* HelpCenterVC.swift */; };
 		37F2379629F0FCBD00FC9771 /* SecondaryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */; };
 		37F2379929F0FE1E00FC9771 /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2379829F0FE1E00FC9771 /* webViewController.swift */; };
+		6BEE0E4E2A4B020C005968A9 /* userBlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE0E4D2A4B020C005968A9 /* userBlockList.swift */; };
+		6BEE0E512A4B0CCF005968A9 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE0E4F2A4B0CCF005968A9 /* userTableViewCell.swift */; };
+		6BEE0E522A4B0CCF005968A9 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BEE0E502A4B0CCF005968A9 /* userTableViewCell.xib */; };
 		887087F8291D168000B63C81 /* progress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 887087F7291D166F00B63C81 /* progress.gif */; };
 		888C8B2B2924F7D10027719C /* CardView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C8B2A2924F7D10027719C /* CardView1.swift */; };
 		88AD7FDD2925FE2F008FF9C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88AD7FDC2925FE2F008FF9C9 /* Colors.xcassets */; };
@@ -250,6 +253,9 @@
 		37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondaryBoard.storyboard; sourceTree = "<group>"; };
 		37F2379829F0FE1E00FC9771 /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 		5FD2FC8F5DF6EAFA2A13A39D /* Pods-SocialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialApp.debug.xcconfig"; path = "Target Support Files/Pods-SocialApp/Pods-SocialApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6BEE0E4D2A4B020C005968A9 /* userBlockList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userBlockList.swift; sourceTree = "<group>"; };
+		6BEE0E4F2A4B0CCF005968A9 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
+		6BEE0E502A4B0CCF005968A9 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
 		887087F7291D166F00B63C81 /* progress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = progress.gif; sourceTree = "<group>"; };
 		888C8B2A2924F7D10027719C /* CardView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView1.swift; sourceTree = "<group>"; };
 		88AD7FDC2925FE2F008FF9C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -350,6 +356,8 @@
 			children = (
 				044AF5492769BD24008D26C5 /* TableViewCell.swift */,
 				044AF54B2769BD39008D26C5 /* CollectionViewCell.swift */,
+				6BEE0E4F2A4B0CCF005968A9 /* userTableViewCell.swift */,
+				6BEE0E502A4B0CCF005968A9 /* userTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -462,6 +470,7 @@
 		045D31832763552700E9F1B0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6BEE0E4C2A4B01DE005968A9 /* Model */,
 				37F2379729F0FDFB00FC9771 /* CommonVc */,
 				044AF5482769BCF8008D26C5 /* Cell */,
 				045D317F2763542200E9F1B0 /* Login */,
@@ -577,6 +586,14 @@
 			path = CommonVc;
 			sourceTree = "<group>";
 		};
+		6BEE0E4C2A4B01DE005968A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BEE0E4D2A4B020C005968A9 /* userBlockList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		74B2DFAE9ECC9C985F5E6AB7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +700,7 @@
 				049F87062775F79100117BDE /* SwipeUser.xib in Resources */,
 				045D31762763511800E9F1B0 /* LaunchScreen.storyboard in Resources */,
 				045D31732763511800E9F1B0 /* Assets.xcassets in Resources */,
+				6BEE0E522A4B0CCF005968A9 /* userTableViewCell.xib in Resources */,
 				887087F8291D168000B63C81 /* progress.gif in Resources */,
 				045D316E2763511500E9F1B0 /* Main.storyboard in Resources */,
 				043A3627286490DD00F20065 /* ProfileCell.xib in Resources */,
@@ -818,6 +836,7 @@
 				044E8A1C299A442800328246 /* NitIAPHandler.swift in Sources */,
 				0403D66B28643EEE008715A7 /* ProfileStepVC.swift in Sources */,
 				04B0968E2769E46B00BDC3FA /* LoginVC.swift in Sources */,
+				6BEE0E4E2A4B020C005968A9 /* userBlockList.swift in Sources */,
 				04235F3F277D967D00F22F17 /* MyExtensions.swift in Sources */,
 				043AF6142879825E00B196CC /* ReceiveCallVC.swift in Sources */,
 				04B096A0276A049100BDC3FA /* LikesVC.swift in Sources */,
@@ -843,6 +862,7 @@
 				043885B02771CEAE007B5C8C /* Utils.swift in Sources */,
 				18575A68289948E200CDD2E5 /* AGEVideoLayout.swift in Sources */,
 				045A1E1C2848E33A003B6262 /* AppID.swift in Sources */,
+				6BEE0E512A4B0CCF005968A9 /* userTableViewCell.swift in Sources */,
 				1861B17028952DB900A11549 /* CircularProgressBar.swift in Sources */,
 				04E2DC2C276B6A1000CE6A9E /* BloodGroupVC.swift in Sources */,
 				04235F3E277D967D00F22F17 /* LoadGIF.swift in Sources */,
