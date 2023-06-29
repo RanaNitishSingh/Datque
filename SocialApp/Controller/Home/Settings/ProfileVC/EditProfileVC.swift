@@ -37,6 +37,7 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
     var strUserImg3 = ""
     var strUserImg4 = ""
     var strUserImg5 = ""
+    var strUserImg6 = ""
     @IBOutlet weak var tblviewEditProfile: UITableView!
     var arrNameTitle = ["Living","Status","Children","Smoking","Drinking","Relationship","Appearance","male","DOB","Blood Group","Skin Type","Language","Profession","Religion","Education","Sexuality"]
     var arrNameTblViewEdit = ["","","","","","","","","","","","","","","",""]
@@ -249,13 +250,13 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource{
 //MARK: Extenction for collection view
 extension EditProfileVC: UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.arrImgEditProfile.count == 5{
-            return 5
-        }else if self.arrImgEditProfile.count < 5 {
+        if self.arrImgEditProfile.count == 6{
+            return 6
+        }else if self.arrImgEditProfile.count < 6 {
             return self.arrImgEditProfile.count + 1
         }
         
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -414,6 +415,13 @@ extension EditProfileVC {
                     let strImage5 = "\(userSaveData.image5!)"
                     //append this str user image in array of arrImgEditProfile
                     self.arrImgEditProfile.append(strImage5)
+                }
+                strUserImg6 = "\(userSaveData.image6!)"
+                print("uaer_Default_image5",strUserImg6)
+                if strUserImg6 != "0" && strUserImg6 != "" {
+                    let strImage6 = "\(userSaveData.image6!)"
+                    //append this str user image in array of arrImgEditProfile
+                    self.arrImgEditProfile.append(strImage6)
                 }
                 //Now reload collection view which can show user images
                 if self.arrImgEditProfile.count != 0 {
@@ -942,6 +950,7 @@ extension EditProfileVC{
                                          "image3" : strUserImg3 ,
                                          "image4" : strUserImg4,
                                          "image5" : strUserImg5,
+                                         "image6" : strUserImg6,
                                          "job_title": "",
                                          "company": "",
                                          "school": "",
