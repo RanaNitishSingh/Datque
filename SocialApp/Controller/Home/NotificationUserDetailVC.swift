@@ -14,6 +14,11 @@ import Firebase
 import FirebaseStorage
 import SwiftyJSON
 
+protocol NotificationUserDetailDelegate: class {
+    func notificationUserDetailDismissed()
+}
+
+
 class NotificationUserDetailVC: UIViewController {
     
     @IBOutlet weak var viewMatch: UIView!
@@ -22,7 +27,7 @@ class NotificationUserDetailVC: UIViewController {
     @IBOutlet weak var lblNameAge: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
     var userID = ""
-
+    weak var delegate: NotificationUserDetailDelegate?
    // var dicGetUserNotifications:MsgGetUserNotifications? //this is dictionary
     var dicGetUserNotifications:MsguserNearByMe?
     override func viewDidLoad() {
@@ -33,6 +38,13 @@ class NotificationUserDetailVC: UIViewController {
         // Do any additional setup after loading the view.
         print("NotificationUserDetailVC")
     }
+    
+    func dismissPopoverViewController() {
+            self.dismiss(animated: true) {
+                self.delegate?.notificationUserDetailDismissed()
+            }
+        }
+    
     
     @IBAction func ActionShareProfile(_ sender: Any) {
         self.shareProfile()
@@ -148,7 +160,7 @@ extension NotificationUserDetailVC{
                             let response = message?.response!
                             self.view.makeToast("\(response!)")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                self.dismiss(animated: true, completion: nil)
+                                self.dismissPopoverViewController()
                             }
                         } catch {
                             print("Something went wrong in json.")
@@ -197,7 +209,7 @@ extension NotificationUserDetailVC{
                             let response = message?.response!
                             self.view.makeToast("\(response!)")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                self.dismiss(animated: true, completion: nil)
+                                self.dismissPopoverViewController()
                             }
                         } catch {
                             print("Something went wrong in json.")

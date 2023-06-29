@@ -14,7 +14,7 @@ import Firebase
 import FirebaseStorage
 import SwiftyJSON
 
-class NearProfileVC: UIViewController {
+class NearProfileVC: UIViewController, NotificationUserDetailDelegate {
     
     @IBOutlet weak var lblSubscribeUS: UILabel!
     @IBOutlet weak var collectionViewLikes: UICollectionView!
@@ -35,6 +35,7 @@ class NearProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.unselectedItemTintColor = .black
         self.tabBarController?.tabBar.tintColor = .black
+        self.userNearByMeServices()       
     }
     
     
@@ -94,16 +95,33 @@ extension NearProfileVC: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func infoTapSwipe(Index: Int){
-        print("infoTapSwipe",Index)
+//        print("infoTapSwipe",Index)
+//        if self.arrDicProfileLikes.count != 0 {
+//            let dictuser = self.arrDicProfileLikes[Index]
+//            print("dictuser",dictuser)
+//            let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "NotificationUserDetailVC") as! NotificationUserDetailVC
+//            popoverContent.modalPresentationStyle = .popover
+//            popoverContent.dicGetUserNotifications = dictuser
+//            self.present(popoverContent, animated: true, completion: nil)
+//        }
+        
+        print("infoTapSwipe", Index)
         if self.arrDicProfileLikes.count != 0 {
             let dictuser = self.arrDicProfileLikes[Index]
-            print("dictuser",dictuser)
+            print("dictuser", dictuser)
+            
             let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "NotificationUserDetailVC") as! NotificationUserDetailVC
             popoverContent.modalPresentationStyle = .popover
             popoverContent.dicGetUserNotifications = dictuser
+            popoverContent.delegate = self // Set the delegate to receive dismissal callback
+            
             self.present(popoverContent, animated: true, completion: nil)
         }
+        
     }
+    func notificationUserDetailDismissed() {
+        self.userNearByMeServices() // Reload collection view after dismissal
+        }
     
 }
 
