@@ -1580,12 +1580,11 @@ extension ChatVC{
         
         print("Block_Report_User_API _Call")
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
-        
+        PKHUD.sharedHUD.show()         
         let url = AppUrl.blockUserChatURL()
         let parameters: [String: Any] = ["action_type" : "block",
                                          "fb_id" : "\(UserId)",
-                                         "other_id" : " \(ReceiverID)",
+                                         "other_id" : "\(ReceiverID)",
                                          "device" : "ios"]
         
         print("Url_blockReportUser_is_here:-" , url)
