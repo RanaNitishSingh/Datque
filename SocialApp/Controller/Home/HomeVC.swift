@@ -484,54 +484,53 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
 //            btnView.addSubview(myFirstButton)
 //            newBtnView.addSubview(btnView)
             let btnView1 = UIView()
-            btnView1.layer.cornerRadius = 27.5
-            btnView1.backgroundColor = .clear
-            btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 110 , y: 10, width: 55, height: 55)
-            let mySecondButton = UIButton()
-            //        mySecondButton.setTitle("No", for: .normal)
-            //        mySecondButton.titleLabel?.font = .systemFont(ofSize: 12)
-            //        mySecondButton.setTitleColor(UIColor.red, for: .normal)
-            //        if let image = UIImage(named: "") {
-            //            mySecondButton.setImage(image, for: .normal)
-            //        }
-            if let image = UIImage(named: "homeClose") {
-                mySecondButton.setImage(image, for: .normal)
-            }
-            
-            mySecondButton.tag = colorIndex
-            mySecondButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
-            mySecondButton.addTarget(self, action: #selector(btnDislikepressed(_:)), for: .touchUpInside)
-            btnView1.addSubview(mySecondButton)
-            newBtnView.addSubview(btnView1)
-            let MAYBEBtnView = UIView(frame: CGRect(x: 5, y: 5 , width: cardView.frame.size.width, height: 60))
-            MAYBEBtnView.backgroundColor = UIColor.clear
-            cardView.addSubview(MAYBEBtnView)
-            let btnView3 = UIView()
-            btnView3.layer.cornerRadius = 27.5
-            btnView3.backgroundColor = .clear
-            btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 55 , y: 10, width: 55, height: 55)
-            let maybeButton = UIButton()
-            //        maybeButton.setTitle("Maybe", for: .normal)
-            //        maybeButton.titleLabel?.font = .systemFont(ofSize: 12)
-            //        maybeButton.setTitleColor(UIColor.red, for: .normal)
-            //        if let image = UIImage(named: "homeMaybe") {
-            //            maybeButton.setImage(image, for: .normal)
-            //        }
-            if let image = UIImage(named: "homeHeart") {
-                maybeButton.setImage(image, for: .normal)
-            }
-            maybeButton.tag = colorIndex
-            maybeButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
-            maybeButton.addTarget(self, action: #selector(btnMaybepressed(_:)), for: .touchUpInside)
-            btnView3.addSubview(maybeButton)
-            newBtnView.addSubview(btnView3)
-            Utils.Addshadow(mySecondButton)
-          //  Utils.Addshadow(myFirstButton)
-            Utils.Addshadow(maybeButton)
-            mySecondButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-          //  myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-            maybeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        }
+                         btnView1.layer.cornerRadius = 27.5
+                         btnView1.backgroundColor = .clear
+                         btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 60 , y: 10, width: 55, height: 55)
+                         let mySecondButton = UIButton()
+                         //        mySecondButton.setTitle("No", for: .normal)
+                         //        mySecondButton.titleLabel?.font = .systemFont(ofSize: 12)
+                         //        mySecondButton.setTitleColor(UIColor.red, for: .normal)
+                         //        if let image = UIImage(named: "") {
+                         //            mySecondButton.setImage(image, for: .normal)
+                         //        }
+                         if let image = UIImage(named: "homeClose") {
+                             mySecondButton.setImage(image, for: .normal)
+                         }
+                         
+                         mySecondButton.tag = colorIndex
+                         mySecondButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
+                         mySecondButton.addTarget(self, action: #selector(btnDislikepressed(_:)), for: .touchUpInside)
+                         btnView1.addSubview(mySecondButton)
+                         newBtnView.addSubview(btnView1)
+                         let MAYBEBtnView = UIView(frame: CGRect(x: 5, y: 5 , width: cardView.frame.size.width, height: 60))
+                         MAYBEBtnView.backgroundColor = UIColor.clear
+                         cardView.addSubview(MAYBEBtnView)
+                         let btnView3 = UIView()
+                         btnView3.layer.cornerRadius = 27.5
+                         btnView3.backgroundColor = .clear
+                         btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 20 , y: 10, width: 55, height: 55)
+                         let myFirstButton = UIButton()
+                         //        maybeButton.setTitle("Maybe", for: .normal)
+                         //        maybeButton.titleLabel?.font = .systemFont(ofSize: 12)
+                         //        maybeButton.setTitleColor(UIColor.red, for: .normal)
+                         //        if let image = UIImage(named: "homeMaybe") {
+                         //            maybeButton.setImage(image, for: .normal)
+                         //        }
+                         if let image = UIImage(named: "homeHeart") {
+                             myFirstButton.setImage(image, for: .normal)
+                         }
+                         myFirstButton.tag = colorIndex
+                         myFirstButton.frame = CGRect(x:0 , y: 0, width: 55, height: 55)
+                         myFirstButton.addTarget(self, action: #selector(btnlikepressed(_:)), for: .touchUpInside)
+                         btnView3.addSubview(myFirstButton)
+                         newBtnView.addSubview(btnView3)
+                         Utils.Addshadow(mySecondButton)
+                       //  Utils.Addshadow(myFirstButton)
+                         Utils.Addshadow(myFirstButton)
+                         mySecondButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+                      //   myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+                         myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)        }
         if loadCardsFromXib {
             let contentView = Bundle.main.loadNibNamed("CardContentView", owner: self, options: nil)?.first! as! UIView
             contentView.translatesAutoresizingMaskIntoConstraints = false
