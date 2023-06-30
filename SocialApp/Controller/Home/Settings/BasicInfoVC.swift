@@ -15,6 +15,7 @@ class BasicInfoVC: UIViewController {
     @IBOutlet weak var ImgFemale: UIImageView!
     @IBOutlet weak var btnFemale: UIButton!
     @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var mobileNumber: UILabel!
     var gender = ""
     
     override func viewDidLoad() {
@@ -39,6 +40,8 @@ extension BasicInfoVC{
                     let strUserLastName = "\(userSaveData.lastName ?? "")"
                     let strUserDOB = "\(userSaveData.birthday ?? "Not updated")"
                     let strUserGender = "\(userSaveData.gender ?? "")"
+                    let strUserMobile = "\(userSaveData.fbID ?? "")"
+                    self.mobileNumber.text = strUserMobile
                     self.lblUserDOB.text = strUserDOB
                     if strUserFirstName == "" && strUserLastName == "" {
                         self.lblUserName.text = "Not updated"
