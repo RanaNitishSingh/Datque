@@ -119,7 +119,6 @@ extension BlockedUsersVC:UITableViewDelegate,UITableViewDataSource{
                  alert.addAction(action1)
                  alert.addAction(action2)
                  self.present(alert, animated: true, completion: nil)
-                
             }
         }
     }
@@ -202,8 +201,8 @@ extension BlockedUsersVC{
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             let message = dicData.msg?.first
                             let response = message?.response!
+                            self.blockUserList()
                             self.view.makeToast("\(response!)")
-                            self.tblBlockedUser.reloadData()
                         } catch {
                             print("Something went wrong in json.")
                         }
