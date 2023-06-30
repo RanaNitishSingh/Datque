@@ -21,17 +21,22 @@ class BlockedUsersVC: UIViewController {
     @IBOutlet weak var lblNoRecoedFound: UILabel!
     @IBOutlet weak var tblBlockedUser: UITableView!
     @IBOutlet weak var heightTblBlockdUser: NSLayoutConstraint!
-    
+    @IBOutlet weak var titleLbl: UILabel!
     var arrChatDic  = [ChatUserInfo]() //this is array of dictionary type ChatUserInfo
     var arrBlockUserDic = [ChatUserInfo]() //this is array of dictionary type chatUserInfo
     var arrayBlockUsersList = [blockList]()
-    
+    var isfromLikeVc = false
     override func viewDidLoad() {
         super.viewDidLoad()
         //show no recoed found
         self.lblNoRecoedFound.isHidden = false
         //self.myInboxChat()
-        self.blockUserList()
+        if isfromLikeVc {
+            self.titleLbl.text = "User Block From Chat"
+            self.chatBlockUserList()
+        }else{
+            self.blockUserList()
+        }
         self.tblBlockedUser.delegate = self
         self.tblBlockedUser.dataSource = self
         // Do any additional setup after loading the view.
@@ -111,7 +116,11 @@ extension BlockedUsersVC:UITableViewDelegate,UITableViewDataSource{
                 //Create alert of selection
                 let alert = UIAlertController(title: "UnBlock:- \(blockUserName)" , message: nil, preferredStyle: UIAlertController.Style.alert)
                  let action1  = UIAlertAction(title: "Un Block", style: UIAlertAction.Style.default) { (action) in
-                     self.unBlockReportUser(UserId: blockUserRid)
+                     if self.isfromLikeVc{
+                         self.unBlockUserChat(receiverId: blockUserRid)
+                     }else{
+                         self.unBlockReportUser(UserId: blockUserRid)
+                     }
                  }
                   let action2 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
                      self.dismiss(animated: true, completion: nil)
@@ -175,9 +184,7 @@ extension BlockedUsersVC{
         print("Block_Report_User_API _Call")
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
-        
         let url = AppUrl.blockUserProfileURL()
-        
         let parameters: [String: Any] = ["action_type" : "unblock",
                                          "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
                                          "other_id" : "\(UserId)",
@@ -185,7 +192,6 @@ extension BlockedUsersVC{
         
         print("Url_blockReportUser_is_here:-" , url)
         print("Param_blockReportUser_is_here:-" , parameters)
-        
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
             print("Response",response)
@@ -216,4 +222,90 @@ extension BlockedUsersVC{
         }
         
     }
+    
+    
+    func chatBlockUserList(){
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        let url = AppUrl.block_user_chat_list()
+        let parameters: [String: String] =
+        ["fb_id" : "\(Defaults[PDUserDefaults.UserID])" ,
+         "device_token" : "\(Defaults[PDUserDefaults.FCMToken]) " ,
+         "device" : "ios"
+        ]
+        print("Url_userNearByMeServices_is_here:-" , url)
+        print("Param_userNearByMeServices_is_here:-" , parameters)
+
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_userNearByMeServices",responseJson)
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            self.arrayBlockUsersList.removeAll()
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(UserBlockList.self, from: responseData)
+                            self.arrayBlockUsersList = dicData.msg!
+                            print("dic_NearbyUser_Data",self.arrayBlockUsersList)
+                            self.tblBlockedUser.reloadData()
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                } else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                } else {
+                    print("Something went wrong in json")
+                }
+            }
+            
+        }
+    }
+    
+    func unBlockUserChat(receiverId: String){
+        
+        print("Block_Report_User_API _Call")
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        let url = AppUrl.blockUserChatURL()
+        let parameters: [String: Any] = ["action_type" : "unblock",
+                                         "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
+                                         "other_id" : "\(receiverId)",
+                                         "device" : "ios"]
+        
+        print("Url_blockReportUser_is_here:-" , url)
+        print("Param_blockReportUser_is_here:-" , parameters)
+
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_blockReportUser",responseJson["code"])
+                
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetFlatUserData.self, from: responseData)
+                            //print("dicData = \(String(describing: dicData.msg?.first))")
+                            let message = dicData.msg?.first
+                            let response = message?.response!
+                            self.chatBlockUserList()
+                            self.view.makeToast("\(response!)")
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+    }
+    
 }

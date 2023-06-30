@@ -590,7 +590,7 @@
                                                         <rect key="frame" x="5" y="102" width="335" height="70"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-rI-pJ6" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                                <rect key="frame" x="42.666666666666664" y="5" width="34.999999999999993" height="60"/>
+                                                                <rect key="frame" x="42.666666666666657" y="5" width="35" height="60"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRW-uA-o3K">
                                                                         <rect key="frame" x="2.0000000000000071" y="2" width="31" height="56"/>
@@ -3061,7 +3061,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-im-mar">
-                                                <rect key="frame" x="20" y="7.6666666666666643" width="345" height="35"/>
+                                                <rect key="frame" x="20" y="7.6666666666666643" width="345" height="35.000000000000007"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo round" translatesAutoresizingMaskIntoConstraints="NO" id="2vK-NJ-yym">
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -3909,7 +3909,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-ef-nEO">
-                                                                <rect key="frame" x="30.666666666666668" y="20" width="50.666666666666657" height="21.666666666666671"/>
+                                                                <rect key="frame" x="30.666666666666671" y="20" width="50.666666666666657" height="21.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -4011,13 +4011,13 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$19.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTm-MG-q7i">
-                                                                <rect key="frame" x="27.333333333333346" y="20" width="57.333333333333343" height="21.666666666666671"/>
+                                                                <rect key="frame" x="27.333333333333343" y="20" width="57.333333333333343" height="21.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jM-tq-RtQ">
-                                                                <rect key="frame" x="30.999999999999968" y="51.666666666666657" width="49.666666666666657" height="23"/>
+                                                                <rect key="frame" x="30.999999999999972" y="51.666666666666657" width="49.666666666666657" height="23"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="gZp-BK-1ON"/>
                                                                 </constraints>
@@ -4560,7 +4560,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17g-mg-lZT">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Mza-bh-mKD"/>
                                                     <constraint firstAttribute="width" constant="40" id="Yrz-db-gUd"/>
@@ -4712,7 +4712,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-a7-Hpi">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="NiA-Xe-PgI"/>
                                                     <constraint firstAttribute="height" constant="40" id="li2-7F-7CV"/>
@@ -5056,7 +5056,7 @@ Unlimited filter use</string>
                                                         <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-cg-Z2i">
-                                                        <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                        <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="ujP-5z-Hmy"/>
                                                             <constraint firstAttribute="width" constant="40" id="y87-HW-Rvv"/>
@@ -5086,7 +5086,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hp-le-bZw">
-                                                        <rect key="frame" x="310" y="2.6666666666666643" width="50" height="50"/>
+                                                        <rect key="frame" x="310" y="2.6666666666666643" width="50" height="50.000000000000007"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="9cd-Zv-bTl"/>
                                                             <constraint firstAttribute="height" constant="50" id="Ygz-C3-UrE"/>
@@ -6100,7 +6100,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-0x-ybq">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="CpC-BQ-Udp"/>
                                                     <constraint firstAttribute="height" constant="40" id="EMi-7z-liU"/>
@@ -6304,7 +6304,7 @@ Unlimited filter use</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-3X-RTZ">
-                                                <rect key="frame" x="0.0" y="12.666666666666671" width="375" height="76"/>
+                                                <rect key="frame" x="0.0" y="12.666666666666671" width="375" height="75.999999999999986"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SG-QN-qCd">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
@@ -9249,7 +9249,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwe-sy-7c8">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Bkk-Yu-Au0"/>
                                                     <constraint firstAttribute="height" constant="40" id="zwu-ni-vR4"/>
@@ -9510,7 +9510,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-KC-wmb">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="duz-hg-mRB"/>
                                                     <constraint firstAttribute="height" constant="40" id="vCB-2c-rmQ"/>

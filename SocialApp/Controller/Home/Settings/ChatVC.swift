@@ -85,6 +85,7 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.is_user_chat_blocked(receiverId: ReceiverID)
         //for gif view
         self.viewGif()
         
@@ -122,7 +123,6 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
         self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
 
         btnReport.isEnabled = false
-        
     }
     
     @objc func timerAction() {
@@ -1577,19 +1577,17 @@ extension ChatVC{
     }
     
     func BlockUserChat(receiverId: String){
-        
         print("Block_Report_User_API _Call")
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()         
         let url = AppUrl.blockUserChatURL()
         let parameters: [String: Any] = ["action_type" : "block",
                                          "fb_id" : "\(UserId)",
-                                         "other_id" : "\(ReceiverID)",
+                                         "other_id" : "\(receiverId)",
                                          "device" : "ios"]
         
         print("Url_blockReportUser_is_here:-" , url)
         print("Param_blockReportUser_is_here:-" , parameters)
-
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
             print("Response",response)
@@ -1619,6 +1617,48 @@ extension ChatVC{
             }
         }
     }
+    
+    
+    func is_user_chat_blocked(receiverId: String){
+        print("Block_Report_User_API _Call")
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        let url = AppUrl.is_user_chat_blocked()
+        let parameters: [String: Any] = ["fb_id" : "\(Defaults[PDUserDefaults.UserID])",
+                                         "other_id" : "\(receiverId)",
+                                         "device" : "ios"]
+        
+        print("Url_blockReportUser_is_here:-" , url)
+        print("Param_blockReportUser_is_here:-" , parameters)
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_blockReportUser",responseJson["code"])
+                
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetFlatUserData.self, from: responseData)
+                            //print("dicData = \(String(describing: dicData.msg?.first))")
+                            let message = dicData.msg?.first
+                            let response = message?.response!
+                            self.view.makeToast("\(response!)")
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+    }
+    
     
 }
 

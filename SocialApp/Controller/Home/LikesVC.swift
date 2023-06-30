@@ -75,6 +75,12 @@ class LikesVC: UIViewController {
         self.tabBarController?.tabBar.tintColor = .black
     }
     
+    @IBAction func listButtonAction(_ sender: Any) {
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "BlockedUsersVC" ) as! BlockedUsersVC
+        VC.isfromLikeVc = true
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
     @IBAction func ActionFilter(_ sender: Any) {
         let VC = self.storyboard?.instantiateViewController(withIdentifier: "filterVC" ) as! filterVC
         self.navigationController?.pushViewController(VC, animated: true)
