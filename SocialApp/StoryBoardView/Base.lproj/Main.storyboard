@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UYz-qd-r6E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UYz-qd-r6E">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -206,10 +206,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIU-xg-dW9">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drf-FX-MNS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="765"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nK-ys-jBk">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -590,7 +590,7 @@
                                                         <rect key="frame" x="5" y="102" width="335" height="70"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-rI-pJ6" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                                <rect key="frame" x="42.666666666666657" y="5" width="35" height="60"/>
+                                                                <rect key="frame" x="42.666666666666664" y="5" width="34.999999999999993" height="60"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRW-uA-o3K">
                                                                         <rect key="frame" x="2.0000000000000071" y="2" width="31" height="56"/>
@@ -1587,7 +1587,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mkk-fj-Niw">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPD-jb-v0q">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -1636,10 +1636,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdT-nd-xXB">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="665"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="662"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7f-hS-8hp">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="665"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="662"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-vW-eJx">
                                                         <rect key="frame" x="0.0" y="5" width="375" height="90"/>
@@ -1788,7 +1788,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" restorationIdentifier="CardView" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-bP-7Fh" customClass="CardView" customModule="SocialApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -3055,13 +3055,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nw-FP-U6C">
-                                <rect key="frame" x="0.0" y="47" width="375" height="682"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="679"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYh-Xr-0GR">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-im-mar">
-                                                <rect key="frame" x="20" y="7.6666666666666643" width="345" height="35.000000000000007"/>
+                                                <rect key="frame" x="20" y="7.6666666666666643" width="345" height="35"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo round" translatesAutoresizingMaskIntoConstraints="NO" id="2vK-NJ-yym">
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -3091,16 +3091,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isk-uz-Vaj">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="622"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="619"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PqZ-46-jBS">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="564"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbQ-v9-KDs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="564"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5O7-KM-w4G">
-                                                                <rect key="frame" x="5" y="10" width="365" height="557"/>
+                                                                <rect key="frame" x="5" y="10" width="365" height="554"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0FC-lG-bMW">
                                                                     <size key="itemSize" width="153" height="161"/>
@@ -3233,7 +3233,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-1c-ACm" customClass="UIButtonX">
-                                                <rect key="frame" x="112.66666666666669" y="572" width="150" height="50"/>
+                                                <rect key="frame" x="112.66666666666669" y="569" width="150" height="50"/>
                                                 <color key="backgroundColor" red="0.57647061349999995" green="0.1725490093" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="5I4-nB-MkZ"/>
@@ -3266,7 +3266,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-Gx-RT9">
-                                        <rect key="frame" x="30" y="341" width="315" height="0.0"/>
+                                        <rect key="frame" x="30" y="339.66666666666669" width="315" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <color key="textColor" red="0.57647058819999997" green="0.17254901959999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -3696,8 +3696,41 @@
                                                     <constraint firstAttribute="height" constant="50" id="yBS-qy-61M"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vim-Cl-D3l">
+                                                <rect key="frame" x="0.0" y="130" width="375" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDB-xf-FOz">
+                                                        <rect key="frame" x="20" y="5" width="335" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="4tv-PX-0Ow"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9876543210" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKj-cc-GvF">
+                                                        <rect key="frame" x="20" y="28" width="335" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="GCC-BQ-Zdq"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="YKj-cc-GvF" firstAttribute="top" secondItem="wDB-xf-FOz" secondAttribute="bottom" constant="3" id="03N-Oe-dNR"/>
+                                                    <constraint firstItem="wDB-xf-FOz" firstAttribute="top" secondItem="vim-Cl-D3l" secondAttribute="top" constant="5" id="NHf-Xc-j9P"/>
+                                                    <constraint firstItem="wDB-xf-FOz" firstAttribute="leading" secondItem="vim-Cl-D3l" secondAttribute="leading" constant="20" id="Y5J-za-U3B"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ZGf-Yo-bdS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wDB-xf-FOz" secondAttribute="trailing" constant="20" id="d5O-P6-JMg"/>
+                                                    <constraint firstItem="YKj-cc-GvF" firstAttribute="leading" secondItem="vim-Cl-D3l" secondAttribute="leading" constant="20" id="opI-04-9Vg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YKj-cc-GvF" secondAttribute="trailing" constant="20" id="p1Z-tt-1Rb"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-cZ-3kY">
-                                                <rect key="frame" x="0.0" y="130" width="375" height="60"/>
+                                                <rect key="frame" x="0.0" y="185" width="375" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pH-eo-sAa">
                                                         <rect key="frame" x="235" y="5" width="130" height="50"/>
@@ -3767,37 +3800,44 @@
                                                             <constraint firstAttribute="width" constant="130" id="vvh-z2-RkA"/>
                                                         </constraints>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgD-GK-li5">
+                                                        <rect key="frame" x="20" y="20" width="60" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="f3F-c1-xl7"/>
+                                                            <constraint firstAttribute="width" constant="60" id="nm7-AU-bSa"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="9pH-eo-sAa" secondAttribute="trailing" constant="10" id="BX0-dw-DSE"/>
-                                                    <constraint firstItem="9pH-eo-sAa" firstAttribute="centerY" secondItem="gIT-cZ-3kY" secondAttribute="centerY" id="JiD-W6-fWj"/>
-                                                    <constraint firstAttribute="height" constant="60" id="Tei-hD-x6l"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9pH-eo-sAa" secondAttribute="trailing" constant="10" id="122-Vy-s9k"/>
+                                                    <constraint firstItem="lgD-GK-li5" firstAttribute="leading" secondItem="gIT-cZ-3kY" secondAttribute="leading" constant="20" id="8uh-q2-Upc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9pH-eo-sAa" secondAttribute="bottom" constant="5" id="9LS-uY-Xud"/>
+                                                    <constraint firstItem="9pH-eo-sAa" firstAttribute="top" secondItem="gIT-cZ-3kY" secondAttribute="top" constant="5" id="J1X-aR-SG7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="lgD-GK-li5" secondAttribute="bottom" constant="20" symbolic="YES" id="X5P-aa-bKU"/>
+                                                    <constraint firstAttribute="height" constant="60" id="jnX-uG-81c"/>
+                                                    <constraint firstItem="9pH-eo-sAa" firstAttribute="leading" secondItem="lgD-GK-li5" secondAttribute="trailing" constant="155" id="xGf-Ru-JpP"/>
+                                                    <constraint firstItem="lgD-GK-li5" firstAttribute="top" secondItem="gIT-cZ-3kY" secondAttribute="top" constant="20" symbolic="YES" id="zYp-La-fda"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgD-GK-li5">
-                                                <rect key="frame" x="19.999999999999996" y="150" width="59.666666666666657" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="LAO-v2-ew3"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="RJa-0G-GKM" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" id="6KS-JR-D2C"/>
+                                            <constraint firstItem="vim-Cl-D3l" firstAttribute="top" secondItem="RJa-0G-GKM" secondAttribute="bottom" constant="5" id="AcU-wi-y7T"/>
                                             <constraint firstItem="Qnq-gP-CqJ" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" id="DFU-OP-tNA"/>
                                             <constraint firstItem="RJa-0G-GKM" firstAttribute="top" secondItem="Qnq-gP-CqJ" secondAttribute="bottom" constant="5" id="IkW-WD-f3j"/>
-                                            <constraint firstAttribute="trailing" secondItem="gIT-cZ-3kY" secondAttribute="trailing" id="MgR-m0-KtK"/>
                                             <constraint firstItem="Qnq-gP-CqJ" firstAttribute="top" secondItem="tLq-MI-yU7" secondAttribute="top" constant="20" id="NuW-d0-bRd"/>
                                             <constraint firstAttribute="trailing" secondItem="RJa-0G-GKM" secondAttribute="trailing" id="OEK-ks-mgG"/>
-                                            <constraint firstItem="gIT-cZ-3kY" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" id="OTf-Vr-WLR"/>
-                                            <constraint firstItem="lgD-GK-li5" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" constant="20" id="Twy-bE-vhW"/>
-                                            <constraint firstItem="lgD-GK-li5" firstAttribute="centerY" secondItem="9pH-eo-sAa" secondAttribute="centerY" id="dhi-ZR-6Zb"/>
+                                            <constraint firstItem="gIT-cZ-3kY" firstAttribute="top" secondItem="vim-Cl-D3l" secondAttribute="bottom" constant="5" id="Vj1-lo-1as"/>
+                                            <constraint firstItem="gIT-cZ-3kY" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" id="ZAO-bc-576"/>
                                             <constraint firstAttribute="trailing" secondItem="Qnq-gP-CqJ" secondAttribute="trailing" id="fDn-LX-aH1"/>
-                                            <constraint firstItem="gIT-cZ-3kY" firstAttribute="top" secondItem="RJa-0G-GKM" secondAttribute="bottom" constant="5" id="z5I-OF-kVj"/>
+                                            <constraint firstAttribute="trailing" secondItem="gIT-cZ-3kY" secondAttribute="trailing" id="isv-dZ-hSr"/>
+                                            <constraint firstItem="vim-Cl-D3l" firstAttribute="leading" secondItem="tLq-MI-yU7" secondAttribute="leading" id="yQh-B8-nK6"/>
+                                            <constraint firstAttribute="trailing" secondItem="vim-Cl-D3l" secondAttribute="trailing" id="ykF-Vs-pGZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3829,6 +3869,7 @@
                         <outlet property="btnMale" destination="1fP-cW-3ue" id="Fam-VJ-m5h"/>
                         <outlet property="lblUserDOB" destination="2FQ-bC-kjJ" id="eya-l8-Nc5"/>
                         <outlet property="lblUserName" destination="MkJ-Wy-vzl" id="IS6-KO-01a"/>
+                        <outlet property="mobileNumber" destination="YKj-cc-GvF" id="c7c-Hp-Kb8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOw-5l-SgG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3844,7 +3885,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRb-Wh-6sb">
-                                <rect key="frame" x="0.0" y="47" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back (1) 1" translatesAutoresizingMaskIntoConstraints="NO" id="UnS-DB-zfD">
                                         <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -3887,7 +3928,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-RE-KTO">
-                                <rect key="frame" x="0.0" y="112" width="375" height="145"/>
+                                <rect key="frame" x="0.0" y="115" width="375" height="145"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0K-ZL-1ck">
                                         <rect key="frame" x="0.0" y="15" width="375" height="110"/>
@@ -3909,7 +3950,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-ef-nEO">
-                                                                <rect key="frame" x="30.666666666666671" y="20" width="50.666666666666657" height="21.666666666666671"/>
+                                                                <rect key="frame" x="30.666666666666668" y="20" width="50.666666666666657" height="21.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -4011,13 +4052,13 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$19.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTm-MG-q7i">
-                                                                <rect key="frame" x="27.333333333333343" y="20" width="57.333333333333343" height="21.666666666666671"/>
+                                                                <rect key="frame" x="27.333333333333346" y="20" width="57.333333333333343" height="21.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jM-tq-RtQ">
-                                                                <rect key="frame" x="30.999999999999972" y="51.666666666666657" width="49.666666666666657" height="23"/>
+                                                                <rect key="frame" x="30.999999999999968" y="51.666666666666657" width="49.666666666666657" height="23"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="gZp-BK-1ON"/>
                                                                 </constraints>
@@ -4095,7 +4136,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFd-GZ-LqG">
-                                <rect key="frame" x="10" y="237" width="355" height="80"/>
+                                <rect key="frame" x="10" y="240" width="355" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Uuq-5R-2c5"/>
                                 </constraints>
@@ -4110,7 +4151,7 @@ Unlimited filter use</string>
                                 <string key="userLabel">1. Free unlimited swapping  2. Unlimited chats 3. Unlimited video call 4. Unlimited location base search 5. Direct chat access 6. Unlimited filter use</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huk-ab-ozo">
-                                <rect key="frame" x="10" y="402" width="355" height="155"/>
+                                <rect key="frame" x="10" y="405" width="355" height="155"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uua-dy-Qdo">
                                         <rect key="frame" x="0.0" y="105" width="355" height="55"/>
@@ -4551,7 +4592,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dt-Ei-FaQ">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60f-EY-Lym" customClass="UIViewX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -4560,7 +4601,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17g-mg-lZT">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Mza-bh-mKD"/>
                                                     <constraint firstAttribute="width" constant="40" id="Yrz-db-gUd"/>
@@ -4703,7 +4744,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9Y-Cv-ch3">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-em-eWm" customClass="UIViewX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -4712,7 +4753,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-a7-Hpi">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="NiA-Xe-PgI"/>
                                                     <constraint firstAttribute="height" constant="40" id="li2-7F-7CV"/>
@@ -4773,10 +4814,10 @@ Unlimited filter use</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isH-C6-KIh">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="707"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3lc-kk-c4U">
-                                                <rect key="frame" x="0.0" y="10" width="375" height="690"/>
+                                                <rect key="frame" x="0.0" y="10" width="375" height="687"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="50" id="f6H-QB-S4I" customClass="TableViewCell" customModule="SocialApp" customModuleProvider="target">
@@ -4896,23 +4937,23 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FB-SU-rrh">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-Ie-DVg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="765"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWs-nY-ckH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="765"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="btnActionCloseViewEditName:" destination="YjQ-d7-0r5" eventType="touchUpInside" id="tgK-vX-fuK"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZd-Iu-Elk" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="207.66666666666663" width="325" height="250"/>
+                                                <rect key="frame" x="25" y="206" width="325" height="250"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAj-Cb-oKb">
-                                                        <rect key="frame" x="20" y="15.000000000000028" width="285" height="30"/>
+                                                        <rect key="frame" x="20" y="15" width="285" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="K8z-xC-CSK"/>
                                                         </constraints>
@@ -4921,7 +4962,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-Nc-YhR" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="47.333333333333343" width="292.66666666666669" height="45"/>
+                                                        <rect key="frame" x="15" y="47.666666666666686" width="292.66666666666669" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -4930,7 +4971,7 @@ Unlimited filter use</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZz-6S-wNX" customClass="UITextFieldX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="50.000000000000028" width="285" height="40"/>
+                                                        <rect key="frame" x="20" y="50" width="285" height="40"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="MZK-Wy-0ip"/>
@@ -4944,7 +4985,7 @@ Unlimited filter use</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lER-cS-5Gu">
-                                                        <rect key="frame" x="20" y="110.00000000000003" width="285" height="30"/>
+                                                        <rect key="frame" x="20" y="110" width="285" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="TOX-dp-Uvx"/>
                                                         </constraints>
@@ -4953,7 +4994,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zci-5f-S0J" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="142.33333333333334" width="292.66666666666669" height="45"/>
+                                                        <rect key="frame" x="15" y="142.66666666666669" width="292.66666666666669" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -4962,7 +5003,7 @@ Unlimited filter use</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eG6-cx-Pi7" customClass="UITextFieldX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="145.00000000000003" width="285" height="40"/>
+                                                        <rect key="frame" x="20" y="145" width="285" height="40"/>
                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="8xo-on-3Qm"/>
@@ -4976,7 +5017,7 @@ Unlimited filter use</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8K-u0-IG8" customClass="UIButtonX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="132.66666666666666" y="197.00000000000003" width="60" height="38"/>
+                                                        <rect key="frame" x="132.66666666666666" y="197" width="60" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="38" id="PbR-gv-qoF"/>
                                                             <constraint firstAttribute="width" constant="60" id="mZg-cv-vbg"/>
@@ -5047,7 +5088,7 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3d-MT-wJ0">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="765"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-nF-LRn" customClass="UIViewX">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -5056,7 +5097,7 @@ Unlimited filter use</string>
                                                         <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-cg-Z2i">
-                                                        <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                        <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="ujP-5z-Hmy"/>
                                                             <constraint firstAttribute="width" constant="40" id="y87-HW-Rvv"/>
@@ -5086,7 +5127,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hp-le-bZw">
-                                                        <rect key="frame" x="310" y="2.6666666666666643" width="50" height="50.000000000000007"/>
+                                                        <rect key="frame" x="310" y="2.6666666666666643" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="9cd-Zv-bTl"/>
                                                             <constraint firstAttribute="height" constant="50" id="Ygz-C3-UrE"/>
@@ -5147,7 +5188,7 @@ Unlimited filter use</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Te-ea-uzD">
-                                                <rect key="frame" x="0.0" y="55" width="375" height="710"/>
+                                                <rect key="frame" x="0.0" y="55" width="375" height="707"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJa-ZC-9Fk">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
@@ -5738,10 +5779,10 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-af-Zx0">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNp-BX-qKY">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="707"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guX-Iq-BVo" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="5" width="375" height="70"/>
@@ -6100,7 +6141,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-0x-ybq">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="CpC-BQ-Udp"/>
                                                     <constraint firstAttribute="height" constant="40" id="EMi-7z-liU"/>
@@ -6208,7 +6249,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-05-EMA">
-                                <rect key="frame" x="0.0" y="47" width="375" height="682"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="679"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVw-UW-bPf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -6252,7 +6293,7 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mx-7V-yuC">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="632"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="629"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dh-Uc-MFW" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="5" width="345" height="0.0"/>
@@ -6304,7 +6345,7 @@ Unlimited filter use</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-3X-RTZ">
-                                                <rect key="frame" x="0.0" y="12.666666666666671" width="375" height="75.999999999999986"/>
+                                                <rect key="frame" x="0.0" y="12.666666666666671" width="375" height="76"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SG-QN-qCd">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
@@ -6481,7 +6522,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGk-Hl-aed">
-                                                <rect key="frame" x="0.0" y="91" width="375" height="541"/>
+                                                <rect key="frame" x="0.0" y="91" width="375" height="538"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CgN-gR-rdz" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="50"/>
@@ -6802,7 +6843,7 @@ Unlimited filter use</string>
                                                         </subviews>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tDJ-3e-J3Q">
-                                                        <rect key="frame" x="0.0" y="55" width="375" height="486"/>
+                                                        <rect key="frame" x="0.0" y="55" width="375" height="483"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <label key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Inbox Yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cGV-nx-EPU">
                                                             <rect key="frame" x="0.0" y="177" width="375" height="39"/>
@@ -7033,10 +7074,10 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ue-1x-HtZ">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0j3-JQ-WPI" customClass="UIViewX">
-                                        <rect key="frame" x="8" y="8" width="359" height="732"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="729"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBA-Vf-8YF" customClass="UIViewX">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
@@ -7093,10 +7134,10 @@ Unlimited filter use</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXj-hP-UfX">
-                                                <rect key="frame" x="9.6666666666666572" y="55" width="340" height="669"/>
+                                                <rect key="frame" x="9.6666666666666572" y="55" width="340" height="666"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jnq-gg-QKw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="669"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="666"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="PB1-R2-rkC">
                                                             <size key="itemSize" width="110" height="135"/>
@@ -7178,7 +7219,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No other users like your Profile so far. Subscribe us and boost your Profile so more user can see you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3o-Zr-cew">
-                                                <rect key="frame" x="25" y="330.33333333333331" width="309" height="71.666666666666686"/>
+                                                <rect key="frame" x="25" y="328.66666666666669" width="309" height="71.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7258,10 +7299,10 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbJ-Ya-iEC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="3" width="375" height="809"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9g-DT-xaA">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="735"/>
+                                        <rect key="frame" x="0.0" y="30" width="375" height="732"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVr-cb-c1K">
                                                 <rect key="frame" x="0.0" y="10" width="375" height="50"/>
@@ -7330,10 +7371,10 @@ Unlimited filter use</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUP-OW-NSj">
-                                                <rect key="frame" x="0.0" y="65" width="375" height="613"/>
+                                                <rect key="frame" x="0.0" y="65" width="375" height="610"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="obc-qF-Kju">
-                                                        <rect key="frame" x="10" y="0.0" width="355" height="613"/>
+                                                        <rect key="frame" x="10" y="0.0" width="355" height="610"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Suh-oK-daB">
                                                             <size key="itemSize" width="110" height="135"/>
@@ -7414,7 +7455,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User not found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2af-8B-jDN">
-                                                <rect key="frame" x="25" y="331.33333333333331" width="325" height="24"/>
+                                                <rect key="frame" x="25" y="329.66666666666669" width="325" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7499,7 +7540,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55v-2v-ohf">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guY-rm-Kuq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -7552,10 +7593,10 @@ Unlimited filter use</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOX-gb-Kx0">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="575"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="572"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAc-va-4cc">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="575"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-Qa-rdL">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -7613,7 +7654,7 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbm-un-jao">
-                                        <rect key="frame" x="20" y="645" width="335" height="70"/>
+                                        <rect key="frame" x="20" y="642" width="335" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdb-XV-DlA">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -7728,7 +7769,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-7i-xb0" customClass="UILabelX" customModule="SocialApp" customModuleProvider="target">
-                                <rect key="frame" x="152.66666666666666" y="104.66666666666667" width="70" height="2.3333333333333286"/>
+                                <rect key="frame" x="152.66666666666666" y="107.66666666666667" width="70" height="2.3333333333333286"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="gpN-Kz-ZDX"/>
@@ -7744,10 +7785,10 @@ Unlimited filter use</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evT-xy-Kam" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                <rect key="frame" x="22" y="117" width="331" height="680"/>
+                                <rect key="frame" x="22" y="120" width="331" height="677"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1639735633745" translatesAutoresizingMaskIntoConstraints="NO" id="nxe-ll-ROc" customClass="UIImageViewX" customModule="SocialApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="433.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="430.66666666666669"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="12"/>
@@ -7755,7 +7796,7 @@ Unlimited filter use</string>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ayush, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUS-Nw-OiQ">
-                                        <rect key="frame" x="10" y="443.66666666666663" width="311" height="25"/>
+                                        <rect key="frame" x="10" y="440.66666666666663" width="311" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="6oT-dC-pHJ"/>
                                         </constraints>
@@ -7764,7 +7805,7 @@ Unlimited filter use</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfA-eg-uvd">
-                                        <rect key="frame" x="10" y="471" width="311" height="23"/>
+                                        <rect key="frame" x="10" y="468" width="311" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="gfQ-ko-4yt"/>
                                         </constraints>
@@ -7773,7 +7814,7 @@ Unlimited filter use</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 miles away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsQ-8i-jL0">
-                                        <rect key="frame" x="10" y="494" width="311" height="20"/>
+                                        <rect key="frame" x="10" y="491" width="311" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="B2m-0X-t05"/>
                                         </constraints>
@@ -7782,7 +7823,7 @@ Unlimited filter use</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEH-Yv-hjI" customClass="UIButtonX" customModule="SocialApp" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="529" width="281" height="40"/>
+                                        <rect key="frame" x="25" y="526" width="281" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="zPX-aY-Gre"/>
                                         </constraints>
@@ -7807,7 +7848,7 @@ Unlimited filter use</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oET-kE-Wfr">
-                                        <rect key="frame" x="105.66666666666669" y="579" width="120" height="23"/>
+                                        <rect key="frame" x="105.66666666666669" y="576" width="120" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="fij-Yt-o71"/>
                                             <constraint firstAttribute="width" constant="120" id="qz9-Y2-DRm"/>
@@ -7821,7 +7862,7 @@ Unlimited filter use</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3a-Qh-QVI">
-                                        <rect key="frame" x="90.666666666666686" y="610" width="150" height="50"/>
+                                        <rect key="frame" x="90.666666666666686" y="607" width="150" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYY-gA-NpM" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="5" width="40" height="40"/>
@@ -7963,10 +8004,10 @@ Unlimited filter use</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbY-3f-Mku">
-                                <rect key="frame" x="22" y="117" width="331" height="680"/>
+                                <rect key="frame" x="22" y="120" width="331" height="677"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggf-yT-7av" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="165" width="331" height="300"/>
+                                        <rect key="frame" x="0.0" y="163.66666666666669" width="331" height="300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcv-QR-6mA">
                                                 <rect key="frame" x="82.666666666666686" y="20" width="166" height="30"/>
@@ -7994,7 +8035,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woj-eD-Rvz" customClass="UIButtonX" customModule="SocialApp" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="235" width="281" height="40"/>
+                                                <rect key="frame" x="25" y="234.99999999999994" width="281" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="VgR-JW-Yse"/>
@@ -8100,7 +8141,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-3m-d20">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ix-ut-vxU">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -8138,20 +8179,20 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRO-TS-t69">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="715"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="712"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5u-Cw-Y2A">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="ActionDismissCongratutalionView:" destination="pAE-T7-GSA" eventType="touchUpInside" id="has-Dk-kG4"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzF-1S-q8G" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="157.66666666666663" width="295" height="300"/>
+                                                <rect key="frame" x="40" y="156" width="295" height="300"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orc-OS-I8R">
-                                                        <rect key="frame" x="64.666666666666686" y="20.000000000000028" width="166" height="30"/>
+                                                        <rect key="frame" x="64.666666666666686" y="20" width="166" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="FWz-0b-jti"/>
                                                         </constraints>
@@ -8160,7 +8201,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Have Keyed match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdu-Q6-F6y">
-                                                        <rect key="frame" x="48" y="60.000000000000028" width="199" height="30"/>
+                                                        <rect key="frame" x="48" y="60" width="199" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="CrX-b6-paS"/>
                                                         </constraints>
@@ -8169,14 +8210,14 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love_key-1" translatesAutoresizingMaskIntoConstraints="NO" id="U2R-AN-3dL">
-                                                        <rect key="frame" x="80" y="95.000000000000028" width="135" height="135"/>
+                                                        <rect key="frame" x="80" y="95" width="135" height="135"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="135" id="oGT-aj-Za1"/>
                                                             <constraint firstAttribute="width" constant="135" id="ylB-ha-Bte"/>
                                                         </constraints>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-sL-drd" customClass="UIButtonX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="25" y="235.00000000000003" width="245" height="39.999999999999972"/>
+                                                        <rect key="frame" x="25" y="235" width="245" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="9Up-IO-SHO"/>
@@ -8230,10 +8271,10 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWp-IP-te7">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="715"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="712"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-DU-Sic">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="OOT-Rj-SAM" customClass="UIImageViewX" customModule="SocialApp" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="25" width="100" height="100"/>
@@ -8309,10 +8350,10 @@ Unlimited filter use</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qt-Qy-MsL">
-                                                        <rect key="frame" x="0.0" y="273" width="375" height="442"/>
+                                                        <rect key="frame" x="0.0" y="273" width="375" height="439"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-h6-i43">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="442"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                                 <prototypes>
@@ -8415,7 +8456,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-OE-YZa">
-                                                <rect key="frame" x="112.66666666666669" y="635" width="150" height="50"/>
+                                                <rect key="frame" x="112.66666666666669" y="632" width="150" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gb-wq-plU" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="5" width="40" height="40"/>
@@ -8587,20 +8628,20 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eY-yC-T2D">
-                                <rect key="frame" x="0.0" y="47" width="375" height="731"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoF-dz-nQM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-5L-WgU">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="actionThreeDotViewCancel:" destination="hzx-Hn-4NE" eventType="touchUpInside" id="pxf-0c-aX0"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-Du-j9b">
-                                                <rect key="frame" x="40" y="265.66666666666669" width="295" height="200"/>
+                                                <rect key="frame" x="40" y="264" width="295" height="200"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yL3-Ss-z6h">
                                                         <rect key="frame" x="15" y="15" width="265" height="180"/>
@@ -8684,17 +8725,17 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqB-9E-L8Y" userLabel="ViewForReportUser">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkQ-Q6-izl">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="actionThreeDotViewCancel:" destination="hzx-Hn-4NE" eventType="touchUpInside" id="mIA-er-KSZ"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plx-2z-zxG">
-                                                <rect key="frame" x="40" y="250.66666666666669" width="295" height="230"/>
+                                                <rect key="frame" x="40" y="249" width="295" height="230"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3kp-bS-Itg">
                                                         <rect key="frame" x="10" y="10" width="275" height="200"/>
@@ -8731,13 +8772,13 @@ Unlimited filter use</string>
                                                                 <rect key="frame" x="0.0" y="90" width="275" height="60"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Someone I'm no longer matched with" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-Qa-Zdr">
-                                                                        <rect key="frame" x="35" y="1" width="220" height="38.333333333333336"/>
+                                                                        <rect key="frame" x="35" y="1" width="220" height="38.666666666666664"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka3-q9-4Gd">
-                                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
+                                                                        <rect key="frame" x="5" y="10.333333333333314" width="20" height="20"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="untick" translatesAutoresizingMaskIntoConstraints="NO" id="YdH-4o-mB5">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -8860,7 +8901,7 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWC-3e-Dm3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="728"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncI-Yu-eNX">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -8963,13 +9004,13 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2D-kN-CEj">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="681"/>
+                                                <rect key="frame" x="0.0" y="50" width="375" height="678"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPS-00-aDV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="626"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uD-0e-zrG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="626"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                                                 <subviews>
                                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnw-aa-OjK">
                                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
@@ -8998,7 +9039,7 @@ Unlimited filter use</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-wS-EtH" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="626" width="375" height="65"/>
+                                                        <rect key="frame" x="0.0" y="623" width="375" height="65"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syh-Da-bCE">
                                                                 <rect key="frame" x="0.0" y="7.6666666666666288" width="50" height="50"/>
@@ -9240,7 +9281,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3Q-Rj-Zj9">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAA-Km-IgO" customClass="UIViewX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -9249,7 +9290,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwe-sy-7c8">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Bkk-Yu-Au0"/>
                                                     <constraint firstAttribute="height" constant="40" id="zwu-ni-vR4"/>
@@ -9311,10 +9352,10 @@ Unlimited filter use</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dET-bk-CyM">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="707"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3I-eD-HCj">
-                                                <rect key="frame" x="0.0" y="5" width="375" height="705"/>
+                                                <rect key="frame" x="0.0" y="5" width="375" height="702"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-N9-t2d">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -9435,7 +9476,7 @@ Unlimited filter use</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recoed Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWb-2E-1SH">
-                                                        <rect key="frame" x="87" y="337.66666666666669" width="201" height="30"/>
+                                                        <rect key="frame" x="87" y="336" width="201" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         <color key="textColor" red="0.5176470876" green="0.15686275059999999" blue="0.8078432083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -9501,7 +9542,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv4-Pz-VSF">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-xl-gsz" customClass="UIViewX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -9510,7 +9551,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="12.666666666666664" y="12.666666666666664" width="35" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-KC-wmb">
-                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40.000000000000007"/>
+                                                <rect key="frame" x="10" y="7.6666666666666643" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="duz-hg-mRB"/>
                                                     <constraint firstAttribute="height" constant="40" id="vCB-2c-rmQ"/>
@@ -9573,16 +9614,16 @@ Unlimited filter use</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgT-ha-Xzt">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="707"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6j-Gu-Usb">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vmn-s5-OVR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5q8-GU-Qpm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="60" id="zT8-wz-mHh" customClass="TableViewCell" customModule="SocialApp" customModuleProvider="target">
@@ -9680,7 +9721,7 @@ Unlimited filter use</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recoed Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DW-iZ-yy8">
-                                                        <rect key="frame" x="87" y="340" width="201" height="30"/>
+                                                        <rect key="frame" x="87" y="338.66666666666669" width="201" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         <color key="textColor" red="0.5176470876" green="0.15686275059999999" blue="0.81176471709999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -9746,10 +9787,10 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzk-P1-JYK">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biu-in-c9M" customClass="UIViewX" customModule="SocialApp" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="153.66666666666663" width="325" height="408"/>
+                                        <rect key="frame" x="25" y="152" width="325" height="408"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5l-bf-1Gf">
                                                 <rect key="frame" x="8" y="8" width="309" height="250"/>
@@ -9776,7 +9817,7 @@ Unlimited filter use</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip the Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-TC-C6r">
-                                                        <rect key="frame" x="20" y="135.00000000000003" width="269" height="25"/>
+                                                        <rect key="frame" x="20" y="135" width="269" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="NpB-4L-QCF"/>
                                                         </constraints>
@@ -9785,7 +9826,7 @@ Unlimited filter use</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 min : 00 sec Rmaining                         You're being seen by more people.Keep swiping for the best results!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNX-tS-FuZ">
-                                                        <rect key="frame" x="20" y="175.00000000000003" width="269" height="71.666666666666657"/>
+                                                        <rect key="frame" x="20" y="175" width="269" height="71.666666666666686"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -9945,7 +9986,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hh7-cO-8Uu">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ys-V9-S52">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -10020,7 +10061,7 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d4-VE-dev">
-                                        <rect key="frame" x="10" y="182.66666666666663" width="355" height="350"/>
+                                        <rect key="frame" x="10" y="181" width="355" height="350"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo round 1" translatesAutoresizingMaskIntoConstraints="NO" id="n7m-jv-gb4">
                                                 <rect key="frame" x="102.66666666666669" y="2" width="150" height="80"/>
@@ -10030,7 +10071,7 @@ Unlimited filter use</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm0-LA-VcB">
-                                                <rect key="frame" x="92.666666666666686" y="132.00000000000003" width="80" height="20"/>
+                                                <rect key="frame" x="92.666666666666686" y="132" width="80" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="bUe-US-XHs"/>
                                                     <constraint firstAttribute="height" constant="20" id="w31-Pm-XcC"/>
@@ -10040,13 +10081,13 @@ Unlimited filter use</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Per Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="490-aw-BnQ">
-                                                <rect key="frame" x="182.66666666666666" y="131.33333333333334" width="78.999999999999972" height="21"/>
+                                                <rect key="frame" x="182.66666666666666" y="131.66666666666669" width="78.999999999999972" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJC-Hs-un1">
-                                                <rect key="frame" x="102.66666666666669" y="162.00000000000003" width="70" height="20"/>
+                                                <rect key="frame" x="102.66666666666669" y="162" width="70" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="BPu-Xx-lHC"/>
                                                     <constraint firstAttribute="height" constant="20" id="LJx-pJ-s3Z"/>
@@ -10056,13 +10097,13 @@ Unlimited filter use</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-jk-mH0">
-                                                <rect key="frame" x="182.66666666666666" y="161.33333333333334" width="36" height="21"/>
+                                                <rect key="frame" x="182.66666666666666" y="161.66666666666669" width="36" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8i-TZ-yfo">
-                                                <rect key="frame" x="0.0" y="197.33333333333334" width="355" height="1"/>
+                                                <rect key="frame" x="0.0" y="197.66666666666669" width="355" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="of2-56-zKF"/>
@@ -10072,7 +10113,7 @@ Unlimited filter use</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okM-OA-NJm" customClass="UIButtonX" customModule="SocialApp" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="223.33333333333334" width="295" height="50.000000000000028"/>
+                                                <rect key="frame" x="30" y="223.66666666666669" width="295" height="50"/>
                                                 <color key="backgroundColor" red="0.5176470876" green="0.15686275059999999" blue="0.8078432083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="NUE-oD-Ea4"/>
@@ -10162,7 +10203,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmt-KL-L1a">
-                                <rect key="frame" x="0.0" y="47" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="55"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="kqa-gc-ncJ">
                                         <rect key="frame" x="20" y="17.666666666666671" width="20" height="20"/>
@@ -10457,7 +10498,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwo-kZ-aph">
-                                <rect key="frame" x="0.0" y="47" width="414" height="1453"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="1450"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-cI-QQY">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -10523,10 +10564,10 @@ Unlimited filter use</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugl-N5-dQC">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="1393"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="1390"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaf-PL-0LA">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1393"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1390"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLe-Lw-4up">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1370"/>
@@ -13373,7 +13414,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash 1" translatesAutoresizingMaskIntoConstraints="NO" id="FjI-tk-GLe">
-                                <rect key="frame" x="0.0" y="-19" width="375" height="831"/>
+                                <rect key="frame" x="0.0" y="-16" width="375" height="828"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kQr-ti-1Vp"/>
@@ -13424,7 +13465,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oly-0i-cmS" userLabel="localVideo">
-                                <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <color key="backgroundColor" red="0.28235294119999998" green="0.25882352939999997" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PjY-8F-SFI">
@@ -13450,7 +13491,7 @@ Unlimited filter use</string>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-R0-nL5" userLabel="remoteVideo">
-                                <rect key="frame" x="265" y="82" width="85" height="113.33333333333331"/>
+                                <rect key="frame" x="265" y="85" width="85" height="113.33333333333331"/>
                                 <color key="backgroundColor" red="0.50980392156862742" green="0.4823529411764706" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -13681,7 +13722,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImg" translatesAutoresizingMaskIntoConstraints="NO" id="FuI-FO-cbX">
-                                <rect key="frame" x="0.0" y="-18" width="375" height="830"/>
+                                <rect key="frame" x="0.0" y="-15" width="375" height="827"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YM2-Oo-ThX">
                                 <rect key="frame" x="0.0" y="624" width="375" height="88"/>
@@ -13760,7 +13801,7 @@ Unlimited filter use</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-Dz-Uar">
-                                <rect key="frame" x="10" y="57.666666666666657" width="35" height="35"/>
+                                <rect key="frame" x="10" y="59" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Jgb-J8-mJa"/>
                                     <constraint firstAttribute="height" constant="35" id="fNP-Ta-tup"/>
@@ -13772,7 +13813,7 @@ Unlimited filter use</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoW-2k-r7A">
-                                <rect key="frame" x="52" y="483" width="271" height="49"/>
+                                <rect key="frame" x="52" y="486" width="271" height="49"/>
                                 <color key="backgroundColor" red="0.57647061349999995" green="0.1725490093" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="54I-3W-mXG"/>
@@ -13804,14 +13845,14 @@ Unlimited filter use</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXR-Ef-ygf">
-                                <rect key="frame" x="57" y="432" width="261" height="1"/>
+                                <rect key="frame" x="57" y="435" width="261" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kZP-NK-qy9"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="videocall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlF-el-2OV">
-                                <rect key="frame" x="50" y="402" width="275" height="30"/>
+                                <rect key="frame" x="50" y="405" width="275" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="OiM-wn-tOz"/>
@@ -13824,7 +13865,7 @@ Unlimited filter use</string>
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-G1-sRm">
-                                <rect key="frame" x="97.666666666666686" y="151" width="180" height="180"/>
+                                <rect key="frame" x="97.666666666666686" y="154" width="180" height="180"/>
                                 <color key="tintColor" name="ThemeLight(#fe7286)"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="A2I-ql-CrU"/>
@@ -13832,7 +13873,7 @@ Unlimited filter use</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34m-NI-fsQ">
-                                <rect key="frame" x="329" y="56" width="30" height="38"/>
+                                <rect key="frame" x="329" y="59" width="30" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="tF9-HL-QF6"/>
                                 </constraints>
@@ -13905,7 +13946,7 @@ Unlimited filter use</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-bn-gq1">
-                                <rect key="frame" x="330" y="68" width="30" height="30"/>
+                                <rect key="frame" x="330" y="71" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39760809079999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fsi-Sz-dBQ"/>
@@ -13982,7 +14023,7 @@ Unlimited filter use</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hm6-aj-LXI">
-                                <rect key="frame" x="15" y="62" width="174" height="42"/>
+                                <rect key="frame" x="15" y="65" width="174" height="42"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-Hc-8ND">
                                         <rect key="frame" x="3" y="3" width="36" height="36"/>
@@ -14040,7 +14081,7 @@ Unlimited filter use</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05A-I9-nad">
-                                <rect key="frame" x="15" y="114" width="40" height="25"/>
+                                <rect key="frame" x="15" y="117" width="40" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSD-XQ-zeM" customClass="UIButtonX">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="25"/>
@@ -14133,7 +14174,7 @@ Unlimited filter use</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <pickerView key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="2Nb-MP-qP0">
-                            <rect key="frame" x="0.0" y="367" width="150" height="200"/>
+                            <rect key="frame" x="0.0" y="367" width="375" height="200"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
