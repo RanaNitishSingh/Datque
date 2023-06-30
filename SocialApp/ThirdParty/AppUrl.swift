@@ -151,6 +151,17 @@ class AppUrl : NSObject {
     class func likeUser () -> String {
         return mainDomain+"user_like_dislike"
     }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func block_user_chat_list () -> String {
+        return mainDomain+"block_user_chat_list"
+    }//https://datque.zeroitsolutions.com/API/index.php
+    
+    class func is_user_chat_blocked () -> String {
+        return mainDomain+"is_user_chat_blocked"
+    }//https://datque.zeroitsolutions.com/API/index.php
+    
+    
+    
 }
 
 
