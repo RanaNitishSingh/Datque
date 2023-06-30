@@ -463,26 +463,26 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             let newBtnView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 45, width: cardView.frame.size.width, height: 70))
             newBtnView.backgroundColor = UIColor.clear
             cardView.addSubview(newBtnView)
-            let btnView = UIView()
-            btnView.layer.cornerRadius = 30
-            btnView.backgroundColor = .clear
-            btnView.frame = CGRect(x: (cardView.frame.size.width / 2) - 30   , y: 10, width: 60, height: 60)
-            let myFirstButton = UIButton()
-            //        myFirstButton.setTitle("Yes", for: .normal)
-            //        myFirstButton.titleLabel?.font = .systemFont(ofSize: 12)
-            //        myFirstButton.setTitleColor(UIColor.red, for: .normal)
-            //        myFirstButton.backgroundColor = .black
-            //        if let image = UIImage(named: "") {
-            //            myFirstButton.setImage(image, for: .normal)
-            //        }
-            if let image = UIImage(named: "homeHeart") {
-                myFirstButton.setImage(image, for: .normal)
-            }
-            myFirstButton.tag = colorIndex
-            myFirstButton.frame = CGRect(x: 0 , y: 0, width: 60, height: 60)
-            myFirstButton.addTarget(self, action: #selector(btnlikepressed(_:)), for: .touchUpInside)
-            btnView.addSubview(myFirstButton)
-            newBtnView.addSubview(btnView)
+//            let btnView = UIView()
+//            btnView.layer.cornerRadius = 30
+//            btnView.backgroundColor = .clear
+//            btnView.frame = CGRect(x: (cardView.frame.size.width / 2) - 30   , y: 10, width: 60, height: 60)
+//            let myFirstButton = UIButton()
+//            //        myFirstButton.setTitle("Yes", for: .normal)
+//            //        myFirstButton.titleLabel?.font = .systemFont(ofSize: 12)
+//            //        myFirstButton.setTitleColor(UIColor.red, for: .normal)
+//            //        myFirstButton.backgroundColor = .black
+//            //        if let image = UIImage(named: "") {
+//            //            myFirstButton.setImage(image, for: .normal)
+//            //        }
+//            if let image = UIImage(named: "homeHeart") {
+//                myFirstButton.setImage(image, for: .normal)
+//            }
+//            myFirstButton.tag = colorIndex
+//            myFirstButton.frame = CGRect(x: 0 , y: 0, width: 60, height: 60)
+//            myFirstButton.addTarget(self, action: #selector(btnlikepressed(_:)), for: .touchUpInside)
+//            btnView.addSubview(myFirstButton)
+//            newBtnView.addSubview(btnView)
             let btnView1 = UIView()
             btnView1.layer.cornerRadius = 27.5
             btnView1.backgroundColor = .clear
@@ -517,7 +517,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             //        if let image = UIImage(named: "homeMaybe") {
             //            maybeButton.setImage(image, for: .normal)
             //        }
-            if let image = UIImage(named: "homeMaybe") {
+            if let image = UIImage(named: "homeHeart") {
                 maybeButton.setImage(image, for: .normal)
             }
             maybeButton.tag = colorIndex
@@ -526,10 +526,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             btnView3.addSubview(maybeButton)
             newBtnView.addSubview(btnView3)
             Utils.Addshadow(mySecondButton)
-            Utils.Addshadow(myFirstButton)
+          //  Utils.Addshadow(myFirstButton)
             Utils.Addshadow(maybeButton)
             mySecondButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-            myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+          //  myFirstButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
             maybeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         }
         if loadCardsFromXib {
