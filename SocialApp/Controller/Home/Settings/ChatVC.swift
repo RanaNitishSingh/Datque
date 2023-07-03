@@ -43,8 +43,8 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var txtMessage: UITextView!
-    @IBOutlet weak var messageCointainerScroll: UIScrollView!
-    
+    @IBOutlet weak var messageCointainerScroll: UIScrollView!     
+    @IBOutlet weak var blockedLbl: UILabel!
     var selectedImage : UIImage?
     var lastChatBubbleY: CGFloat = 10.0
     var internalPadding: CGFloat = 8.0
@@ -77,7 +77,7 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     
     var ref1: DatabaseReference! //for real time check data base firebase
     var match_api_run = "" //this is compulsary to come from any screen this is use for first time to start chat
-    
+    var blockuser :Bool = false
     @IBOutlet weak var viewMsgShowHide: UIViewX!
     
     let giphy = GiphyViewController()
@@ -223,8 +223,18 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     }
     
     @IBAction func ActionBlockUser(_ sender: UIButton) {
-        BlockUserChat(receiverId: "\(ReceiverID)")
+       
 //        self.BlockUserServices(senderID: "\(Defaults[PDUserDefaults.UserID])", receiverId: "\(ReceiverID)", btnTag: "\(sender.tag)")
+        
+        if blockuser == true {//0 is for unblock
+            self.btnBlock.setTitle("Block User", for: .normal)
+            unBlockUserChat(receiverId: "\(ReceiverID)")
+        }else if blockuser == false {//1 is for block
+            self.btnBlock.setTitle("Un Block User", for: .normal)
+            BlockUserChat(receiverId: "\(ReceiverID)")
+        }
+        
+        
     }
     @IBAction func ActionReportUser(_ sender: UIButton) {
         lblReportTitle.text = "Report \(ReceiverName)?"
@@ -1603,6 +1613,9 @@ extension ChatVC{
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             let message = dicData.msg?.first
                             let response = message?.response!
+                           // self.blockedLbl.isHidden = false
+                         //   self.blockedLbl.text = "\(response!)"                            
+                            self.txtMessage.isUserInteractionEnabled = false
                             self.view.makeToast("\(response!)")
                             
                         } catch {
@@ -1645,6 +1658,15 @@ extension ChatVC{
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             let message = dicData.msg?.first
                             let response = message?.response!
+                            self.blockuser = (message?.is_block)!
+                            self.blockedLbl.isHidden = false
+                            self.blockedLbl.text = "\(response!)"
+                            self.txtMessage.isUserInteractionEnabled = false
+                            if self.blockuser == true {//0 is for unblock
+                                self.btnBlock.setTitle("Un Block User", for: .normal)
+                            }else if self.blockuser == false {//1 is for block
+                                self.btnBlock.setTitle("Block User", for: .normal)
+                            }
                             self.view.makeToast("\(response!)")
                         } catch {
                             print("Something went wrong in json.")
@@ -1659,6 +1681,50 @@ extension ChatVC{
         }
     }
     
+    func unBlockUserChat(receiverId: String){
+
+        print("Block_Report_User_API _Call")
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        let url = AppUrl.blockUserChatURL()
+        let parameters: [String: Any] = ["action_type" : "unblock",
+                                         "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
+                                         "other_id" : "\(receiverId)",
+                                         "device" : "ios"]
+
+        print("Url_blockReportUser_is_here:-" , url)
+        print("Param_blockReportUser_is_here:-" , parameters)
+
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_blockReportUser",responseJson["code"])
+
+                if responseJson["code"] == "200" {
+                    if let responseData = response.data {
+                        do {
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetFlatUserData.self, from: responseData)
+                            //print("dicData = \(String(describing: dicData.msg?.first))")
+                            let message = dicData.msg?.first
+                            let response = message?.response!
+                            self.blockedLbl.isHidden = true
+                            self.txtMessage.isUserInteractionEnabled = true
+                            self.view.makeToast("\(response!)")
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+    }
     
 }
 

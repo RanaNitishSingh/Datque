@@ -385,6 +385,7 @@ struct GetFlatUserData: Codable {
 // MARK : - Msg
 struct GetFlatUserDataMsg: Codable {
     let response: String?
+    let is_block : Bool?
 }
 
 // MARK: - PaymentSuccessData
