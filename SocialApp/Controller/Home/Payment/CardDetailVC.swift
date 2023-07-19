@@ -665,17 +665,17 @@ extension CardDetailVC{
                             let dicData = try decodeJSON.decode(UpdatePurchaseStatusData.self, from: responseData)
                             
                             //print("dicData = \(String(describing: dicData.msg?.first))")
-                            if (dicData.msg?.count)! > 0 {
-                                let objProfileRes = (dicData.msg!.first)!
+//                            if (dicData.msg.count)! > 0 {
+//                                let objProfileRes = (dicData.msg!.first)!
                                 
-                                print("updatePurchaseStatusService_objProfileRes_IS_here",objProfileRes)
+                              print("updatePurchaseStatusService_objProfileRes_IS_here",dicData.msg)
                                 self.view.makeToast("Payment Done")
                                 
                                 //Instanciate to home screen
                                 let VC = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC" ) as! HomeTabBarVC
                                 self.navigationController?.pushViewController(VC, animated: true)
                                 
-                            }
+//                            }
                             
                         } catch {
                             print("Something went wrong in json.")

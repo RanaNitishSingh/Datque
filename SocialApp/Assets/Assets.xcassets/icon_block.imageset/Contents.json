@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "bubbleMine.png",
+      "filename" : "icon_block.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bubbleMine 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

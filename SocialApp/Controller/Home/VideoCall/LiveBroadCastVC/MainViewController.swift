@@ -62,10 +62,10 @@ class MainViewController: UIViewController {
         inputTextField.endEditing(false)
     }
    
-    @IBAction func ActionOnSetting(_ sender: Any) {
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC" ) as! SettingsVC
-        self.navigationController?.pushViewController(VC, animated: true)
-    }
+//    @IBAction func ActionOnSetting(_ sender: Any) {
+//        let VC = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC" ) as! SettingsVC
+//        self.navigationController?.pushViewController(VC, animated: true)
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         inputTextField.endEditing(false)

@@ -183,7 +183,8 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     @IBAction func ActionSave(_ sender: Any) {
-        let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
+        print("hello")
+        //let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
         let currentLogin = UserDefaults.standard.bool(forKey: "current")
        // let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
         
@@ -228,42 +229,42 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
 //        displayMyAlertMessage()
 //
 //        }
-        if PaymentSuccessed ==  true{
-            
-        
-        if  self.StrConfirmInfo == "no"  {
-            self.showAlert(title: "", message: "Please check the information first ", handler: nil)
-        }else {
-            Defaults[PDUserDefaults.ResetFilter] = "ResetFilter"
-            //save default latitude
-            if self.strLat != nil && self.strLat != ""{
-                Defaults[PDUserDefaults.UserLat] = self.strLat
-               // Defaults[PDUserDefaults.SelectedLocation] = self.txtLocation.text!
-            }
-            //save default longitude
-            if self.strLon != nil && self.strLon != ""{
-                Defaults[PDUserDefaults.UserLng] = self.strLon
-                Defaults[PDUserDefaults.SelectedLocation] = self.txtLocation.text!
-            }
-            Defaults[PDUserDefaults.Distance] = self.sletDistance
-            Defaults[PDUserDefaults.Gender] = self.sletGender
-            Defaults[PDUserDefaults.AgeMin] = self.sletAgeMin
-            Defaults[PDUserDefaults.AgeMax] = self.sletAgeMax
-            // Defaults[PDUserDefaults.MarriedStatus] = self.sletMarriedStatus
-            Defaults[PDUserDefaults.Height] = self.sletHeight
-            Defaults[PDUserDefaults.Weight] = self.sletWeight
-            Defaults[PDUserDefaults.BloodGroup] = sletBloodgroup
-            Defaults[PDUserDefaults.SkinType] = sletSkinType
-            Defaults[PDUserDefaults.Language] = sletLanguage
-            Defaults[PDUserDefaults.Profession] = sletProfession
-            Defaults[PDUserDefaults.Religion] = sletReligion
-            Defaults[PDUserDefaults.Education] = sletEducation
-            Defaults[PDUserDefaults.HairColor] = sletHairColor
-            Defaults[PDUserDefaults.EyeColor] = sletEyeColor
-            Defaults[PDUserDefaults.BodyType] = sletBodyType
-            self.navigationController?.popViewController(animated: true)
-        }
-        }
+//        if PaymentSuccessed ==  true{
+//
+//
+//        if  self.StrConfirmInfo == "no"  {
+//            self.showAlert(title: "", message: "Please check the information first ", handler: nil)
+//        }else {
+//            Defaults[PDUserDefaults.ResetFilter] = "ResetFilter"
+//            //save default latitude
+//            if self.strLat != nil && self.strLat != ""{
+//                Defaults[PDUserDefaults.UserLat] = self.strLat
+//               // Defaults[PDUserDefaults.SelectedLocation] = self.txtLocation.text!
+//            }
+//            //save default longitude
+//            if self.strLon != nil && self.strLon != ""{
+//                Defaults[PDUserDefaults.UserLng] = self.strLon
+//                Defaults[PDUserDefaults.SelectedLocation] = self.txtLocation.text!
+//            }
+//            Defaults[PDUserDefaults.Distance] = self.sletDistance
+//            Defaults[PDUserDefaults.Gender] = self.sletGender
+//            Defaults[PDUserDefaults.AgeMin] = self.sletAgeMin
+//            Defaults[PDUserDefaults.AgeMax] = self.sletAgeMax
+//            // Defaults[PDUserDefaults.MarriedStatus] = self.sletMarriedStatus
+//            Defaults[PDUserDefaults.Height] = self.sletHeight
+//            Defaults[PDUserDefaults.Weight] = self.sletWeight
+//            Defaults[PDUserDefaults.BloodGroup] = sletBloodgroup
+//            Defaults[PDUserDefaults.SkinType] = sletSkinType
+//            Defaults[PDUserDefaults.Language] = sletLanguage
+//            Defaults[PDUserDefaults.Profession] = sletProfession
+//            Defaults[PDUserDefaults.Religion] = sletReligion
+//            Defaults[PDUserDefaults.Education] = sletEducation
+//            Defaults[PDUserDefaults.HairColor] = sletHairColor
+//            Defaults[PDUserDefaults.EyeColor] = sletEyeColor
+//            Defaults[PDUserDefaults.BodyType] = sletBodyType
+//            self.navigationController!.popViewController(animated: true)
+//        }
+//        }
     }
     
     //MARK: ActionType

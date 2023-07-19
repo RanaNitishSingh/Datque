@@ -408,7 +408,7 @@ struct PaymentSuccessMsg: Codable {
 // MARK: - UpdatePurchaseStatusData
 struct UpdatePurchaseStatusData: Codable {
     let code: String?
-    let msg: [UpdatePurchaseStatusMsg]?
+    let msg: String?
 }
 // MARK : - Msg
 struct UpdatePurchaseStatusMsg: Codable {

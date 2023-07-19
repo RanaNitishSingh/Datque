@@ -27,6 +27,7 @@ class NotificationUserDetailVC: UIViewController {
     @IBOutlet weak var lblNameAge: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
     var userID = ""
+    var arrDicNearbyUser = [MsguserNearByMe]()
     weak var delegate: NotificationUserDetailDelegate?
    // var dicGetUserNotifications:MsgGetUserNotifications? //this is dictionary
     var dicGetUserNotifications:MsguserNearByMe?
@@ -208,6 +209,7 @@ extension NotificationUserDetailVC{
                             let message = dicData.msg?.first
                             let response = message?.response!
                             self.view.makeToast("\(response!)")
+                            self.likeUser()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 self.dismissPopoverViewController()
                             }
@@ -244,16 +246,17 @@ extension NotificationUserDetailVC{
         
     }
     
-    func dislikeUser(){
-        print("dislike_User_Profile")
-        let UserId =  dicGetUserNotifications?.fbID!
-        let UserName = dicGetUserNotifications?.firstName!
-       
-        print("Selected userName_selected",UserName!)
-        self.firebaseMatchEntry(UserID: "\(UserId!)", UserName: "\(UserName!)", UserType: "dislike")
-        self.detailGetFirebase(UserID: "\(UserId!)", UserType: "like")
-        
-    }
+    
+//    func dislikeUser(){
+//        print("dislike_User_Profile")
+//        let UserId =  dicGetUserNotifications?.fbID!
+//        let UserName = dicGetUserNotifications?.firstName!
+//
+//        print("Selected userName_selected",UserName!)
+//        self.firebaseMatchEntry(UserID: "\(UserId!)", UserName: "\(UserName!)", UserType: "dislike")
+//        self.detailGetFirebase(UserID: "\(UserId!)", UserType: "like")
+//
+//    }
     
     func startConversation(){
         print("Start_Conversation_now")
@@ -353,12 +356,13 @@ extension NotificationUserDetailVC{
         
         //set action and Message
         if UserType == "like" {
-            strSendPushMessage = "Like you"
+            strSendPushMessage = "Like you profile"
             strSendPushActionType = "like"
-        }else if UserType == "dislike" {
-            strSendPushMessage = "dislike you"
-            strSendPushActionType = "dislike"
         }
+//        else if UserType == "dislike" {
+//            strSendPushMessage = "dislike you"
+//            strSendPushActionType = "dislike"
+//        }
         
         let parameters: [String: Any] = ["title" : "\(strSendPushUserFirstName)" ,
                                          "message" : "\(strSendPushMessage)",
