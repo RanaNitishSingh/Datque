@@ -139,7 +139,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
                 }else{
                     index = (self.colorIndex - self.arrDicNearbyUser.count)
                 }
-                self.dislikeLeftSwipe(Index: index)
+//                self.dislikeLeftSwipe(Index: index)
             } else if direction == .Right {
                 self.numberView = self.numberView + 1
                 var index = Int()
@@ -421,18 +421,18 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
                 imageView.image = #imageLiteral(resourceName: "ic_avatar.png")
             }
             
-            imageView.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40 )
+            imageView.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 80 )
             imageView.layer.cornerRadius = 10.0;
             imageView.clipsToBounds = true
             cardView.addSubview(imageView)
             //bgImageView
             let images1 =  #imageLiteral(resourceName: "cardbg.png")
             let imageView1 = UIImageView(image: images1)
-            imageView1.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 40)
+            imageView1.frame = CGRect(x: 0, y: 0, width: cardView.frame.size.width, height: cardView.frame.size.height - 80)
             imageView1.layer.cornerRadius = 10.0;
             imageView1.clipsToBounds = true
             //get nameStatusView
-            let nameStatusView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 70, width: cardView.frame.size.width, height: 70))
+            let nameStatusView = UIView(frame: CGRect(x: 0, y: imageView.frame.size.height - 100, width: cardView.frame.size.width, height: 50))
             nameStatusView.layer.cornerRadius = 10.0;
             imageView1.addSubview(nameStatusView)
             //get namelabel
@@ -486,7 +486,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             let btnView1 = UIView()
                          btnView1.layer.cornerRadius = 27.5
                          btnView1.backgroundColor = .clear
-                         btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 60 , y: 10, width: 55, height: 55)
+                         btnView1.frame = CGRect(x: (cardView.frame.size.width / 2) - 70 , y: 10, width: 55, height: 55)
                          let mySecondButton = UIButton()
                          //        mySecondButton.setTitle("No", for: .normal)
                          //        mySecondButton.titleLabel?.font = .systemFont(ofSize: 12)
@@ -509,7 +509,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
                          let btnView3 = UIView()
                          btnView3.layer.cornerRadius = 27.5
                          btnView3.backgroundColor = .clear
-                         btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 20 , y: 10, width: 55, height: 55)
+                         btnView3.frame = CGRect(x: (cardView.frame.size.width / 2) + 30 , y: 10, width: 55, height: 55)
                          let myFirstButton = UIButton()
                          //        maybeButton.setTitle("Maybe", for: .normal)
                          //        maybeButton.titleLabel?.font = .systemFont(ofSize: 12)
@@ -586,22 +586,21 @@ extension HomeVC {
             self.firebaseMatchEntry(UserID: "\(UserId)", UserName: "\(UserName)", UserType: "like")
             self.detailGetFirebase(UserID: "\(UserId)", UserType: "like")
             likeDislikeUser(UserId: UserId, likeDislike: "like")
-            
         }
     }
     
-    func dislikeLeftSwipe(Index: Int){
-        print("dislike Left swipe UserID",Index)
-        if self.arrDicNearbyUser.count != 0 {
-            let userDic = self.arrDicNearbyUser[Index]
-            let UserId =  userDic.fbID!
-            let UserName = userDic.firstName!
-            print("Selected userName_selected",UserName)
-            self.firebaseMatchEntry(UserID: "\(UserId)", UserName: "\(UserName)", UserType: "dislike")
-            self.detailGetFirebase(UserID: "\(UserId)", UserType: "dislike")
-            likeDislikeUser(UserId: UserId, likeDislike: "dislike")
-        }
-    }
+//    func dislikeLeftSwipe(Index: Int){
+//        print("dislike Left swipe UserID",Index)
+//        if self.arrDicNearbyUser.count != 0 {
+//            let userDic = self.arrDicNearbyUser[Index]
+//            let UserId =  userDic.fbID!
+//            let UserName = userDic.firstName!
+//            print("Selected userName_selected",UserName)
+//            self.firebaseMatchEntry(UserID: "\(UserId)", UserName: "\(UserName)", UserType: "dislike")
+//            self.detailGetFirebase(UserID: "\(UserId)", UserType: "dislike")
+//            likeDislikeUser(UserId: UserId, likeDislike: "dislike")
+//        }
+//    }
 }
 
 //MARK: extension for user like dislike methdo_first
@@ -760,12 +759,13 @@ extension HomeVC {
         }
         
         if UserType == "like" {
-            strSendPushMessage = "Like you"
+            strSendPushMessage = "Like you profile"
             strSendPushActionType = "like"
-        } else if UserType == "dislike" {
-            strSendPushMessage = "dislike you"
-            strSendPushActionType = "dislike"
         }
+//        else if UserType == "dislike" {
+//            strSendPushMessage = "dislike you"
+//            strSendPushActionType = "dislike"
+//        }
         
         let parameters: [String: Any] = ["title" : "\(strSendPushUserFirstName)" ,
                                          "message" : "\(strSendPushMessage)",

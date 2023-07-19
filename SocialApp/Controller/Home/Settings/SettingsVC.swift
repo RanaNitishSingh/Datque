@@ -11,8 +11,8 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var tblViewSettings: UITableView!
     
-    var arrNameSetting = ["Basic info", "Account", "Privacy Policy / EULA", "Help Centre", "About", "Blocked Users", "Inbox"]
-    var arrImgSetting = [ #imageLiteral(resourceName: "basic info") , #imageLiteral(resourceName: "account") , #imageLiteral(resourceName: "Lock 1") , #imageLiteral(resourceName: "MAsk") , #imageLiteral(resourceName: "about") , #imageLiteral(resourceName: "blocked") , #imageLiteral(resourceName: "inbox") ]
+    var arrNameSetting = ["Basic info", "Account", "Blocked Users", "Privacy Policy", "Help Centre", "About"]
+    var arrImgSetting = [ #imageLiteral(resourceName: "basic info") , #imageLiteral(resourceName: "account") , #imageLiteral(resourceName: "blocked") , #imageLiteral(resourceName: "Lock 1") , #imageLiteral(resourceName: "MAsk") , #imageLiteral(resourceName: "about")]
     override func viewDidLoad() {
         super.viewDidLoad()
         print("SettingsVC")
@@ -53,14 +53,14 @@ extension SettingsVC: UITableViewDelegate,UITableViewDataSource{
         } else if select == 1 {
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC" ) as! AccountVC
             self.navigationController?.pushViewController(VC, animated: true)
-        } else if select == 2 {
+        } else if select == 3 {
             let vc = UIStoryboard.init(name: "SecondaryBoard", bundle: Bundle.main).instantiateViewController(withIdentifier: "webViewController") as? webViewController
             vc?.headerTxt = "Privacy Policy"
             self.navigationController?.pushViewController(vc!, animated: true)
-        } else if select == 3 {
+        } else if select == 4 {
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC" ) as! HelpCenterVC
             self.navigationController?.pushViewController(VC, animated: true)
-        } else if select == 4 {
+        } else if select == 5 {
             let vc = UIStoryboard.init(name: "SecondaryBoard", bundle: Bundle.main).instantiateViewController(withIdentifier: "webViewController") as? webViewController
             vc?.contentUrl = "https://datque.zeroitsolutions.com/about-us.php"
             vc?.headerTxt = "About"
@@ -70,12 +70,13 @@ extension SettingsVC: UITableViewDelegate,UITableViewDataSource{
             vc?.contentUrl = "https://datque.zeroitsolutions.com/terms_conditions.php"
             vc?.headerTxt = "Terms & Conditions"
             self.navigationController?.pushViewController(vc!, animated: true)
-        } else if select == 5 {
+        } else if select == 2 {
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "BlockedUsersVC" ) as! BlockedUsersVC
             self.navigationController?.pushViewController(VC, animated: true)
-        } else if select == 6 {
-            let VC = self.storyboard?.instantiateViewController(withIdentifier: "InboxSettingChatVC" ) as! InboxSettingChatVC
-            self.navigationController?.pushViewController(VC, animated: true)
         }
+//        else if select == 6 {
+//            let VC = self.storyboard?.instantiateViewController(withIdentifier: "InboxSettingChatVC" ) as! InboxSettingChatVC
+//            self.navigationController?.pushViewController(VC, animated: true)
+//        }
     }
 }

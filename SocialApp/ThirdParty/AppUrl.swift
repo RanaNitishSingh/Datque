@@ -9,11 +9,14 @@
 import UIKit
 import CoreData
 
+//"https://datque.zeroitsolutions.com/API/index.php?p="
 class AppUrl : NSObject {
     //"http://52.90.40.219/xodating/API//index.php?p="
     //static let mainDomain : String = "https://xomap.app/new/API/index.php?p="
-    static let mainDomain : String = "https://datque.zeroitsolutions.com/API/index.php?p="
-
+    static let mainDomain : String = "https://datque.zeroitsolutions.com/API/api.php?p="
+    
+    static let liveDomain : String = "https://datque.zeroitsolutions.com/API/index.php?p="
+    
     static let imageURL : String = ""
    
     class func AppName() -> String {
