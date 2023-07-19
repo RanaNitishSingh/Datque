@@ -961,7 +961,7 @@ extension EditProfileVC{
                                          "relationship" : self.arrNameTblViewEdit[5],
                                          "sexuality": self.arrNameTblViewEdit[15]]
         print("Url_editUserInfoServices_is_here:-" , url)
-        print("Param_editUserInfoServices_is_here:-" , parameters)         
+        print("Param_editUserInfoServices_is_here:-" , parameters)
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
             print("Response",response)
