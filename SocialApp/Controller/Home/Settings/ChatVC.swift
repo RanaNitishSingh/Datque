@@ -449,27 +449,17 @@ extension ChatVC {
     func openVideoGallery() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .savedPhotosAlbum
-        picker.mediaTypes = ["public.movie"]
-        picker.allowsEditing = false
-        present(picker, animated: true, completion: nil)
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = [kUTTypeMovie as String]
+        
+        present(picker, animated: true){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+               // picker.dismiss(animated: false, completion: nil)
+            }
+        }
+//        picker.allowsEditing = false
+//        present(picker, animated: true, completion: nil)
     }
-    //    func playVideo(url: String){
-    //        let videoURL = URL(string: url)
-    //        let player = AVPlayer(url: videoURL!)
-    //        let playerViewController = AVPlayerViewController()
-    //        playerViewController.player = player
-    //        self.present(playerViewController, animated: true) {
-    //            playerViewController.player!.play()
-    //        }
-    //    }
-    //    func handleUploadTap(){
-    //        let imagePickerController = UIImagePickerController()
-    //        imagePickerController.allowsEditing = true
-    //        imagePickerController.delegate = self
-    //        imagePickerController.mediaTypes = [kUTTypeImageas as String, kUTTypeMovie as String]
-    //        present(imagePickerController, animated: true)
-    //    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true, completion: nil)
@@ -483,7 +473,7 @@ extension ChatVC {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
            let optimizedImageData = image.jpegData(compressionQuality: 0.6)
         {
-            //print(image)
+           
             //to show image bubble chat
 //            let bubbleData = ChatBubbleData(text: "\(curDate)" + "\n\("sent")", image: image, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
 //
@@ -493,8 +483,17 @@ extension ChatVC {
             //MARK: //API Calling to send image message
             //first upload image on firebase storage and then update their firebase image url of firebase database
             self.uploadFirebaseImage(imageData: optimizedImageData)
+            
+        }else if let mediaType =  info[UIImagePickerController.InfoKey.mediaURL] as? String {
+            if mediaType == kUTTypeMovie as String{
+                if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL{
+                    self.videoURL as! URL == videoURL
+                    print("Video URL: \(videoURL)")
+                }
+            }
         }
-        self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true,  completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
 }

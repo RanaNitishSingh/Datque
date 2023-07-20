@@ -10,9 +10,9 @@ import StoreKit
 
 class MyStoreKitDelegate: NSObject {
     
-    let monthlySubID = "KeyKeyyMonth"
-    let quaterlySubID = "KeyKeyhalfyearly"
-    let yearlySubID = "KeykeyAnnual"
+    let monthlySubID = "DatqueyMonth"
+    let quaterlySubID = "Datquehalfyearly"
+    let yearlySubID = "DatqueAnnual"
     var products: [String: SKProduct] = [:]
     
     func fetchProducts() {

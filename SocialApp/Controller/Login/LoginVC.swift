@@ -57,7 +57,6 @@ var cureent = false
     }
     
     @IBAction func OnClickTerms(_ sender: UIButton) {
-        //UIApplication.shared.openURL(URL(string: "https://keykey.app/privacy/")!)
         let vc = UIStoryboard.init(name: "SecondaryBoard", bundle: Bundle.main).instantiateViewController(withIdentifier: "webViewController") as? webViewController
         vc?.headerTxt = "Terms & Conditions"
         self.navigationController?.pushViewController(vc!, animated: true)

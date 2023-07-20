@@ -36,7 +36,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "KeyKeyyMonth",
+          "productID" : "DatqueMonth",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : null,
           "subscriptionGroupID" : "1955D63C",
@@ -61,7 +61,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "KeyKeyhalfyearly",
+          "productID" : "Datquehalfyearly",
           "recurringSubscriptionPeriod" : "P6M",
           "referenceName" : null,
           "subscriptionGroupID" : "1955D63C",
@@ -86,7 +86,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "KeykeyAnnual",
+          "productID" : "DatqueAnnual",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : null,
           "subscriptionGroupID" : "1955D63C",

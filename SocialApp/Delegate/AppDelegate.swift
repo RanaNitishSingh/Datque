@@ -24,13 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
     @objc var mainStoryboard : UIStoryboard? = nil
     
 //    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_Free = "Key_free"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "KeykeyAnnual"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "KeyKeyhalfyearly"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "KeyKeyyMonth"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatqueAnnual"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "Datquehalfyearly"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatqueyMonth"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        GMSPlacesClient.provideAPIKey("AIzaSyBwezfsiSWnqPJ9O2nNOw-QRLNXJFgHZJE") //google key for get location finder
+//        AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A
+       // "AIzaSyBwezfsiSWnqPJ9O2nNOw-QRLNXJFgHZJE"
+        GMSPlacesClient.provideAPIKey("AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A")
+       // GMSServices.provideAPIKey("AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A")
+        //google key for get location finder
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
        

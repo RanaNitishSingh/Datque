@@ -20,9 +20,9 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
     var selectIndex = Int()
     var plantype = Int()
     var selectValidation = ""
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "KeykeyAnnual"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "KeyKeyhalfyearly"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "KeyKeyyMonth"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatqueAnnual"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "Datquehalfyearly"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatqueyMonth"
     
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblValidity: UILabel!

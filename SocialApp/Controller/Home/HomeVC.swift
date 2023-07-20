@@ -653,7 +653,8 @@ extension HomeVC{
         let url = AppUrl.ReportURL()
         let parameters: [String: Any] = ["user_fb_id" : "\(Defaults[PDUserDefaults.UserID])",
                                          "report_fb_id" : "\(self.ReceiverID)",
-                                         "message" : "reported"]
+                                         "message" : "reported",
+                                         "device" : "ios"]
         print("Url_SignUpServices_is_here:-" , url)
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()

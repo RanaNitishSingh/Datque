@@ -19,7 +19,7 @@ import SwiftyJSON
 
 class ScreenBoostVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 //MARK: Variables
-    let product_id: NSString = "KeyKeyBoosting"
+    let product_id: NSString = "DatqueBoosting"
     
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var skipLineLbl: UILabel!     
