@@ -61,19 +61,19 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
         print("upload image")
         //Create alert of selection
         let alert = UIAlertController(title: "Update Profile Picture" , message: nil, preferredStyle: UIAlertController.Style.alert)
-         let action1 = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { _ in
-              self.CameraMethod()
-         }
-         let action2  = UIAlertAction(title: "Choose from Library", style: UIAlertAction.Style.default) { (action) in
-              self.GalleryMethod()
-         }
-          let action3 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
-             self.dismiss(animated: true, completion: nil)
-          }
-         alert.addAction(action1)
-         alert.addAction(action2)
-         alert.addAction(action3)
-         self.present(alert, animated: true, completion: nil)
+        let action1 = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { _ in
+            self.CameraMethod()
+        }
+        let action2  = UIAlertAction(title: "Choose from Library", style: UIAlertAction.Style.default) { (action) in
+            self.GalleryMethod()
+        }
+        let action3 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        alert.addAction(action3)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func ActionBack(_ sender: Any) {
@@ -86,21 +86,21 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
             if !txtLastName.text!.trimmingCharacters(in: .whitespaces).isEmpty {
                 if !txtSelectDate.text!.trimmingCharacters(in: .whitespaces).isEmpty {
                     if !txtEnterEmailID.text!.trimmingCharacters(in: .whitespaces).isEmpty {
-                    if ImgProfile.image != nil {
-                        
-                        let optimizedImageData = self.ImgProfile.image!.jpegData(compressionQuality: 0.6)
-                        self.uploadFirebaseImage(imageData: optimizedImageData!)
-                        // self.uploadImgOnFirebaseStorage()
-                        
+                        if ImgProfile.image != nil {
+                            
+                            let optimizedImageData = self.ImgProfile.image!.jpegData(compressionQuality: 0.6)
+                            self.uploadFirebaseImage(imageData: optimizedImageData!)
+                            // self.uploadImgOnFirebaseStorage()
+                            
+                        }else{
+                            self.view.makeToast("select profile image")
+                        }
                     }else{
-                        self.view.makeToast("select profile image")
+                        self.view.makeToast("Enter Email ID")
                     }
                 }else{
-                    self.view.makeToast("Enter Email ID")
+                    self.view.makeToast("Select date of birth")
                 }
-            }else{
-                self.view.makeToast("Select date of birth")
-            }
             }else{
                 self.view.makeToast("Enter Second name")
             }
@@ -109,8 +109,8 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
         }
         
         /*
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "EnableLocationVC" ) as! EnableLocationVC
-        self.navigationController?.pushViewController(VC, animated: true)*/
+         let VC = self.storyboard?.instantiateViewController(withIdentifier: "EnableLocationVC" ) as! EnableLocationVC
+         self.navigationController?.pushViewController(VC, animated: true)*/
     }
     
 }
@@ -119,43 +119,43 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
 extension CreateProfileVC{
     
     func uploadFirebaseImage(imageData: Data)
-        {
-            let activityIndicator = UIActivityIndicatorView.init(style: .gray)
-            activityIndicator.startAnimating()
-            activityIndicator.center = self.view.center
-            self.view.addSubview(activityIndicator)
+    {
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child("User_image/\(userID).jpg")
+        
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpeg"
+        
+        profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
             
-            let storageReference = Storage.storage().reference()
-            let profileImageRef = storageReference.child("User_image/\(userID).jpg")
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
             
-            let uploadMetaData = StorageMetadata()
-            uploadMetaData.contentType = "image/jpeg"
-            
-            profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
-               
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
-                
-                if error != nil
-                {
-                    print("Error took place \(String(describing: error?.localizedDescription))")
-                    return
-                } else {
-                    print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
-                    profileImageRef.downloadURL(completion: { [self] (url, error) in
-                        print("imgFireBasePath URL: \((url?.absoluteString)!)")
-                        let imgFireBasePath = "\((url?.absoluteString)!)"
-                        //print("API call for signup Servies")
-                        if imgFireBasePath != nil{
-                            self.SignUpServices(Img: imgFireBasePath)
-                        }else{
-                            print("Some error gating image path on firebase")
-                        }
-                        
-                    })
-                }
+            if error != nil
+            {
+                print("Error took place \(String(describing: error?.localizedDescription))")
+                return
+            } else {
+                print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                profileImageRef.downloadURL(completion: { [self] (url, error) in
+                    print("imgFireBasePath URL: \((url?.absoluteString)!)")
+                    let imgFireBasePath = "\((url?.absoluteString)!)"
+                    //print("API call for signup Servies")
+                    if imgFireBasePath != nil{
+                        self.SignUpServices(Img: imgFireBasePath)
+                    }else{
+                        print("Some error gating image path on firebase")
+                    }
+                    
+                })
             }
         }
+    }
     
 }
 
@@ -210,11 +210,11 @@ extension CreateProfileVC {
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
-            let formatter = DateFormatter()
-            //formatter.dateFormat = "yyyy-MM-dd"
-            formatter.dateFormat = "dd/MM/yyyy"
-            self.txtSelectDate.text  = formatter.string(from: sender.date)
-           // print("Start date :- \(self.txtSelectDate.text ?? "NA")")
+        let formatter = DateFormatter()
+        //formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd/MM/yyyy"
+        self.txtSelectDate.text  = formatter.string(from: sender.date)
+        // print("Start date :- \(self.txtSelectDate.text ?? "NA")")
     }
     
 }
@@ -227,9 +227,9 @@ extension CreateProfileVC {
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
-      }
+    }
     
-     func CameraMethod() {
+    func CameraMethod() {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             imagePicker.sourceType = .camera
@@ -241,13 +241,13 @@ extension CreateProfileVC {
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-               fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-           }
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
         // Set photoImageView to display the selected image.
         self.ImgProfile.image = selectedImage.normalizedImage()
         dismiss(animated: true, completion: nil)
@@ -276,33 +276,30 @@ extension CreateProfileVC {
         print("Url_SignUpServices_is_here:-" , url)
         print("Param_SignUpServices_is_here:-" , parameters)
         
-        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
             PKHUD.sharedHUD.hide()
-            print("Response",response)
-            if response.value != nil {
-                let responseJson = JSON(response.value!)
-                print("Code_is_SignUpServices",responseJson["code"])
-                               
-                if responseJson["code"] == "200" {
-                    if let responseData = response.data {
-                        do {
-                            let decodeJSON = JSONDecoder()
-                            let dicData = try decodeJSON.decode(GetUserSignUpData.self, from: responseData)
-                            
-                            if (dicData.msg?.count)! > 0 {
-                                let objProfileRes = (dicData.msg!.first)!
-                                let userid = objProfileRes.fbID
-                                //call api get User data
-                                self.getUserInfoService(phone: userid!)
+            print("Response", response)
+            
+            if let responseData = response.data {
+                do {
+                    let responseJson = try JSONDecoder().decode(CommonResponseModel.self, from: responseData)
+                    print("Code_is_SignUpServices", responseJson.code as Any)
+                    
+                    if responseJson.code == "200" {
+                        if let responseData = responseJson.data {
+                            if let userId = responseData.fb_id {
+                                print("User ID:", userId)
+                                // Call API to get user data
+                                self.getUserInfoService(phone: userId)
                             }
-                        } catch {
-                            print("Something went wrong in json.")
                         }
+                    } else if responseJson.code == "201" {
+                        print("Something went wrong with error code 201")
+                    } else {
+                        print("Something went wrong in JSON")
                     }
-                }else if responseJson["code"] == "201" {
-                    print("Something went wrong error code 201")
-                }else{
-                    print("Something went wrong in json")
+                } catch {
+                    print("Error: \(error)")
                 }
             }
         }
@@ -327,7 +324,7 @@ extension CreateProfileVC {
             if response.value != nil {
                 let responseJson = JSON(response.value!)
                 print("Code_is_getUserInfoURL",responseJson["code"])
-                               
+                
                 if responseJson["code"] == "200" {
                     if let responseData = response.data {
                         do {
@@ -336,23 +333,23 @@ extension CreateProfileVC {
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             if (dicData.msg?.count)! > 0 {
                                 let objProfileRes = (dicData.msg!.first)!
-                               
+                                
                                 //Default save usr is login
                                 Defaults[PDUserDefaults.isLogin] = true
                                 Defaults[PDUserDefaults.UserID] = "\(objProfileRes.fbID!)"
                                 print("Defaults_PDUser_Defaults_UserID",objProfileRes.fbID!)
-
+                                
                                 //to save default user data with json encode *****
                                 do {
                                     // Create JSON Encoder
                                     let encoder = JSONEncoder()
-
+                                    
                                     // Encode Note
                                     let data = try encoder.encode(objProfileRes)
-
+                                    
                                     // Write/Set Data
                                     UserDefaults.standard.set(data, forKey: "encodeUserData")
-
+                                    
                                 } catch {
                                     print("Unable to Encode Note (\(error))")
                                 }

@@ -114,8 +114,9 @@
 		188EC8622897FA3100EF99BB /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EC8612897FA3100EF99BB /* IAPHandler.swift */; };
 		18DC52E328C624BA005A2B14 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC52E228C624BA005A2B14 /* Utility.swift */; };
 		18DC52E528C6251B005A2B14 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC52E428C6251B005A2B14 /* UIImage+Gif.swift */; };
-		3774C0E72A3858F900070036 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3774C0E62A3858F900070036 /* GoogleService-Info.plist */; };
+		371E61932A67D2E200794EF9 /* CoomonResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E61922A67D2E100794EF9 /* CoomonResponseModel.swift */; };
 		3774C0E92A38772F00070036 /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3774C0E82A38772F00070036 /* HelpCenterVC.swift */; };
+		37E6420A2A69126E004A6AF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37E642092A69126E004A6AF7 /* GoogleService-Info.plist */; };
 		37F2379629F0FCBD00FC9771 /* SecondaryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */; };
 		37F2379929F0FE1E00FC9771 /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2379829F0FE1E00FC9771 /* webViewController.swift */; };
 		6BEE0E4E2A4B020C005968A9 /* userBlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE0E4D2A4B020C005968A9 /* userBlockList.swift */; };
@@ -248,8 +249,10 @@
 		188EC8612897FA3100EF99BB /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
 		18DC52E228C624BA005A2B14 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		18DC52E428C6251B005A2B14 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
-		3774C0E62A3858F900070036 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		371E61922A67D2E100794EF9 /* CoomonResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoomonResponseModel.swift; sourceTree = "<group>"; };
 		3774C0E82A38772F00070036 /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
+		37E642092A69126E004A6AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		37E6420B2A69127B004A6AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondaryBoard.storyboard; sourceTree = "<group>"; };
 		37F2379829F0FE1E00FC9771 /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 		5FD2FC8F5DF6EAFA2A13A39D /* Pods-SocialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialApp.debug.xcconfig"; path = "Target Support Files/Pods-SocialApp/Pods-SocialApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -416,7 +419,7 @@
 				046839452799868A009F5EB0 /* ChatBubbleData.swift */,
 				045D3185276355B900E9F1B0 /* Assets */,
 				045D31772763511800E9F1B0 /* Info.plist */,
-				3774C0E62A3858F900070036 /* GoogleService-Info.plist */,
+				37E6420B2A69127B004A6AF7 /* GoogleService-Info.plist */,
 				04378B132771DC66004F674F /* SocialApp.xcdatamodeld */,
 				04842990277357A400A3D4FD /* AppModel.swift */,
 			);
@@ -482,6 +485,7 @@
 		045D3185276355B900E9F1B0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				37E642092A69126E004A6AF7 /* GoogleService-Info.plist */,
 				045D31722763511800E9F1B0 /* Assets.xcassets */,
 				88AD7FDC2925FE2F008FF9C9 /* Colors.xcassets */,
 				887087F7291D166F00B63C81 /* progress.gif */,
@@ -574,6 +578,7 @@
 				18575A572899476B00CDD2E5 /* DimensionCell.swift */,
 				18575A582899476B00CDD2E5 /* VideoSession.swift */,
 				18575A592899476C00CDD2E5 /* VideoView.swift */,
+				371E61922A67D2E100794EF9 /* CoomonResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -701,12 +706,12 @@
 				045D31762763511800E9F1B0 /* LaunchScreen.storyboard in Resources */,
 				045D31732763511800E9F1B0 /* Assets.xcassets in Resources */,
 				6BEE0E522A4B0CCF005968A9 /* userTableViewCell.xib in Resources */,
+				37E6420A2A69126E004A6AF7 /* GoogleService-Info.plist in Resources */,
 				887087F8291D168000B63C81 /* progress.gif in Resources */,
 				045D316E2763511500E9F1B0 /* Main.storyboard in Resources */,
 				043A3627286490DD00F20065 /* ProfileCell.xib in Resources */,
 				044E8A1A299A3ACF00328246 /* NewTestingSub.storekit in Resources */,
 				37F2379629F0FCBD00FC9771 /* SecondaryBoard.storyboard in Resources */,
-				3774C0E72A3858F900070036 /* GoogleService-Info.plist in Resources */,
 				0403D67128647639008715A7 /* CustomPassCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -857,6 +862,7 @@
 				18575A69289948E200CDD2E5 /* AGEView.swift in Sources */,
 				04235F4A277D967D00F22F17 /* UIViewAnchorPoint.swift in Sources */,
 				043885AA2771CEAE007B5C8C /* PDUserDefaults.swift in Sources */,
+				371E61932A67D2E200794EF9 /* CoomonResponseModel.swift in Sources */,
 				18575A5B2899476C00CDD2E5 /* VideoSession.swift in Sources */,
 				043885AE2771CEAE007B5C8C /* AppUrl.swift in Sources */,
 				043885B02771CEAE007B5C8C /* Utils.swift in Sources */,
@@ -1060,13 +1066,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Datque;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Keykey would like to access your camera for uploading profile picture, videos and for video calling";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Datque would like to access your camera for uploading profile picture, videos and for video calling";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "key key request you to enable your location in order to communicate with your nearby users";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for audio and video call";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KeyKey would like to access your photo library for uploading profile pictures and videos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Datque would like to access your photo library for uploading profile pictures and videos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1080,7 +1086,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.1.11;
-				PRODUCT_BUNDLE_IDENTIFIER = app.xomap.Datque;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeroit.Datque;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1103,13 +1109,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Datque;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Keykey would like to access your camera for uploading profile picture, videos and for video calling";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Datque would like to access your camera for uploading profile picture, videos and for video calling";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationUsageDescription = "App access location to provide nearby users";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "key key request you to enable your location in order to communicate with your nearby users";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for audio and video call";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "KeyKey would like to access your photo library for uploading profile pictures and videos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Datque would like to access your photo library for uploading profile pictures and videos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1123,7 +1129,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.1.11;
-				PRODUCT_BUNDLE_IDENTIFIER = app.xomap.Datque;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeroit.Datque;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

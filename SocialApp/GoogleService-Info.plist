@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>319575500177-ena0beos16pt3lra9tmd4idmmg5q6dii.apps.googleusercontent.com</string>
+	<string>319575500177-40da5j978a5n5am9h5bu11el3ogu8rk8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.319575500177-ena0beos16pt3lra9tmd4idmmg5q6dii</string>
+	<string>com.googleusercontent.apps.319575500177-40da5j978a5n5am9h5bu11el3ogu8rk8</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>319575500177-irg9dmq6p6evm28dt242fr48vbf5dqdd.apps.googleusercontent.com</string>
+	<string>319575500177-9t1t2rgphpld6afu580id4dodl3pej85.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,23 +15,25 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>app.xomap.Datque</string>
+	<string>com.zeroit.Datque</string>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>PROJECT_ID</key>
 	<string>datque-dating-and-steaming-app</string>
 	<key>STORAGE_BUCKET</key>
 	<string>datque-dating-and-steaming-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:319575500177:ios:8805253965e78c3039e630</string>
+	<string>1:319575500177:ios:12e4cb7fdb382ee939e630</string>
 	<key>DATABASE_URL</key>
 	<string>https://datque-dating-and-steaming-app-default-rtdb.firebaseio.com</string>
 </dict>
