@@ -121,17 +121,17 @@ class MainViewController: UIViewController {
          let parameters: [String: Any] = ["channelName":channelName,
                                           "type":Type,
                                           "device" : "ios" ,
-                                          "uid":"0" ]
+                                          "uid": channelName ]
          AF.request(url, method: .post,parameters: parameters, encoding: JSONEncoding.default)
              .responseJSON { response in
                  print(response)
-                 if response.value != nil{
+                 if response.value != nil{  
                      let responseJson = JSON(response.value!)
                      let dict  = responseJson["msg"]
                      self.rtc_token = dict["video_token"].rawValue as! String
                      let channel_Name = dict["channelName"].rawValue as! String
                      self.settings.roomName = channel_Name
-                     self.settings.token =  self.rtc_token
+                     //self.settings.token =  self.rtc_token
                      self.settings.username = "\(Defaults[PDUserDefaults.userName])"
                      self.settings.picture = "\(Defaults[PDUserDefaults.profileImg])"
                      self.selectedRoleToLive(role: .broadcaster)

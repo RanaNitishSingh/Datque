@@ -9,7 +9,7 @@
 import UIKit
 import AgoraRtcKit
 import Alamofire
-import PKHUD  
+import PKHUD
 import SDWebImage
 import Firebase
 import FirebaseStorage
@@ -25,6 +25,7 @@ protocol LiveVCDataSource: NSObjectProtocol {
 class LiveRoomViewController: UIViewController {
     
     @IBOutlet weak var broadcastersView: AGEVideoContainer!
+
     @IBOutlet weak var placeholderView: UIImageView!
     
     @IBOutlet weak var videoMuteButton: UIButton!
@@ -93,6 +94,11 @@ class LiveRoomViewController: UIViewController {
             placeholderView.isHidden = (videoSessions.count == 0 ? false : true)
             // update render view layout
             updateBroadcastersView()
+//            if strRole == "audience" {
+//                updateUser()
+//            } else {
+//                updateBroadcastersView()
+//            }
         }
     }
     
@@ -109,7 +115,7 @@ class LiveRoomViewController: UIViewController {
         }
         updateButtonsVisiablity()
         loadAgoraKit()
-        WSliveuser()
+       // WSliveuser()
     }
    
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -177,7 +183,45 @@ private extension LiveRoomViewController {
             broadcastersView.setLayouts([layout], animated: true)
         }
     }
-    
+//    func updateUser() {
+//        // video views layout
+//        if videoSessions.count == maxVideoSession {
+//            broadcastersView.reload(level: 0, animated: true)
+//        } else {
+//            var rank: Int
+//            var row: Int
+//
+//            if videoSessions.count == 0 {
+//                broadcastersView.removeLayout(level: 0)
+//                return
+//            } else if videoSessions.count == 1 {
+//                rank = 1
+//                row = 1
+//            }
+//                //else if videoSessions.count == 2 {
+////                rank = 1
+////                row = 2
+////            } else {
+////                rank = 2
+////                row = Int(ceil(Double(videoSessions.count) / Double(rank)))
+////            }
+//
+////            let itemWidth = CGFloat(1.0) / CGFloat(rank)
+////            let itemHeight = CGFloat(1.0) / CGFloat(row)
+//            //let itemSize = CGSize(width: itemWidth, height: itemHeight)
+////            let layout = AGEVideoLayout(level: 0)
+////                        .itemSize(.scale(itemSize))
+//
+//            broadcastersView
+//                .listCount { [unowned self] (_) -> Int in
+//                    return self.videoSessions.count
+//                }.listItem { [unowned self] (index) -> UIView in
+//                    return self.videoSessions[index.item].hostingView
+//                }
+//
+////            broadcastersView.setLayouts([layout], animated: true)
+//        }
+//    }
     func updateButtonsVisiablity() {
         guard let sessionButtons = sessionButtons else {
             return
@@ -244,9 +288,9 @@ private extension LiveRoomViewController {
             agoraKit.startPreview()
         }
         print(settings.role , "role")
-        print("token", settings.token!)
+        //print("token", settings.token!)
         print("cahnnel", settings.roomName!)
-        agoraKit.joinChannel(byToken: settings.token, channelId: channelId, info: nil, uid: 0, joinSuccess: nil)
+        agoraKit.joinChannel(byToken: "", channelId: channelId, info: nil, uid: 0, joinSuccess: nil)
         print("didjoino")
        UpdateLiveuser()
 //        if strRole == "audience" {
@@ -295,7 +339,7 @@ private extension LiveRoomViewController {
             Database.database().reference().child("LiveUsers").child("\(defaultID)").removeValue()
             UserDefaults.standard.set(self.user_Id, forKey: "liveUsers")
         }
-        self.navigationController?.popToViewController(self.navigationController!.viewControllers[3], animated: true)
+        self.navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
     }
 }
 
@@ -328,7 +372,7 @@ extension LiveRoomViewController: AgoraRtcEngineDelegate {
         guard videoSessions.count <= maxVideoSession else {
             return
         }
-        let userSession = videoSession(of: uid)        
+        let userSession = videoSession(of: uid)
         agoraKit.setupRemoteVideo(userSession.canvas)
     }
     
@@ -370,6 +414,7 @@ extension LiveRoomViewController: AgoraRtcEngineDelegate {
     /// Reports an error during SDK runtime.
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurError errorCode: AgoraErrorCode) {
         print("warning code error: \(errorCode.description)")
+        
     }
 }
 

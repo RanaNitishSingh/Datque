@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A
        // "AIzaSyBwezfsiSWnqPJ9O2nNOw-QRLNXJFgHZJE"
-        GMSPlacesClient.provideAPIKey("AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A")
+        GMSPlacesClient.provideAPIKey("AIzaSyANSQ7dONtZfOt7PwuLxQ_6Jy3CLDlvHgc")
        // GMSServices.provideAPIKey("AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A")
         //google key for get location finder
         FirebaseApp.configure()
@@ -186,6 +186,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
         let token = tokenParts.joined()
         print("Device Token: \(token)")
         Messaging.messaging().apnsToken = deviceToken
+        
+        // Pass device token to auth.
+        let firebaseAuth = Auth.auth() 
+
+        //At development time we use .sandbox
+        firebaseAuth.setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -346,4 +352,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
                UserDefaults.standard.removeObject(forKey: "SavedStringArray")
            }
     }
+    
+    
+   
+    
 }

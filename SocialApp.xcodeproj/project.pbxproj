@@ -50,7 +50,6 @@
 		044D90D027746A24006821E0 /* SpleshVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D90CF27746A24006821E0 /* SpleshVC.swift */; };
 		044E8A1A299A3ACF00328246 /* NewTestingSub.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 044E8A19299A3ACF00328246 /* NewTestingSub.storekit */; };
 		044E8A1C299A442800328246 /* NitIAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E8A1B299A442800328246 /* NitIAPHandler.swift */; };
-		044EADCF2853128A0023568B /* GoLiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EADCE2853128A0023568B /* GoLiveVC.swift */; };
 		0458795B2788746A003C74B0 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458795A2788746A003C74B0 /* ChatVC.swift */; };
 		045A1E1C2848E33A003B6262 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A1E162848E33A003B6262 /* AppID.swift */; };
 		045A1E1D2848E33A003B6262 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A1E162848E33A003B6262 /* AppID.swift */; };
@@ -115,8 +114,9 @@
 		18DC52E328C624BA005A2B14 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC52E228C624BA005A2B14 /* Utility.swift */; };
 		18DC52E528C6251B005A2B14 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC52E428C6251B005A2B14 /* UIImage+Gif.swift */; };
 		371E61932A67D2E200794EF9 /* CoomonResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E61922A67D2E100794EF9 /* CoomonResponseModel.swift */; };
+		374B100E2A71003B00AF682E /* GoLiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B100D2A71003B00AF682E /* GoLiveVC.swift */; };
 		3774C0E92A38772F00070036 /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3774C0E82A38772F00070036 /* HelpCenterVC.swift */; };
-		37E6420A2A69126E004A6AF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37E642092A69126E004A6AF7 /* GoogleService-Info.plist */; };
+		37975FFC2A7BB7E2002D4865 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37975FFB2A7BB7E2002D4865 /* GoogleService-Info.plist */; };
 		37F2379629F0FCBD00FC9771 /* SecondaryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */; };
 		37F2379929F0FE1E00FC9771 /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2379829F0FE1E00FC9771 /* webViewController.swift */; };
 		6BEE0E4E2A4B020C005968A9 /* userBlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE0E4D2A4B020C005968A9 /* userBlockList.swift */; };
@@ -182,7 +182,6 @@
 		044D90CF27746A24006821E0 /* SpleshVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpleshVC.swift; sourceTree = "<group>"; };
 		044E8A19299A3ACF00328246 /* NewTestingSub.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewTestingSub.storekit; sourceTree = "<group>"; };
 		044E8A1B299A442800328246 /* NitIAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitIAPHandler.swift; sourceTree = "<group>"; };
-		044EADCE2853128A0023568B /* GoLiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLiveVC.swift; sourceTree = "<group>"; };
 		0458795A2788746A003C74B0 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		045A1E162848E33A003B6262 /* AppID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppID.swift; sourceTree = "<group>"; };
 		045A1E172848E33A003B6262 /* VideoChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoChatViewController.swift; sourceTree = "<group>"; };
@@ -250,9 +249,9 @@
 		18DC52E228C624BA005A2B14 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		18DC52E428C6251B005A2B14 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		371E61922A67D2E100794EF9 /* CoomonResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoomonResponseModel.swift; sourceTree = "<group>"; };
+		374B100D2A71003B00AF682E /* GoLiveVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoLiveVC.swift; sourceTree = "<group>"; };
 		3774C0E82A38772F00070036 /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
-		37E642092A69126E004A6AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		37E6420B2A69127B004A6AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		37975FFB2A7BB7E2002D4865 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37F2379529F0FCBD00FC9771 /* SecondaryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondaryBoard.storyboard; sourceTree = "<group>"; };
 		37F2379829F0FE1E00FC9771 /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 		5FD2FC8F5DF6EAFA2A13A39D /* Pods-SocialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialApp.debug.xcconfig"; path = "Target Support Files/Pods-SocialApp/Pods-SocialApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -368,7 +367,7 @@
 		044EADCD285311E30023568B /* GoLive */ = {
 			isa = PBXGroup;
 			children = (
-				044EADCE2853128A0023568B /* GoLiveVC.swift */,
+				374B100D2A71003B00AF682E /* GoLiveVC.swift */,
 			);
 			path = GoLive;
 			sourceTree = "<group>";
@@ -419,7 +418,7 @@
 				046839452799868A009F5EB0 /* ChatBubbleData.swift */,
 				045D3185276355B900E9F1B0 /* Assets */,
 				045D31772763511800E9F1B0 /* Info.plist */,
-				37E6420B2A69127B004A6AF7 /* GoogleService-Info.plist */,
+				37975FFB2A7BB7E2002D4865 /* GoogleService-Info.plist */,
 				04378B132771DC66004F674F /* SocialApp.xcdatamodeld */,
 				04842990277357A400A3D4FD /* AppModel.swift */,
 			);
@@ -485,7 +484,6 @@
 		045D3185276355B900E9F1B0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				37E642092A69126E004A6AF7 /* GoogleService-Info.plist */,
 				045D31722763511800E9F1B0 /* Assets.xcassets */,
 				88AD7FDC2925FE2F008FF9C9 /* Colors.xcassets */,
 				887087F7291D166F00B63C81 /* progress.gif */,
@@ -706,8 +704,8 @@
 				045D31762763511800E9F1B0 /* LaunchScreen.storyboard in Resources */,
 				045D31732763511800E9F1B0 /* Assets.xcassets in Resources */,
 				6BEE0E522A4B0CCF005968A9 /* userTableViewCell.xib in Resources */,
-				37E6420A2A69126E004A6AF7 /* GoogleService-Info.plist in Resources */,
 				887087F8291D168000B63C81 /* progress.gif in Resources */,
+				37975FFC2A7BB7E2002D4865 /* GoogleService-Info.plist in Resources */,
 				045D316E2763511500E9F1B0 /* Main.storyboard in Resources */,
 				043A3627286490DD00F20065 /* ProfileCell.xib in Resources */,
 				044E8A1A299A3ACF00328246 /* NewTestingSub.storekit in Resources */,
@@ -807,7 +805,6 @@
 				043AD33E2779927900DE2349 /* CardView.swift in Sources */,
 				04A1B84328771B2700D3ED60 /* VoiceChatViewController.swift in Sources */,
 				044D90D027746A24006821E0 /* SpleshVC.swift in Sources */,
-				044EADCF2853128A0023568B /* GoLiveVC.swift in Sources */,
 				049269DF277C542D00676642 /* ProfileLikeVC.swift in Sources */,
 				044AF5472769B091008D26C5 /* filterVC.swift in Sources */,
 				18575A66289948E200CDD2E5 /* AGEEventsObserver.swift in Sources */,
@@ -834,6 +831,7 @@
 				0458795B2788746A003C74B0 /* ChatVC.swift in Sources */,
 				04B0969A2769F73F00BDC3FA /* HomeTabBarVC.swift in Sources */,
 				043885AC2771CEAE007B5C8C /* UITapGesture.swift in Sources */,
+				374B100E2A71003B00AF682E /* GoLiveVC.swift in Sources */,
 				0415D453276C7407003D3C51 /* DobVC.swift in Sources */,
 				049F87032775F5BA00117BDE /* SwipeUser.swift in Sources */,
 				18575A472899453800CDD2E5 /* LiveRoomViewController.swift in Sources */,
@@ -1061,7 +1059,7 @@
 				CODE_SIGN_ENTITLEMENTS = SocialApp/SocialAppDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YFW8984WKD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
@@ -1085,7 +1083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.11;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroit.Datque;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1104,7 +1102,7 @@
 				CODE_SIGN_ENTITLEMENTS = SocialApp/SocialAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YFW8984WKD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
@@ -1128,7 +1126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.11;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroit.Datque;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

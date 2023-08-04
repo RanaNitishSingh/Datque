@@ -27,8 +27,16 @@ class SettingsVC: UIViewController {
         let temStrFCM = "\(Defaults[PDUserDefaults.FCMToken])"
         Utils.RemovePersistentData() // to remove all default data in application
         Defaults[PDUserDefaults.FCMToken] = temStrFCM
-        let VC = self.storyboard!.instantiateViewController(withIdentifier: "PhoneNumberVC") as! PhoneNumberVC
-        self.navigationController!.pushViewController(VC, animated: true)
+        let alert = UIAlertController(title: "Datque", message: "Are you sure you want to signout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "SignOut", style: .destructive, handler: { action in
+//             UserDefaults.standard.removeObject(forKey: "UserUid")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let VC = self.storyboard!.instantiateViewController(withIdentifier: "SpleshVC") as! SpleshVC
+            self.navigationController!.pushViewController(VC, animated: true)
+        }))
+        
     }
 }
 

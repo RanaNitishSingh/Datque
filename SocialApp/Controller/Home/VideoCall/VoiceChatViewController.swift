@@ -187,7 +187,7 @@ class VoiceChatViewController: UIViewController {
          let parameters: [String: Any] = ["channelName":channelName,
                                           "type":Type,
                                           "device" : "ios" ,
-                                          "uid":"0" ]
+                                          "uid": channelName]
          AF.request(url, method: .post,parameters: parameters, encoding: JSONEncoding.default)
              .responseJSON { response in
                  debugPrint(response)

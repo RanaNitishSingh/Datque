@@ -356,7 +356,7 @@ extension NotificationUserDetailVC{
         
         //set action and Message
         if UserType == "like" {
-            strSendPushMessage = "Like you profile"
+            strSendPushMessage = "Like your profile"
             strSendPushActionType = "like"
         }
 //        else if UserType == "dislike" {
