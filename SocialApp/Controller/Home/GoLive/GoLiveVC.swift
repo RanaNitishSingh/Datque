@@ -23,7 +23,7 @@ class GoLiveVC: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         WSliveuser()
     }
     override func viewWillAppear(_ animated: Bool) {

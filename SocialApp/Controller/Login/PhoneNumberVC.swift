@@ -42,6 +42,9 @@ class PhoneNumberVC: UIViewController, CountryPickerViewDataSource,CountryPicker
         self.phoneCode = country.phoneCode
     }
     
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func ActionContinue(_ sender: Any) {
         
         //phone number outhentication
@@ -137,6 +140,7 @@ class PhoneNumberVC: UIViewController, CountryPickerViewDataSource,CountryPicker
 
 extension PhoneNumberVC {
     func mobileOth(mobNum: String ) {
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
          PhoneAuthProvider.provider()
             .verifyPhoneNumber("\(mobNum)", uiDelegate: nil) { verificationID, error in
               if let error = error {

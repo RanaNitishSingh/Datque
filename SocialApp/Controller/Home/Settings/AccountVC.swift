@@ -110,13 +110,16 @@ extension AccountVC {
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             if (dicData.msg?.count)! > 0 {
                                 let dicFirstData = (dicData.msg!.first)!
-                                if dicFirstData.response! == "success"{
-                                    print("API run successfuly")
-                                    
-                                    Utils.RemovePersistentData() // to remove all default data in application
-                                    let VC = self.storyboard!.instantiateViewController(withIdentifier: "PhoneNumberVC") as! PhoneNumberVC
-                                    self.navigationController!.pushViewController(VC, animated: true)
-                                }
+                                Utils.RemovePersistentData()
+                                let VC = self.storyboard!.instantiateViewController(withIdentifier: "PhoneNumberVC") as! PhoneNumberVC
+                                self.navigationController!.pushViewController(VC, animated: true)
+//                                if dicFirstData.response! == "success"{
+//                                    print("API run successfuly")
+//
+//                                    Utils.RemovePersistentData() // to remove all default data in application
+//                                    let VC = self.storyboard!.instantiateViewController(withIdentifier: "PhoneNumberVC") as! PhoneNumberVC
+//                                    self.navigationController!.pushViewController(VC, animated: true)
+//                                }
                             }
                         } catch {
                             print("Something went wrong in json.")
@@ -191,9 +194,15 @@ extension AccountVC{
         let temStrFCM = "\(Defaults[PDUserDefaults.FCMToken])"
         Utils.RemovePersistentData() // to remove all default data in application
         Defaults[PDUserDefaults.FCMToken] = temStrFCM
-        
-        let VC = self.storyboard!.instantiateViewController(withIdentifier: "PhoneNumberVC") as! PhoneNumberVC
-        self.navigationController!.pushViewController(VC, animated: true)
+        let alert = UIAlertController(title: "Datque", message: "Are you sure you want to signout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "SignOut", style: .destructive, handler: { action in
+//             UserDefaults.standard.removeObject(forKey: "UserUid")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let VC = self.storyboard!.instantiateViewController(withIdentifier: "SpleshVC") as! SpleshVC
+            self.navigationController!.pushViewController(VC, animated: true)
+        }))
     }
 }
 

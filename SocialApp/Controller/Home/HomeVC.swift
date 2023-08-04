@@ -760,7 +760,7 @@ extension HomeVC {
         }
         
         if UserType == "like" {
-            strSendPushMessage = "Like you profile"
+            strSendPushMessage = "Like your profile"
             strSendPushActionType = "like"
         }
 //        else if UserType == "dislike" {

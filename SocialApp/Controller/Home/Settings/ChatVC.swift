@@ -408,16 +408,16 @@ extension ChatVC {
          let action2  = UIAlertAction(title: "Choose from Gallery", style: UIAlertAction.Style.default) { (action) in
               self.GalleryMethod()
          }
-        let action3  = UIAlertAction(title: "Select Video", style: UIAlertAction.Style.default) { (action) in
-            self.openVideoGallery()
-            
-        }
+//        let action3  = UIAlertAction(title: "Select Video", style: UIAlertAction.Style.default) { (action) in
+//            self.openVideoGallery()
+//
+//        }
           let action4 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
              self.dismiss(animated: true, completion: nil)
           }
          alert.addAction(action1)
          alert.addAction(action2)
-         alert.addAction(action3)
+//         alert.addAction(action3)
          alert.addAction(action4)
          self.present(alert, animated: true, completion: nil)
     }
@@ -484,15 +484,21 @@ extension ChatVC {
             //first upload image on firebase storage and then update their firebase image url of firebase database
             self.uploadFirebaseImage(imageData: optimizedImageData)
             
-        }else if let mediaType =  info[UIImagePickerController.InfoKey.mediaURL] as? String {
-            if mediaType == kUTTypeMovie as String{
-                if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL{
-                    self.videoURL as! URL == videoURL
-                    print("Video URL: \(videoURL)")
-                }
-            }
+        }//if let mediaType =  info[UIImagePickerController.InfoKey.mediaURL] as? String {
+            //if mediaType == kUTTypeMovie as String{
+        else if let video = info[UIImagePickerController.InfoKey.mediaURL] as? Data {
+            let optimizedVideoData = video
+            //{
+                
+              //  self.videoURL = video
+                //self.videoURL as! URL = videoURL
+                self.uploadFirebaseVideo(videoData: optimizedVideoData)
+                print("Video URL: \(videoURL)")
+                //}
+                //}
+           // }
         }
-        picker.dismiss(animated: true,  completion: nil)
+        self.dismiss(animated: true,  completion: nil)
         //self.dismiss(animated: true, completion: nil)
     }
     
@@ -535,6 +541,46 @@ func uploadFirebaseImage(imageData: Data)
                     }else if match_api_run == "1"{// for only first times chat will create
                         //Call API firstchat
                         self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(img)", type: "image")
+                    }
+                    
+                   
+                })
+            }
+        }
+    }
+    func uploadFirebaseVideo(videoData: Data){
+
+        let storageReference = Storage.storage().reference()
+        let profileVideoRef = storageReference.child("videos/\(UUID().uuidString)")
+        
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "video/mp4"
+        
+        profileVideoRef.putData(videoData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
+            
+            if error != nil
+            {
+                print("Error took place \(String(describing: error?.localizedDescription))")
+                return
+            } else {
+                print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                profileVideoRef.downloadURL(completion: { [self] (url, error) in
+                    print("imgFireBasePath URL: \((url?.absoluteString)!)")
+                    
+                    //send image url on firebase database
+                    let Video = (url?.absoluteString)!
+                    
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "hh:mm a"
+                    let curDateMSG = dateFormatterGet.string(from: Date())
+                    dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                    let curDateFIREBASE = dateFormatterGet.string(from: Date())
+                    
+                    if match_api_run == "0"{// for all times
+                        self.sendMessageOnFirebase(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverName: self.ReceiverName, receiverImg: self.ReceiverImg, timestamp: "\(curDateFIREBASE)", picUrl: "\(Video)", type: "video")
+                    }else if match_api_run == "1"{// for only first times chat will create
+                        //Call API firstchat
+                        self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(Video)", type: "video")
                     }
                     
                    

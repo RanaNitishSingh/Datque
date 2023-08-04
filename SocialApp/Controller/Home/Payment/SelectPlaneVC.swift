@@ -67,7 +67,12 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
 }
     
     @IBAction func OnClickTerms(_ sender: UIButton) {
+//        let vc = UIStoryboard.init(name: "SecondaryBoard", bundle: Bundle.main).instantiateViewController(withIdentifier: "webViewController") as? webViewController
+//        vc?.headerTxt = "Terms & Conditions"
+//        self.navigationController?.pushViewController(vc!, animated: true)
+        
         let vc = UIStoryboard.init(name: "SecondaryBoard", bundle: Bundle.main).instantiateViewController(withIdentifier: "webViewController") as? webViewController
+        vc?.contentUrl = "https://datque.zeroitsolutions.com/terms_conditions.php"
         vc?.headerTxt = "Terms & Conditions"
         self.navigationController?.pushViewController(vc!, animated: true)
     }
