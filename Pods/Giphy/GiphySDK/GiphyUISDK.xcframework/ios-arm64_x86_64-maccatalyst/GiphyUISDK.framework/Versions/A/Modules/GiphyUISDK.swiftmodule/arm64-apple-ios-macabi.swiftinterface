@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
 // swift-module-flags: -target arm64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name GiphyUISDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -27,6 +27,9 @@ import _StringProcessing
 @objc @_inheritsConvenienceInitializers @objcMembers open class GPHTheme : ObjectiveC.NSObject {
   @objc convenience public init(type: GiphyUISDK.GPHThemeType)
   @objc public var type: GiphyUISDK.GPHThemeType
+  @objc open var handleBarColor: UIKit.UIColor {
+    @objc get
+  }
   @objc open var emojiDrawerScrollIndicatorStyle: UIKit.UIScrollView.IndicatorStyle {
     @objc get
   }
@@ -39,28 +42,22 @@ import _StringProcessing
   @objc open var emojiDrawerSeparatorColor: UIKit.UIColor {
     @objc get
   }
-  @objc open var searchBarActiveBackgroundColor: UIKit.UIColor {
+  @objc open var searchButtonIcon: UIKit.UIImage? {
+    @objc get
+  }
+  @objc open var searchBackButtonColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var searchPlaceholderTextColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var searchTextColor: UIKit.UIColor {
     @objc get
   }
   @objc open var searchBarBackgroundColor: UIKit.UIColor {
     @objc get
   }
-  @objc open var suggestionCellBackgroundColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var suggestionCellTextColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var placeholderTextColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var textFieldTextColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var selectButtonColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var selectButtonTextColor: UIKit.UIColor {
+  @objc open var searchTextFont: UIKit.UIFont? {
     @objc get
   }
   @objc open var searchBarPadding: CoreFoundation.CGFloat {
@@ -69,46 +66,43 @@ import _StringProcessing
   @objc open var searchBarCornerRadius: CoreFoundation.CGFloat {
     @objc get
   }
-  @objc open var cellCornerRadius: CoreFoundation.CGFloat {
-    @objc get
-  }
-  @objc open var textFieldFont: UIKit.UIFont? {
-    @objc get
-  }
-  @objc open var backgroundColorForLoadingCells: UIKit.UIColor {
-    @objc get
-  }
   @objc open var showSuggestionsBar: Swift.Bool {
     @objc get
   }
-  @objc open var buttonIcon: UIKit.UIImage? {
+  @objc open var suggestionCellBackgroundColor: UIKit.UIColor {
     @objc get
   }
-  @objc open var searchButtonColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var keyboardAppearance: UIKit.UIKeyboardAppearance {
-    @objc get
-  }
-  @objc open var placeholderColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var backgroundColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var textColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var handleBarColor: UIKit.UIColor {
-    @objc get
-  }
-  @objc open var gridDimColor: UIKit.UIColor {
+  @objc open var suggestionCellTextColor: UIKit.UIColor {
     @objc get
   }
   @objc open var tabBarSwitchSelectedColor: UIKit.UIColor {
     @objc get
   }
+  @objc open var tabBarSwitchDefaultColor: UIKit.UIColor? {
+    @objc get
+  }
   @objc open var tabBarBackgroundAlpha: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc open var confirmationSelectButtonColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var confirmationSelectButtonTextColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var usernameColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var confirmationBackButtonColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var confirmationViewOnGiphyColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var avatarPlaceholderColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var cellCornerRadius: CoreFoundation.CGFloat {
     @objc get
   }
   @objc open var stickerBackgroundColor: UIKit.UIColor {
@@ -117,7 +111,22 @@ import _StringProcessing
   @objc open var fixedSizeCells: Swift.Bool {
     @objc get
   }
+  @objc open var backgroundColorForLoadingCells: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var keyboardAppearance: UIKit.UIKeyboardAppearance {
+    @objc get
+  }
+  @objc open var backgroundColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc open var defaultTextColor: UIKit.UIColor {
+    @objc get
+  }
   @objc open var blurStyle: UIKit.UIBlurEffect.Style {
+    @objc get
+  }
+  @objc public var isDarkMode: Swift.Bool {
     @objc get
   }
   @objc override dynamic public init()
@@ -720,9 +729,9 @@ extension GiphyUISDK.GiphyViewController {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) public var selectedContentType: GiphyUISDK.GPHContentType? {
-    get
-    set
+  @objc @_Concurrency.MainActor(unsafe) public var selectedContentType: GiphyUISDK.GPHContentType {
+    @objc get
+    @objc set
   }
   @objc @_Concurrency.MainActor(unsafe) public var showMoreByUser: Swift.String? {
     @objc get

@@ -35,7 +35,9 @@ public class ABGaugeView: UIView {
             capStyle = isRoundCap ? .round : .butt
         }
     }
-        
+    
+    @IBInspectable public var blinkAnimate: Bool = true
+    
     @IBInspectable public var circleColor: UIColor = UIColor.black
     @IBInspectable public var shadowColor: UIColor = UIColor.lightGray.withAlphaComponent(0.3)
     
@@ -94,6 +96,21 @@ public class ABGaugeView: UIView {
         for i in 0..<arcs.count {
             createArcWith(startAngle: arcs[i].startAngle, endAngle: arcs[i].endAngle, arcCap: arcs[i].arcCap, strokeColor: arcs[i].strokeColor, center: arcs[i].center)
         }
+        
+        if blinkAnimate {
+            blink()
+        }
+    }
+    
+    func blink() {
+        let animation = CABasicAnimation(keyPath: "opacity")
+        animation.fromValue = 1
+        animation.toValue = 0.2
+        animation.duration = 0.1
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+        animation.autoreverses = true
+        animation.repeatCount = 3
+        self.layer.add(animation, forKey: "opacity")
     }
     
     func radian(for area: CGFloat) -> CGFloat {

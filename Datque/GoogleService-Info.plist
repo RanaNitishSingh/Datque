@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>319575500177-40da5j978a5n5am9h5bu11el3ogu8rk8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.319575500177-40da5j978a5n5am9h5bu11el3ogu8rk8</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>319575500177-6mkr8knpc031f104ipi3u6bmmapgscku.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANSQ7dONtZfOt7PwuLxQ_6Jy3CLDlvHgc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>319575500177</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.zeroit.Datque</string>
+	<key>PROJECT_ID</key>
+	<string>datque-dating-and-steaming-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>datque-dating-and-steaming-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:319575500177:ios:12e4cb7fdb382ee939e630</string>
+	<key>DATABASE_URL</key>
+	<string>https://datque-dating-and-steaming-app-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

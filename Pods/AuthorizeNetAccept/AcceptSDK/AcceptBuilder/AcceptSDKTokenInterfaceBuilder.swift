@@ -12,7 +12,7 @@ struct AcceptSDKTokenAPIRequest{
     static let kSecurePaymentContainerRequestKey    = "securePaymentContainerRequest"
     static let kMerchantAuthenticationKey           = "merchantAuthentication"
     static let kNameKey                             = "name"
-    static let kClientDatque                        = "clientKey"
+    static let kClientKeyKey                        = "clientKey"
     static let kDataKey                             = "data"
     static let kTypeKey                             = "type"
     static let kIdKey                               = "id"
@@ -87,7 +87,7 @@ class AcceptSDKTokenInterfaceBuilder: AcceptSDKBaseInterfaceBuilder {
         
         var clientKeyValueStr = String()
         if let clientStr = request.merchantAuthentication.clientKey {
-            clientKeyValueStr = self.createJSONString(AcceptSDKTokenAPIRequest.kClientDatque, value: clientStr)
+            clientKeyValueStr = self.createJSONString(AcceptSDKTokenAPIRequest.kClientKeyKey, value: clientStr)
         } else {
             var sequenceStr = String()
             var currenctCodeStr = String()
