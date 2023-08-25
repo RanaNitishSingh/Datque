@@ -251,11 +251,11 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
         
         
     }
-    @IBAction func ActionReportUser(_ sender: UIButton) {
-        lblReportTitle.text = "Report \(ReceiverName)?"
-        lblReportUser.text = "\(ReceiverName) I'm no longer matched with"
-        self.viewReportUser.superview?.bringSubviewToFront(self.viewReportUser)
-    }
+//    @IBAction func ActionReportUser(_ sender: UIButton) {
+//        lblReportTitle.text = "Report \(ReceiverName)?"
+//        lblReportUser.text = "\(ReceiverName) I'm no longer matched with"
+//        self.viewReportUser.superview?.bringSubviewToFront(self.viewReportUser)
+//    }
     @IBAction func ActionCheck(_ sender: UIButton) {
         if strSelection == false {
             self.strSelection = true

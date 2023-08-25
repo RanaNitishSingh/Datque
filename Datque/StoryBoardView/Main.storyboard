@@ -2859,7 +2859,7 @@
                                                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AG-VW-RiO">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Activate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AG-VW-RiO">
                                                                                                 <rect key="frame" x="0.0" y="19.333333333333371" width="100" height="20.333333333333329"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.57647061349999995" green="0.1725490093" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -3040,9 +3040,11 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="activeLbl" destination="6AG-VW-RiO" id="JOY-Ei-3Eg"/>
                         <outlet property="imgUserProfile" destination="36V-QV-Rj4" id="ma9-Tx-9et"/>
                         <outlet property="lblStatus" destination="dD7-Tl-xi5" id="kHv-yT-nZH"/>
                         <outlet property="lblUserNameAge" destination="Hlx-sX-BET" id="oNK-zw-9Xl"/>
+                        <outlet property="lowHighLbl" destination="otR-I3-nh8" id="Sbd-lp-0ru"/>
                         <outlet property="meterView" destination="o0G-gJ-GS8" id="rOH-B4-xOu"/>
                         <outlet property="progressBar" destination="DmG-Zd-fbO" id="xMH-9f-cfD"/>
                     </connections>
@@ -3752,7 +3754,7 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="ThemeColour(#BD93D3)"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="radioOn"/>
+                                                                <state key="normal" image="radioOff"/>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delivery-boy" translatesAutoresizingMaskIntoConstraints="NO" id="Xpz-Yl-rMC">
                                                                 <rect key="frame" x="27" y="10" width="25" height="30"/>
@@ -3912,7 +3914,6 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Select your plan " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xy-G5-XeB">
                                         <rect key="frame" x="107.66666666666669" y="5" width="160" height="30"/>
-                                        <color key="backgroundColor" red="0.92156863209999995" green="0.92156863209999995" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="asO-if-dvw"/>
                                         </constraints>
@@ -4522,7 +4523,7 @@ Unlimited filter use</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tG4-Lx-gBU">
-                                                <rect key="frame" x="125" y="609" width="125" height="52"/>
+                                                <rect key="frame" x="125" y="615" width="125" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="FNN-5A-fm1"/>
                                                     <constraint firstAttribute="width" constant="125" id="Puq-v0-wL9"/>
@@ -4539,7 +4540,7 @@ Unlimited filter use</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="tG4-Lx-gBU" secondAttribute="bottom" constant="56" id="1jz-tC-TLu"/>
+                                            <constraint firstAttribute="bottom" secondItem="tG4-Lx-gBU" secondAttribute="bottom" constant="50" id="1jz-tC-TLu"/>
                                             <constraint firstItem="GbU-Iw-Ie3" firstAttribute="top" secondItem="7jn-0A-zOB" secondAttribute="bottom" constant="25" id="58A-kg-QmF"/>
                                             <constraint firstItem="nkq-mv-aEb" firstAttribute="centerX" secondItem="9oY-9X-UMt" secondAttribute="centerX" id="6XY-Md-mQ8"/>
                                             <constraint firstItem="nkq-mv-aEb" firstAttribute="top" secondItem="9oY-9X-UMt" secondAttribute="top" constant="20" id="9YO-us-mrQ"/>
@@ -8665,7 +8666,7 @@ Unlimited filter use</string>
                                                 <rect key="frame" x="40" y="264" width="295" height="200"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yL3-Ss-z6h">
-                                                        <rect key="frame" x="15" y="15" width="265" height="180"/>
+                                                        <rect key="frame" x="15" y="15" width="265" height="143"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edb-R0-aEX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="32"/>
@@ -8697,6 +8698,7 @@ Unlimited filter use</string>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBy-PM-ZcR">
                                                                 <rect key="frame" x="0.0" y="111" width="265" height="32"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Report User">
@@ -8707,7 +8709,7 @@ Unlimited filter use</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beA-xv-ots">
-                                                                <rect key="frame" x="0.0" y="148" width="265" height="32"/>
+                                                                <rect key="frame" x="0.0" y="111" width="265" height="32"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Cancel">
@@ -8718,6 +8720,11 @@ Unlimited filter use</string>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <variation key="default">
+                                                            <mask key="subviews">
+                                                                <exclude reference="cBy-PM-ZcR"/>
+                                                            </mask>
+                                                        </variation>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -14637,7 +14644,6 @@ Unlimited filter use</string>
         <image name="power_1New 1" width="32" height="32"/>
         <image name="profile" width="170.66667175292969" height="170.66667175292969"/>
         <image name="radioOff" width="32" height="34"/>
-        <image name="radioOn" width="32" height="34"/>
         <image name="report" width="83.333335876464844" height="89"/>
         <image name="reset" width="32" height="32"/>
         <image name="search-interface-symbol" width="10.666666984558105" height="10.666666984558105"/>

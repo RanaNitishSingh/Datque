@@ -71,7 +71,7 @@ extension CustomPassCell: UITableViewDelegate, UITableViewDataSource {
         //cell.btnSelect.tag = indexPath.row
         //cell.btnSelect.addTarget(self, action: #selector(checkMarkButtonClicked(_:)), for: .touchUpInside)
         if self.selectedItemCell == indexPath.row{
-            cell.imgSelect.image = #imageLiteral(resourceName: "button")
+            cell.imgSelect.image = #imageLiteral(resourceName: "deselect")
         }else{
             cell.imgSelect.image = #imageLiteral(resourceName: "dry-clean")
         }

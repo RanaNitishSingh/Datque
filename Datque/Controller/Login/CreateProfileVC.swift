@@ -126,7 +126,7 @@ extension CreateProfileVC{
         self.view.addSubview(activityIndicator)
         
         let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child("User_image/\(userID).jpg")
+        let profileImageRef = storageReference.child("images/\(userID).jpg")
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"

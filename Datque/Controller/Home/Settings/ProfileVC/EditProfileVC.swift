@@ -39,7 +39,7 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
     var strUserImg5 = ""
     var strUserImg6 = ""
     @IBOutlet weak var tblviewEditProfile: UITableView!
-    var arrNameTitle = ["Living","Status","Children","Smoking","Drinking","Relationship","Appearance","male","DOB","Blood Group","Skin Type","Language","Profession","Religion","Education","Sexuality"]
+    var arrNameTitle = ["Living","Status","Children","Smoking","Drinking","Relationship","Appearance","Blood Group","Skin Type","Language","Profession","Religion","Education","Sexuality"]
     var arrNameTblViewEdit = ["","","","","","","","","","","","","","","",""]
     var arrImgTblViewEdit = [  #imageLiteral(resourceName: "home 1") , #imageLiteral(resourceName: "persons.png"),  #imageLiteral(resourceName: "baby.png"), #imageLiteral(resourceName: "smoke.png"), #imageLiteral(resourceName: "drink.png"), #imageLiteral(resourceName: "relation.png"), #imageLiteral(resourceName: "persons.png"), #imageLiteral(resourceName: "male"), #imageLiteral(resourceName: "MAsk"), #imageLiteral(resourceName: "blood"), #imageLiteral(resourceName: "group-face"), #imageLiteral(resourceName: "mdi_spoken-language.png"), #imageLiteral(resourceName: "mingcute_suitcase-2-fill.png"), #imageLiteral(resourceName: "religion 1"), #imageLiteral(resourceName: "study.png") ,  #imageLiteral(resourceName: "male")]
     var arrNameApperance = ["","","","",""]
@@ -119,7 +119,7 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
                         //for gendr
                         let strUserGender = "\(userSaveData.gender!)"
                         print("strUserGender",strUserGender)
-                        self.lblUserNameAge.text = self.userFNameFinal + "," + strUserAge + ", " + strUserGender
+                        self.lblUserNameAge.text = self.userFNameFinal + "," + strUserAge + "," + strUserGender
                     }catch {
                         print("Unable to Decode Note (\(error))")
                     }
@@ -155,7 +155,7 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
 //MARK: -Extension for table view
 extension EditProfileVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 16
+        return 14
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,12 +177,13 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource{
             VC.delegate = self
             self.navigationController?.pushViewController(VC, animated: true)
         }
-        else if select == 8 {
-            let VC = self.storyboard?.instantiateViewController(withIdentifier: "DobVC" ) as! DobVC
-            VC.strDob = self.arrNameTblViewEdit[8]
-            VC.delegate = self
-            self.navigationController?.pushViewController(VC, animated: true)
-        }else {
+//        else if select == 8 {
+//            let VC = self.storyboard?.instantiateViewController(withIdentifier: "DobVC" ) as! DobVC
+//            VC.strDob = self.arrNameTblViewEdit[8]
+//            VC.delegate = self
+//            self.navigationController?.pushViewController(VC, animated: true)
+//        }
+        else {
             
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "BloodGroupVC" ) as! BloodGroupVC
             
@@ -209,15 +210,21 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource{
             //                VC.Screntype = "6"
             //                VC.SelectItemName = self.arrNameTitle[6]
             //            }
+//            else if select == 7 {
+//                VC.Screntype = "7"
+//                VC.SelectItemName = self.arrNameTitle[7]
+//            }
             else if select == 7 {
                 VC.Screntype = "7"
                 VC.SelectItemName = self.arrNameTitle[7]
             }
-            else if select == 9 {
+            else if select == 8 {
+                VC.Screntype = "8"
+                VC.SelectItemName = self.arrNameTitle[8]
+            }else if select == 9 {
                 VC.Screntype = "9"
                 VC.SelectItemName = self.arrNameTitle[9]
-            }
-            else if select == 10 {
+            }else if select == 10 {
                 VC.Screntype = "10"
                 VC.SelectItemName = self.arrNameTitle[10]
             }else if select == 11 {
@@ -229,12 +236,6 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource{
             }else if select == 13 {
                 VC.Screntype = "13"
                 VC.SelectItemName = self.arrNameTitle[13]
-            }else if select == 14 {
-                VC.Screntype = "14"
-                VC.SelectItemName = self.arrNameTitle[14]
-            }else if select == 15 {
-                VC.Screntype = "15"
-                VC.SelectItemName = self.arrNameTitle[15]
             }
             
             VC.delegate = self
@@ -441,7 +442,7 @@ extension EditProfileVC {
                 //for gendr
                 let strUserGender = "\(userSaveData.gender!)"
                 print("strUserGender",strUserGender)
-                self.lblUserNameAge.text = strUserFirstName + "," + strUserAge + ", " + strUserGender
+                self.lblUserNameAge.text = strUserFirstName + "," + strUserAge + "," + strUserGender
                 
                 //for Amboume
                 let strUserAboutMe = "\(userSaveData.aboutMe ?? "")"
@@ -498,24 +499,24 @@ extension EditProfileVC {
                 print("strUserStatus",strUserStatus)
                 
                 //for Gender
-                if strUserGender != "" {
-                    strCount = strCount + 1
-                    self.arrNameTblViewEdit[7] = strUserGender }
+//                if strUserGender != "" {
+//                    strCount = strCount + 1
+//                    self.arrNameTblViewEdit[7] = strUserGender }
                 
                 //for DOB
                 
-                let strUserDOB = "\(userSaveData.birthday ?? "")"
-                if strUserDOB != "" {
-                    strCount = strCount + 1
-                    self.arrNameTblViewEdit[8] = strUserDOB }
-                print("strUserDOB",strUserDOB)
+//                let strUserDOB = "\(userSaveData.birthday ?? "")"
+//                if strUserDOB != "" {
+//                    strCount = strCount + 1
+//                    self.arrNameTblViewEdit[8] = strUserDOB }
+//                print("strUserDOB",strUserDOB)
                 
                 //for BloodGroup
                 
                 let strUserBloodGroup = "\(userSaveData.bloodGroup ?? "")"
                 if strUserBloodGroup != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[9] = strUserBloodGroup }
+                    self.arrNameTblViewEdit[7] = strUserBloodGroup }
                 print("strUserBloodGroup",strUserBloodGroup)
                 //for Living
                 
@@ -557,7 +558,7 @@ extension EditProfileVC {
                 let strUserSkinType = "\(userSaveData.skinType ?? "")"
                 if strUserSkinType != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[10] = strUserSkinType }
+                    self.arrNameTblViewEdit[8] = strUserSkinType }
                 print("strUserSkinType",strUserSkinType)
                 
                 //for Language
@@ -565,7 +566,7 @@ extension EditProfileVC {
                 let strUserLanguage = "\(userSaveData.language ?? "")"
                 if strUserLanguage != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[11] = strUserLanguage}
+                    self.arrNameTblViewEdit[9] = strUserLanguage}
                 print("strUserLanguage",strUserLanguage)
                 
                 //for religion
@@ -573,7 +574,7 @@ extension EditProfileVC {
                 let strUserProfession = "\(userSaveData.profession ?? "")"
                 if strUserProfession != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[12] = strUserProfession }
+                    self.arrNameTblViewEdit[10] = strUserProfession }
                 print("strUserProfession",strUserProfession)
                 
                 //for Profession
@@ -581,7 +582,7 @@ extension EditProfileVC {
                 let strUserReligion = "\(userSaveData.religion ?? "")"
                 if strUserReligion != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[13] = strUserReligion }
+                    self.arrNameTblViewEdit[11] = strUserReligion }
                 print("strUserReligion",strUserReligion)
                 
                 //for education
@@ -589,14 +590,14 @@ extension EditProfileVC {
                 let strUserEducation = "\(userSaveData.education ?? "")"
                 if strUserEducation != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[14] = strUserEducation
+                    self.arrNameTblViewEdit[12] = strUserEducation
                     print("strUserEducation",strUserEducation) }
                 //for sexuality
                 
                 let strUsersexuality = "\(userSaveData.sexuality ?? "")"
                 if strUsersexuality != "" {
                     strCount = strCount + 1
-                    self.arrNameTblViewEdit[15] = strUsersexuality
+                    self.arrNameTblViewEdit[13] = strUsersexuality
                     }
                 
                 let result = Double(strCount) / Double(arrNameTitle.count) * Double(100)
@@ -928,21 +929,21 @@ extension EditProfileVC{
         let url = AppUrl.editProfileInfoURL()
         
         let parameters: [String: Any] = ["fb_id" : "\(Defaults[PDUserDefaults.UserID])",
-                                         "birthday" : self.arrNameTblViewEdit[8] ,
+//                                         "birthday" : self.arrNameTblViewEdit[8] ,
                                          "about_me" : self.txtAbouMe.text! as Any ,
-                                         "gender" : self.arrNameTblViewEdit[7],
+//                                         "gender" : self.arrNameTblViewEdit[7],
                                          "status" : self.arrNameTblViewEdit[1],
                                          "height" : self.arrNameApperance[0] ,
                                          "weight" : self.arrNameApperance[1],
                                          "body_type" : self.arrNameApperance[2],
                                          "eye_color" : self.arrNameApperance[3],
                                          "hair_color" : self.arrNameApperance[4],
-                                         "blood_group" : self.arrNameTblViewEdit[9],
-                                         "skin_type" : self.arrNameTblViewEdit[10],
-                                         "language" : self.arrNameTblViewEdit[11],
-                                         "profession" : self.arrNameTblViewEdit[12],
-                                         "religion" : self.arrNameTblViewEdit[13],
-                                         "education" : self.arrNameTblViewEdit[14],
+                                         "blood_group" : self.arrNameTblViewEdit[7],
+                                         "skin_type" : self.arrNameTblViewEdit[8],
+                                         "language" : self.arrNameTblViewEdit[9],
+                                         "profession" : self.arrNameTblViewEdit[10],
+                                         "religion" : self.arrNameTblViewEdit[11],
+                                         "education" : self.arrNameTblViewEdit[12],
                                          "first_name" : "\(self.userFNameFinal)",
                                          "last_name" : "\(self.userLNameFinal)",
                                          "device" : "ios",
@@ -960,7 +961,7 @@ extension EditProfileVC{
                                          "smoking" :  self.arrNameTblViewEdit[3],
                                          "drinking" : self.arrNameTblViewEdit[4],
                                          "relationship" : self.arrNameTblViewEdit[5],
-                                         "sexuality": self.arrNameTblViewEdit[15]]
+                                         "sexuality": self.arrNameTblViewEdit[13]]
         print("Url_editUserInfoServices_is_here:-" , url)
         print("Param_editUserInfoServices_is_here:-" , parameters)
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in

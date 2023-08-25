@@ -140,7 +140,7 @@ class PhoneNumberVC: UIViewController, CountryPickerViewDataSource,CountryPicker
 
 extension PhoneNumberVC {
     func mobileOth(mobNum: String ) {
-//       Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+       Auth.auth().settings?.isAppVerificationDisabledForTesting = true
          PhoneAuthProvider.provider()
             .verifyPhoneNumber("\(mobNum)", uiDelegate: nil) { verificationID, error in
               if let error = error {

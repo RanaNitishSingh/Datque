@@ -144,38 +144,38 @@ extension ProfileStepVC: UICollectionViewDelegate, UICollectionViewDataSource,UI
         if cell.imgView.image ==  UIImage(named: "ic_describe"){
             cell.ViewSetText.isHidden = false
             cell.tblItem.isHidden = true
-            cell.titleCardView.backgroundColor = UIColor(red: 255/255, green: 89/255, blue: 113/255, alpha: 1)         
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
         }else if cell.imgView.image ==  UIImage(named: "ic_describe2"){
             cell.strFromType = "relationship"
             cell.ViewSetText.isHidden = true
             cell.tblItem.isHidden = false
             cell.arritem = arr_list_relationship
-            cell.titleCardView.backgroundColor = UIColor(red: 233/255, green: 101/255, blue: 64/255, alpha: 1)
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
         }else if cell.imgView.image ==  UIImage(named: "ic_house"){
             cell.ViewSetText.isHidden = true
             cell.tblItem.isHidden = false
             cell.strFromType = "living"
             cell.arritem = arr_list_living
-            cell.titleCardView.backgroundColor = UIColor(red:  3/255, green: 169/255, blue: 244/255, alpha: 1)
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
         }else if cell.imgView.image ==  UIImage(named: "ic_kids"){
             cell.ViewSetText.isHidden = true
             cell.tblItem.isHidden = false
             cell.strFromType = "children"
             cell.arritem = arr_list_children
-            cell.titleCardView.backgroundColor = UIColor(red: 248/255, green: 114/255, blue: 235/255, alpha: 1)
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
         }else if cell.imgView.image ==  UIImage(named: "ic_smoke"){
             cell.ViewSetText.isHidden = true
             cell.tblItem.isHidden = false
             cell.strFromType = "smoke"
             cell.arritem = arr_list_smoke
-            cell.titleCardView.backgroundColor = UIColor(red: 250/255, green: 130/255, blue: 92/255, alpha: 1)
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
         }else if cell.imgView.image ==  UIImage(named: "ic_drink"){
             cell.ViewSetText.isHidden = true
             cell.tblItem.isHidden = false
             cell.strFromType = "drink"
             cell.arritem = arr_list_drink
             cell.tblItem.reloadData()
-            cell.titleCardView.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 136/255, alpha: 1)
+            cell.titleCardView.backgroundColor = UIColor(red: 141/255, green: 42/255, blue: 221/255, alpha: 1)
             self.btnNext.isUserInteractionEnabled = false
         }
         

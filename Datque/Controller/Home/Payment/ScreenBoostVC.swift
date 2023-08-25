@@ -69,6 +69,7 @@ class ScreenBoostVC: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
                 UserDefaults.standard.set(Int(Date.currentTimeStamp + 1800), forKey: "TimeLeftdate")
                 self.totalTime = 1800
                 startOtpTimer()
+                self.navigationController!.popViewController(animated: true)        
                 self.elevateBtn.setTitle("OKEY", for: .normal)
                 self.skipLineLbl.isHidden = true
             }else{

@@ -8,9 +8,21 @@
 import UIKit
 import StoreKit
 import SwiftyStoreKit
+import PassKit
+
 var global = true
 var globalindex =  false
-class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
+class SelectPlaneVC: BaseViewController, UIScrollViewDelegate, PKPaymentAuthorizationViewControllerDelegate{
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+    }
+ 
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     var arrImage = [  #imageLiteral(resourceName: "logo round"), #imageLiteral(resourceName: "power_1New 1") ]
     var arrName = ["See Who Likes you?","Unlimited Elevate"]
@@ -30,6 +42,20 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
     @IBOutlet weak var ViewYear: UIView!
     @IBOutlet weak var ViewQuarter: UIView!
     @IBOutlet weak var ContinueButton : UIButton!
+    
+    
+    var paymentRequest: PKPaymentRequest = {
+            let request = PKPaymentRequest()
+            request.merchantIdentifier = "merchant.com..."
+            request.supportedNetworks = [.visa, .masterCard,.amex,.discover]
+            request.supportedCountries = ["UA"]
+            request.merchantCapabilities = .capability3DS
+            request.countryCode = "UA"
+            request.currencyCode = "UAH"
+            request.paymentSummaryItems = [PKPaymentSummaryItem(label: "App test", amount: 10.99)]
+            return request
+        }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +77,14 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate{
                 IAPHandler.shared.purchaseMyProduct(index: selectIndex)
                 self.purchase(strProductId: selectPlane)
             }
-//            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailVC") as? CardDetailVC
-//            vc?.planType = self.plantype
-//            self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailVC") as? CardDetailVC
+            vc?.planType = self.plantype
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 
     @objc func displayMyAlertMessage(){
-        let dialogMessage = UIAlertController(title: "Alert ", message: " Please Select Any Plan", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Datque ", message: "Please Select Any Plan", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button tapped")
             })

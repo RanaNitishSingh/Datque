@@ -52,7 +52,7 @@ extension BasicInfoVC{
                     if strUserGender == "Male" || strUserGender == "male" || strUserGender == "1" {
                         self.btnMale.setImage(UIImage(named: "radioOn"), for: .normal)
                     } else if strUserGender == "Female" || strUserGender == "female" || strUserGender == "0" {
-                        self.btnFemale.setImage(UIImage(named: "radioOff"), for: .normal)
+                        self.btnFemale.setImage(UIImage(named: "radioOn"), for: .normal)
                     } else {
                         self.btnMale.setImage(UIImage(named: "radioOff"), for: .normal)
                         self.btnFemale.setImage(UIImage(named: "radioOff"), for: .normal)

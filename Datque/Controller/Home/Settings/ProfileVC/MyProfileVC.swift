@@ -25,11 +25,22 @@ class MyProfileVC: UIViewController,UIImagePickerControllerDelegate & UINavigati
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var progressBar: CircularProgressBar!
     
+    @IBOutlet weak var activeLbl: UILabel!
+    @IBOutlet weak var lowHighLbl: UILabel!
     var progress: Double = 40
     var userPurchasedData: Msg?
     override func viewDidLoad() {
         super.viewDidLoad()
         perform(#selector(startUpload), with: nil, afterDelay: 1.0)
+        
+        if self.userPurchasedData?.purchased == "0"{
+            self.lowHighLbl.text = "Very Low"
+            self.activeLbl.text = "Not Activate"
+        }else {
+            self.lowHighLbl.text = "Very High"
+            self.activeLbl.text = "Activate"
+
+        }
     }
     
     //MARK: - Start uploading
@@ -89,17 +100,27 @@ class MyProfileVC: UIViewController,UIImagePickerControllerDelegate & UINavigati
     @IBAction func ActionGoProfileLike(_ sender: Any) {
         
         if Defaults[PDUserDefaults.descYourself] == "" || Defaults[PDUserDefaults.relationship] == "" || Defaults[PDUserDefaults.living] == "" || Defaults[PDUserDefaults.children] == "" || Defaults[PDUserDefaults.smoking] == "" || Defaults[PDUserDefaults.drinking] == "" {
-            let VC = self.storyboard?.instantiateViewController(withIdentifier: "EditProfileVC" ) as! EditProfileVC
+            let VC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileStepVC" ) as! ProfileStepVC
             self.navigationController?.pushViewController(VC, animated: true)
         }else{
-            let VC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileStepVC" ) as! ProfileStepVC
+            let VC = self.storyboard?.instantiateViewController(withIdentifier: "EditProfileVC" ) as! EditProfileVC
             self.navigationController?.pushViewController(VC, animated: true)
         }
     }
     
     @IBAction func ActionKeyPremiumActivate(_ sender: Any) {
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "SelectPlaneVC" ) as! SelectPlaneVC
-        self.navigationController?.pushViewController(VC, animated: true)
+        if self.userPurchasedData?.purchased == "0" {
+             let VC = self.storyboard?.instantiateViewController(withIdentifier: "SelectPlaneVC" ) as! SelectPlaneVC
+             self.navigationController?.pushViewController(VC, animated: true)
+        }else if  self.userPurchasedData?.purchased == "1"{
+            let alert = UIAlertController(title: "Datque", message: "you have already purchased this subscriptions", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+              //  self.present(alert, animated: true, completion: nil)
+                print("you have already purchased this subscriptions")
+
+            }))
+          }
     }
     
     @IBAction func ActionPopularityVeryLow(_ sender: Any) {
@@ -180,7 +201,7 @@ extension MyProfileVC{
         self.view.addSubview(activityIndicator)
 //            Utility.showLoading()
             let storageReference = Storage.storage().reference()
-            let profileImageRef = storageReference.child("User_image/\(Defaults[PDUserDefaults.UserID]).jpg")
+            let profileImageRef = storageReference.child("images/\(Defaults[PDUserDefaults.UserID]).jpg")
             
             let uploadMetaData = StorageMetadata()
             uploadMetaData.contentType = "image/jpeg"
@@ -426,7 +447,7 @@ extension MyProfileVC{
 /*  func uploadImgOnFirebaseStorage(){
       print("upload_Img_On_Firebase_Storage")
       
-      let storageRef = Storage.storage().reference().child("User_image/\(Defaults[PDUserDefaults.UserID]).jpg")
+      let storageRef = Storage.storage().reference().child("images/\(Defaults[PDUserDefaults.UserID]).jpg")
       let compressedImage = self.resizeImage(image: self.imgUserProfile.image!, targetSize: CGSize(width: 550, height: 550))
       
       let imageData = compressedImage!.pngData()! as NSData
