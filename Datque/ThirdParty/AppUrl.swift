@@ -33,6 +33,10 @@ class AppUrl : NSObject {
         return mainDomain+"boostProfile"
     }//http://52.90.40.219/xodating/API//index.php?p=boostProfile
     
+    class func clearChat() -> String {
+        return mainDomain+"clear_chat"
+    }//http://52.90.40.219/xodating/API//index.php?p=boostProfile
+    
     
     class func SignUpURL () -> String {
         return mainDomain+"signup"

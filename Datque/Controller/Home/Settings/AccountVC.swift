@@ -65,11 +65,12 @@ class AccountVC: UIViewController, UIImagePickerControllerDelegate & UINavigatio
     }
     
     @IBAction func ActionDeleteAccount(_ sender: Any) {
-        let alert = UIAlertController(title: "Info" , message: "Are you sure to delete Account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let alert = UIAlertController(title: "Datque" , message: "Are you sure to delete Account?", preferredStyle: UIAlertController.Style.alert)
         let action1 = UIAlertAction(title: "NO", style: UIAlertAction.Style.default) { _ in
             self.dismiss(animated: true, completion: nil)
         }
-        let action2  = UIAlertAction(title: "YES", style: UIAlertAction.Style.cancel) { _ in
+        let action2  = UIAlertAction(title: "YES", style: UIAlertAction.Style.destructive) { _ in
             self.deleteAccount()
         }
         alert.addAction(action1)
@@ -298,7 +299,7 @@ extension AccountVC {
     func uploadFirebaseImage(imageData: Data) {
         Utility.showLoading()
         let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child("User_image/\(Defaults[PDUserDefaults.UserID]).jpg")
+        let profileImageRef = storageReference.child("images/\(Defaults[PDUserDefaults.UserID]).jpg")
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"

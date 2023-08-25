@@ -65,28 +65,29 @@ class BloodGroupVC: UIViewController {
             self.arrMain = arr_list_relationship
             self.lblHaderName.text = "Relationship"
         }
+//        else if Screntype == "7" {
+//            self.arrMain = arrGender
+//            self.lblHaderName.text = "Gender"
+//        }
         else if Screntype == "7" {
-            self.arrMain = arrGender
-            self.lblHaderName.text = "Gender"
-        }else if Screntype == "9" {
             self.arrMain = arrBloodGroup
             self.lblHaderName.text = "Blood Group"
-        }else if Screntype == "10" {
+        }else if Screntype == "8" {
             self.arrMain = arrSkinType
             self.lblHaderName.text = "Skin Type"
-        }else if Screntype == "11" {
+        }else if Screntype == "9" {
             self.arrMain = arrLanguage
             self.lblHaderName.text = "Language"
-        }else if Screntype == "12" {
+        }else if Screntype == "10" {
             self.arrMain = arrProfession
             self.lblHaderName.text = "Profession"
-        }else if Screntype == "13" {
+        }else if Screntype == "11" {
             self.arrMain = arrReligion
             self.lblHaderName.text = "Religion"
-        }else if Screntype == "14" {
+        }else if Screntype == "12" {
             self.arrMain = arrEducation
             self.lblHaderName.text = "Education"
-        }else if Screntype == "15" {
+        }else if Screntype == "13" {
             self.arrMain = arr_list_sexuality
             self.lblHaderName.text = "Sexuality"
         }
