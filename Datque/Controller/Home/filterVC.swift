@@ -167,26 +167,26 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
     @IBAction func ActionBack(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }
-//    @objc func displayMyAlertMessage(){
-//
-//        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
-//        // Create OK button with action handler
-//        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
-//            self.navigationController?.pushViewController(vc, animated: false)
-//            NavigationBool = true
-//        })
-//        //Add OK and Cancel button to an Alert object
-//        dialogMessage.addAction(ok)
-//        // Present alert message to user
-//        self.present(dialogMessage, animated: true, completion: nil)
-//    }
+    @objc func displayMyAlertMessage(){
+
+        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
+            self.navigationController?.pushViewController(vc, animated: false)
+            NavigationBool = true
+        })
+        //Add OK and Cancel button to an Alert object
+        dialogMessage.addAction(ok)
+        // Present alert message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
     @IBAction func ActionSave(_ sender: Any) {
         print("hello")
         let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
         let currentLogin = UserDefaults.standard.bool(forKey: "current")
-       // let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
+        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
         
         if currentLogin ==  true{
             
@@ -224,11 +224,11 @@ class filterVC: UIViewController, GMSAutocompleteViewControllerDelegate {
             self.navigationController?.popViewController(animated: true)
         }
         }
-//        if ThreeDays ==  true{
-//
-//        displayMyAlertMessage()
-//
-//        }
+        if ThreeDays ==  true{
+
+        displayMyAlertMessage()
+
+        }
         if PaymentSuccessed ==  true{
 
 

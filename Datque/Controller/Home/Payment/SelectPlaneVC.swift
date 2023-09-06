@@ -9,6 +9,11 @@ import UIKit
 import StoreKit
 import SwiftyStoreKit
 import PassKit
+import FirebaseAuth
+import Toast_Swift
+import Alamofire
+import PKHUD
+import SwiftyJSON
 
 var global = true
 var globalindex =  false
@@ -32,9 +37,9 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate, PKPaymentAuthoriz
     var selectIndex = Int()
     var plantype = Int()
     var selectValidation = ""
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatqueAnnual"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "Datquehalfyearly"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatqueyMonth"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatQueoneyear"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "DatQuesixmonth"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatQueonemonth"
     
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblValidity: UILabel!
@@ -48,10 +53,10 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate, PKPaymentAuthoriz
             let request = PKPaymentRequest()
             request.merchantIdentifier = "merchant.com..."
             request.supportedNetworks = [.visa, .masterCard,.amex,.discover]
-            request.supportedCountries = ["UA"]
+            request.supportedCountries = ["IN"]
             request.merchantCapabilities = .capability3DS
-            request.countryCode = "UA"
-            request.currencyCode = "UAH"
+            request.countryCode = "IN"
+            request.currencyCode = "INR"
             request.paymentSummaryItems = [PKPaymentSummaryItem(label: "App test", amount: 10.99)]
             return request
         }()
@@ -77,9 +82,9 @@ class SelectPlaneVC: BaseViewController, UIScrollViewDelegate, PKPaymentAuthoriz
                 IAPHandler.shared.purchaseMyProduct(index: selectIndex)
                 self.purchase(strProductId: selectPlane)
             }
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailVC") as? CardDetailVC
-            vc?.planType = self.plantype
-            self.navigationController?.pushViewController(vc!, animated: true)
+//            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailVC") as? CardDetailVC
+//            vc?.planType = self.plantype
+//            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 
@@ -180,7 +185,7 @@ extension SelectPlaneVC {
     @IBAction func MonthlyPurchasesPressed(_ sender: Any) {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY
-            selectIndex = 1
+            selectIndex = 0
             plantype = 1
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewMonths.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
@@ -194,7 +199,7 @@ extension SelectPlaneVC {
     @IBAction func SemiAnnualPurchasesPressed(_ sender: Any) {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER
-            selectIndex = 0
+            selectIndex = 2
             plantype = 6
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewQuarter.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
@@ -208,7 +213,7 @@ extension SelectPlaneVC {
     @IBAction func YearlyPurchasesPressed(_ sender: Any) {
         if global == true{
             selectPlane = NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL
-            selectIndex = 2
+            selectIndex = 1
             plantype = 12
             UserDefaults.standard.set(selectIndex, forKey: "Index")
             self.ViewYear.backgroundColor = #colorLiteral(red: 0.6276120543, green: 0.1230646446, blue: 0.9404756427, alpha: 1)
@@ -240,17 +245,20 @@ extension SelectPlaneVC {
                     Defaults[PDUserDefaults.isMonthlyPur] = true
                     Defaults[PDUserDefaults.isMonthlyPremium] = true
                     Defaults[PDUserDefaults.isPremium] = true
+                    self.updatePurchaseStatusService()
                     //self.AddSubscriptionService(subsType : "Monthly")
                 }
                 if purchase.productId == self.NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL{
                     Defaults[PDUserDefaults.isYearlyPur] = true
                     Defaults[PDUserDefaults.isYearlyPremium] = true
                     Defaults[PDUserDefaults.isPremium] = true
+                    self.updatePurchaseStatusService()
                     // self.AddSubscriptionService(subsType : "Annual")
                 }else if purchase.productId == self.NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER{
                     Defaults[PDUserDefaults.isSemiAnnualPur] = true
                     Defaults[PDUserDefaults.isSemiAnnualPremium] = true
                     Defaults[PDUserDefaults.isPremium] = true
+                    self.updatePurchaseStatusService()
                     // self.AddSubscriptionService(subsType : "Semi annual")
                 }
                 
@@ -273,6 +281,60 @@ extension SelectPlaneVC {
             print("Price: \(product)")
         }
     }
+    
+    func updatePurchaseStatusService() {
+            PKHUD.sharedHUD.contentView = PKHUDProgressView()
+            PKHUD.sharedHUD.show()
+            
+            let url = AppUrl.update_purchase_StatusURL()
+            
+            let parameters: [String: Any] = ["fb_id" : Defaults[PDUserDefaults.UserID],
+                                             "purchased":"1",
+                                             "device" : "ios",
+                                             "plan_type": plantype
+                                             ]
+            
+            print("Url_updatePurchaseStatusService_is_here:-" , url)
+            print("Param_updatePurchaseStatusService_is_here:-" , parameters)
+            
+            AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+                PKHUD.sharedHUD.hide()
+                print("Response",response)
+                if response.value != nil {
+                    let responseJson = JSON(response.value!)
+                    print("Code is",responseJson["code"])
+                                   
+                    if responseJson["code"] == "202" {
+                        if let responseData = response.data {
+                            do {
+                                let decodeJSON = JSONDecoder()
+                                let dicData = try decodeJSON.decode(UpdatePurchaseStatusData.self, from: responseData)
+                                
+                                //print("dicData = \(String(describing: dicData.msg?.first))")
+    //                            if (dicData.msg.count)! > 0 {
+    //                                let objProfileRes = (dicData.msg!.first)!
+                                    
+                                  print("updatePurchaseStatusService_objProfileRes_IS_here",dicData.msg)
+                                    self.view.makeToast("Payment Done")
+                                    
+                                    //Instanciate to home screen
+                                    let VC = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC" ) as! HomeTabBarVC
+                                    self.navigationController?.pushViewController(VC, animated: true)
+                                    
+    //                            }
+                                
+                            } catch {
+                                print("Something went wrong in json.")
+                            }
+                        }
+                    }else if responseJson["code"] == "201" {
+                        self.view.makeToast("Payment Fail")
+                    }else{
+                        self.view.makeToast("Payment Fail")
+                    }
+                }
+            }
+        }
 }
 
 extension UIViewController {

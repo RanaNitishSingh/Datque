@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2D1678E943B6BC0D642AE4B9 /* Pods_Datque.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074132E359E4922A8D1D1540 /* Pods_Datque.framework */; };
+		374C672A2AA840C20093CAF8 /* storyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374C67292AA840C20093CAF8 /* storyBoard.swift */; };
+		374C672C2AA8413C0093CAF8 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374C672B2AA8413C0093CAF8 /* common.swift */; };
+		37618ACE2A9EFE6400204F3D /* imageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37618ACD2A9EFE6400204F3D /* imageUpload.swift */; };
+		37618AD02A9F0C0700204F3D /* videoUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37618ACF2A9F0C0600204F3D /* videoUpload.swift */; };
+		378A445A2AA0AD3500EF475D /* userNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A44592AA0AD3500EF475D /* userNameVC.swift */; };
+		378A445C2AA0AD9200EF475D /* userNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A445B2AA0AD9200EF475D /* userNameTableViewCell.swift */; };
+		37C36F812AA5AEC3003F4551 /* searchUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C36F802AA5AEC3003F4551 /* searchUserName.swift */; };
+		37E138692AA1B4A8000709E3 /* userNameExist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E138682AA1B4A8000709E3 /* userNameExist.swift */; };
 		37EAC1052A80B29C00E9702A /* DatqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EAC1042A80B29C00E9702A /* DatqueTests.swift */; };
 		37EAC10F2A80B29C00E9702A /* DatqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EAC10E2A80B29C00E9702A /* DatqueUITests.swift */; };
 		37EAC1112A80B29C00E9702A /* DatqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EAC1102A80B29C00E9702A /* DatqueUITestsLaunchTests.swift */; };
@@ -145,6 +153,14 @@
 
 /* Begin PBXFileReference section */
 		074132E359E4922A8D1D1540 /* Pods_Datque.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Datque.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		374C67292AA840C20093CAF8 /* storyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storyBoard.swift; sourceTree = "<group>"; };
+		374C672B2AA8413C0093CAF8 /* common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
+		37618ACD2A9EFE6400204F3D /* imageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageUpload.swift; sourceTree = "<group>"; };
+		37618ACF2A9F0C0600204F3D /* videoUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoUpload.swift; sourceTree = "<group>"; };
+		378A44592AA0AD3500EF475D /* userNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userNameVC.swift; sourceTree = "<group>"; };
+		378A445B2AA0AD9200EF475D /* userNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userNameTableViewCell.swift; sourceTree = "<group>"; };
+		37C36F802AA5AEC3003F4551 /* searchUserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserName.swift; sourceTree = "<group>"; };
+		37E138682AA1B4A8000709E3 /* userNameExist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userNameExist.swift; sourceTree = "<group>"; };
 		37EAC0EA2A80B29A00E9702A /* Datque.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Datque.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EAC1002A80B29C00E9702A /* DatqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EAC1042A80B29C00E9702A /* DatqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatqueTests.swift; sourceTree = "<group>"; };
@@ -387,6 +403,7 @@
 				6B8EA4172A84F91E004C2A83 /* TableViewCell.swift */,
 				6B8EA4192A84F920004C2A83 /* userTableViewCell.swift */,
 				6B8EA4182A84F91F004C2A83 /* userTableViewCell.xib */,
+				378A445B2AA0AD9200EF475D /* userNameTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -416,6 +433,7 @@
 				6B8EA4242A84F96F004C2A83 /* NotificationUserDetailVC.swift */,
 				6B8EA4232A84F96E004C2A83 /* NotificationVC.swift */,
 				6B6074E52A863DF100362AE1 /* VideoThumbnailView.swift */,
+				374C672B2AA8413C0093CAF8 /* common.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -438,6 +456,7 @@
 				6B8EA43D2A84F9DC004C2A83 /* PhoneNumberVC.swift */,
 				6B8EA4412A84F9E1004C2A83 /* SpleshVC.swift */,
 				6B8EA43E2A84F9DD004C2A83 /* VerifyPhoneOTPVC.swift */,
+				378A44592AA0AD3500EF475D /* userNameVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -446,6 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				6B8EA4492A84F9ED004C2A83 /* userBlockList.swift */,
+				37E138682AA1B4A8000709E3 /* userNameExist.swift */,
+				37C36F802AA5AEC3003F4551 /* searchUserName.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -531,6 +552,8 @@
 				6B8EA5152A8519A0004C2A83 /* SettingsVC.swift */,
 				6B8EA4C22A84FCD4004C2A83 /* ProfileLikeVC.swift */,
 				6B8EA42C2A84F976004C2A83 /* NearProfileVC.swift */,
+				37618ACD2A9EFE6400204F3D /* imageUpload.swift */,
+				374C67292AA840C20093CAF8 /* storyBoard.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -608,6 +631,7 @@
 				6B8EA5032A8518F6004C2A83 /* EditProfileVC.swift */,
 				6B8EA5022A8518F5004C2A83 /* MyProfileVC.swift */,
 				6B8EA50A2A851903004C2A83 /* ProfileStepVC.swift */,
+				37618ACF2A9F0C0600204F3D /* videoUpload.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -849,12 +873,14 @@
 				6B8EA4F32A84FD88004C2A83 /* VideoView.swift in Sources */,
 				6B8EA49B2A84FC2D004C2A83 /* CurvedHeaderGradient.swift in Sources */,
 				6B8EA41B2A84F920004C2A83 /* TableViewCell.swift in Sources */,
+				37618AD02A9F0C0700204F3D /* videoUpload.swift in Sources */,
 				6B8EA4A62A84FC2D004C2A83 /* UILabelX.swift in Sources */,
 				6B8EA4F62A84FD88004C2A83 /* CoomonResponseModel.swift in Sources */,
 				6B8EA40C2A84F83E004C2A83 /* SceneDelegate.swift in Sources */,
 				6B8EA4B92A84FCB5004C2A83 /* ScreenBoostVC.swift in Sources */,
 				6B8EA4482A84F9E1004C2A83 /* SpleshVC.swift in Sources */,
 				6B8EA4312A84F976004C2A83 /* HomeTabBarVC.swift in Sources */,
+				37C36F812AA5AEC3003F4551 /* searchUserName.swift in Sources */,
 				6B8EA47B2A84FBE3004C2A83 /* LocationManager.swift in Sources */,
 				6B8EA4A82A84FC2D004C2A83 /* MyExtensions.swift in Sources */,
 				6B8EA4D12A84FD1D004C2A83 /* VoiceChatViewController.swift in Sources */,
@@ -876,11 +902,13 @@
 				6B8EA5092A8518F8004C2A83 /* AppearanceVC.swift in Sources */,
 				6B8EA4452A84F9E1004C2A83 /* PhoneNumberVC.swift in Sources */,
 				6B8EA49A2A84FC2D004C2A83 /* UITextFieldX.swift in Sources */,
+				37618ACE2A9EFE6400204F3D /* imageUpload.swift in Sources */,
 				6B8EA4A22A84FC2D004C2A83 /* UIImageViewX.swift in Sources */,
 				6B6074E62A863DF100362AE1 /* VideoThumbnailView.swift in Sources */,
 				6B8EA42F2A84F976004C2A83 /* HomeVC.swift in Sources */,
 				6B8EA4962A84FC2D004C2A83 /* CurvedHeader.swift in Sources */,
 				6B8EA4F52A84FD88004C2A83 /* DimensionCell.swift in Sources */,
+				37E138692AA1B4A8000709E3 /* userNameExist.swift in Sources */,
 				6B8EA4BD2A84FCB5004C2A83 /* NitIAPHandler.swift in Sources */,
 				6B8EA4E32A84FD6F004C2A83 /* AGEVideoConstraints.swift in Sources */,
 				6B8EA49E2A84FC2D004C2A83 /* RangeSlider.swift in Sources */,
@@ -892,10 +920,13 @@
 				6B8EA50B2A851903004C2A83 /* ProfileStepVC.swift in Sources */,
 				6B8EA4782A84FBE3004C2A83 /* PDUserDefaults.swift in Sources */,
 				6B8EA4D92A84FD39004C2A83 /* LiveRoomViewController.swift in Sources */,
+				374C672A2AA840C20093CAF8 /* storyBoard.swift in Sources */,
+				378A445A2AA0AD3500EF475D /* userNameVC.swift in Sources */,
 				6B8EA41A2A84F920004C2A83 /* CollectionViewCell.swift in Sources */,
 				6B8EA49C2A84FC2D004C2A83 /* UIViewXRadialGradient.swift in Sources */,
 				6B8EA47F2A84FBE3004C2A83 /* Utility.swift in Sources */,
 				6B8EA4D22A84FD1D004C2A83 /* ReceiveCallVC.swift in Sources */,
+				374C672C2AA8413C0093CAF8 /* common.swift in Sources */,
 				6B8EA41F2A84F939004C2A83 /* webViewController.swift in Sources */,
 				6B8EA4992A84FC2D004C2A83 /* UIRadioWaveAnimationView.swift in Sources */,
 				6B6074E32A86026B00362AE1 /* ChatBubbleData.swift in Sources */,
@@ -915,6 +946,7 @@
 				6B8EA4462A84F9E1004C2A83 /* VerifyPhoneOTPVC.swift in Sources */,
 				6B6074E22A86026B00362AE1 /* ChatBubble.swift in Sources */,
 				6B8EA5112A851918004C2A83 /* ProfileCell.swift in Sources */,
+				378A445C2AA0AD9200EF475D /* userNameTableViewCell.swift in Sources */,
 				6B8EA5082A8518F8004C2A83 /* BloodGroupVC.swift in Sources */,
 				6B8EA4642A84FB57004C2A83 /* SwipeUser.swift in Sources */,
 				6B8EA5062A8518F8004C2A83 /* MyProfileVC.swift in Sources */,
@@ -1102,7 +1134,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Datque/Datque.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YFW8984WKD;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1147,7 +1179,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Datque/Datque.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YFW8984WKD;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;

@@ -29,6 +29,14 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
     
     var userFNameFinal = ""
     var userLNameFinal = ""
+    var match_api_run = ""
+    var UserId = ""
+    var UserName = ""
+    var UserImg = ""
+    var ReceiverID = ""
+    var ReceiverName = ""
+    var ReceiverImg = ""
+    var ReceiverFirebaseTokn = ""
     
     @IBOutlet weak var CollectionViewEditProfile: UICollectionView!
     var arrImgEditProfile: [String] = []
@@ -41,7 +49,7 @@ class EditProfileVC: UIViewController, GoToBackDelegate, GoToBackAppearanceDeleg
     @IBOutlet weak var tblviewEditProfile: UITableView!
     var arrNameTitle = ["Living","Status","Children","Smoking","Drinking","Relationship","Appearance","Blood Group","Skin Type","Language","Profession","Religion","Education","Sexuality"]
     var arrNameTblViewEdit = ["","","","","","","","","","","","","","","",""]
-    var arrImgTblViewEdit = [  #imageLiteral(resourceName: "home 1") , #imageLiteral(resourceName: "persons.png"),  #imageLiteral(resourceName: "baby.png"), #imageLiteral(resourceName: "smoke.png"), #imageLiteral(resourceName: "drink.png"), #imageLiteral(resourceName: "relation.png"), #imageLiteral(resourceName: "persons.png"), #imageLiteral(resourceName: "male"), #imageLiteral(resourceName: "MAsk"), #imageLiteral(resourceName: "blood"), #imageLiteral(resourceName: "group-face"), #imageLiteral(resourceName: "mdi_spoken-language.png"), #imageLiteral(resourceName: "mingcute_suitcase-2-fill.png"), #imageLiteral(resourceName: "religion 1"), #imageLiteral(resourceName: "study.png") ,  #imageLiteral(resourceName: "male")]
+    var arrImgTblViewEdit = [  #imageLiteral(resourceName: "home 1") , #imageLiteral(resourceName: "persons.png"),  #imageLiteral(resourceName: "baby.png"), #imageLiteral(resourceName: "smoke.png"), #imageLiteral(resourceName: "drink.png"), #imageLiteral(resourceName: "relation.png"), #imageLiteral(resourceName: "persons.png"), #imageLiteral(resourceName: "blood"), #imageLiteral(resourceName: "group-face"), #imageLiteral(resourceName: "mdi_spoken-language.png"), #imageLiteral(resourceName: "mingcute_suitcase-2-fill.png"), #imageLiteral(resourceName: "religion 1"), #imageLiteral(resourceName: "study.png") ,  #imageLiteral(resourceName: "male")]
     var arrNameApperance = ["","","","",""]
     var strCount = 0
     override func viewDidLoad() {
@@ -730,13 +738,259 @@ extension EditProfileVC {
 //MARK: - Extension for upload image on firebase storage
 extension EditProfileVC{
     
+    func uploadImages(imageData: Data) {
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.upload_mediaURL()
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "file_upload", fileName: "image.jpg", mimeType: "image/jpeg")
+                // You can also append other fields like parameters here if needed
+            },
+            to: url,
+            method: .post,
+            headers: nil
+        )
+        .responseDecodable(of: ImageUpload.self) { response in
+            PKHUD.sharedHUD.hide()
+            switch response.result {
+            case .success(let value):
+                print("Code:", value.code)
+                print("Message:", value.msg)
+                // if let data = value.data {
+                print("Image URL:", value.data ?? "")
+                
+                self.userUploadImages(Img: url)
+            case .failure(let error):
+                print("Error:", error)
+            }
+        }
+    }
+    
+    
+    
+    
+    func sendMessageOnFirebase(message: String, userID: String,userName: String,userImg: String, receiverId: String, receiverName: String, receiverImg: String, timestamp: String, picUrl: String, type: String){
+        let ref = Database.database().reference()
+        let childCreateChatSender = ref.child("chat").child("\(userID)" + "-" + "\(receiverId)")
+        let childCreateChatRecever = ref.child("chat").child("\(receiverId)" + "-" + "\(userID)")
+        
+        let  referencekey = ref.child("chat").child("\(userID)" + "-" + "\(receiverId)").childByAutoId().key
+        // print("referencekey_is_here",referencekey)
+        
+        let values = ["chat_id" : "\(referencekey!)",
+                      "lat" : "",
+                      "long" : "",
+                      "pic_url" : "\(picUrl)",
+                      "rec_img" : "\(receiverImg)",
+                      "receiver_id" : "\(receiverId)",
+                      "sender_id" : "\(userID)",
+                      "sender_name" : "\(userName)",
+                      "status" : "0",
+                      "text" : "\(message)",
+                      "time" : "",
+                      "timestamp" : "\(timestamp)",
+                      "type" : "\(type)"]
+        
+        childCreateChatSender.child("\(referencekey!)").updateChildValues(values) { (err, reference) in
+            // handle errors or anything related to completion block
+            if err == nil {
+                //firebase inbox folder
+                self.sendInboxFirebaseMessage(message: message, userID: userID, userName: userName, userImg: userImg, receiverId: receiverId, receiverName: receiverName, receiverImg: receiverImg, timestamp: timestamp, picUrl: picUrl, type: type)
+            }
+        }
+        childCreateChatRecever.child("\(referencekey!)").updateChildValues(values) { (err, reference) in
+            // handle errors or anything related to completion block
+            if err == nil {
+                
+            }
+        }
+    }
+    func sendInboxFirebaseMessage(message: String, userID: String,userName: String,userImg: String, receiverId: String, receiverName: String, receiverImg: String, timestamp: String, picUrl: String, type: String){
+        
+        var msg:String = ""
+        
+        if type == "text" {
+            msg = message
+        }else if type == "image" {
+            msg = "Send an image"
+        }else if type == "gif" {
+            msg = "Send an Gif"
+        }else if type == "video" {
+            msg = "Send an video"
+        }
+        
+        let ref = Database.database().reference()
+        let childInboxSender = ref.child("Inbox").child("\(receiverId)").child("\(userID)")
+        let childInboxRecever = ref.child("Inbox").child("\(userID)").child("\(receiverId)")
+        
+        let valuesSender = ["block" : "0",
+                            "date" : "\(timestamp)",
+                            "like" : "0",
+                            "msg" : "\(msg)",
+                            "name" : "\(userName)",
+                            "pic" : "\(userImg)",
+                            "read" : "0",
+                            "rid" : "\(userID)",
+                            "sort" : "",
+                            "status" : "0",
+                            "timestamp" : "\(timestamp)"]
+        
+        childInboxSender.updateChildValues(valuesSender) { (err, reference) in
+            // handle errors or anything related to completion block
+            if err == nil {
+                //API Call for Push Notification
+                self.sendPushNotification(message: message, userID: userID, userName: userName, userImg: userImg, receiverId: receiverId, receiverName: receiverName, receiverImg: receiverImg, timestamp: timestamp, picUrl: picUrl, type: type)
+            }
+        }
+        
+        let valuesRecever = ["block" : "0",
+                             "date" : "\(timestamp)",
+                             "like" : "0",
+                             "msg" : "\(msg)",
+                             "name" : "\(receiverName)",
+                             "pic" : "\(receiverImg)",
+                             "read" : "0",
+                             "rid" : "\(receiverId)",
+                             "sort" : "",
+                             "status" : "1",
+                             "timestamp" : "\(timestamp)"]
+        
+        childInboxRecever.updateChildValues(valuesRecever) { (err, reference) in
+            // handle errors or anything related to completion block
+            if err == nil {
+                //reload chat
+            }
+        }
+        
+    }
+    func sendPushNotification(message: String, userID: String,userName: String,userImg: String, receiverId: String, receiverName: String, receiverImg: String, timestamp: String, picUrl: String, type: String){
+        print("sendPushNotification")
+        
+        var msg:String = ""
+        if type == "text" {
+            msg = message
+        }else if type == "image" {
+            msg = "Send an image"
+        }else if type == "gif" {
+            msg = "Send an Gif"
+        }else if type == "video" {
+            msg = "Send an video"
+        }
+        
+        let url = AppUrl.sendPushNotificationURL()
+        
+        let parameters: [String: Any] = ["title" : "\(userName)" ,
+                                         "message" : "\(msg)",
+                                         "icon" : "\(userImg)" ,
+                                         "tokon" : "\(self.ReceiverFirebaseTokn)" ,
+                                         "senderid" : "\(userID) " ,
+                                         "receiverid" : "\(receiverId)" ,
+                                         "action_type" : "message",
+                                         "device" : "ios"]
+        
+        print("Url_sendPushNotification_is_here:-" , url)
+        print("Param_sendPushNotification_is_here:-" , parameters)
+        
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default).responseJSON { (response) in
+            //  PKHUD.sharedHUD.hide()
+            print("Response",response)
+            if response.data != nil {
+                
+                //update:- API updateFromFirbaseServices call
+                self.updateFromFirbaseServices()
+                
+                let responseJson = JSON(response.value!)
+                print("Code_is_sendPushNotification",responseJson["success"])
+                if responseJson["success"] == 1 {
+                    if let responseData = response.data {
+                        do {
+                            
+                            print("API Run Push Notification successfully")
+                            let decodeJSON = JSONDecoder()
+                            let dicData = try decodeJSON.decode(GetSendPushNotificationModel.self, from: responseData)
+                            
+                            self.updateFromFirbaseServices()
+                            
+                            if dicData.success == 1 {
+                                print("Push Notification success_true = ",dicData.success!)
+                                //  //self.updateFromFirbaseServices()
+                            }else{
+                                print("Push Notification success_false = ",dicData.success!)
+                                //  // self.updateFromFirbaseServices()
+                            }
+                            
+                        } catch {
+                            print("Something went wrong in json.")
+                        }
+                    }
+                }else if responseJson["success"] == 0 {
+                    print("Something went wrong error code 201")
+                }else{
+                    print("Something went wrong in json")
+                }
+            }
+        }
+        
+    }
+    func updateFromFirbaseServices(){
+        print("updateFromFirbaseServices")
+        
+        let url = AppUrl.updateFromFirebaseURL()
+        let parameters: [String: Any] = ["" : ""]
+        
+        print("Url_updateFromFirbaseServices_is_here:-" , url)
+        print("Param_updateFromFirbaseServices_is_here:-" , parameters)
+        
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            print("Response",response)
+            print("updateFromFirbaseServices_is_Done")
+            
+            self.match_api_run = "0"
+            
+            
+        }
+    }
+    
+    func callFirstChat(message: String, userID: String, userName: String, userImg: String, receiverId: String, receiverImg: String, receiverName: String, timestamp: String, picUrl: String, type: String){
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        let url = AppUrl.firstChatURL()
+        
+        let parameters: [String: Any] = ["fb_id": userID,
+                                         "effected_id": receiverId,
+                                         "device" : "ios"]
+        print("Url_firstChatURL_is_here:-" , url)
+        print("Param_firstChatURL_is_here:-" , parameters)
+        
+        AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
+            PKHUD.sharedHUD.hide()
+            //   print("Response",response)
+            if response.value != nil {
+                let responseJson = JSON(response.value!)
+                print("Code_is_firstChatURL",responseJson["code"])
+                
+                if responseJson["code"] == "200" {
+                    
+                    // call firebase API to store data on firebase
+                    self.sendMessageOnFirebase(message: message, userID: userID, userName: userName, userImg: userImg, receiverId: receiverId, receiverName: receiverName, receiverImg: receiverImg, timestamp: timestamp, picUrl: picUrl, type: type)
+                    
+                }else if responseJson["code"] == "201" {
+                    print("Something went wrong error code 201")
+                }else if responseJson["code"] == "202"{
+                    print("Something went wrong error code 202")
+                }
+            }
+        }
+    }
+    
     func uploadFirebaseImage(imageData: Data)
     {
-                let activityIndicator = UIActivityIndicatorView.init(style: .gray)
-                activityIndicator.startAnimating()
-                activityIndicator.center = self.view.center
-                self.view.addSubview(activityIndicator)
-//        Utility.showLoading()
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child("images/\(UUID().uuidString)")
         
@@ -744,9 +998,7 @@ extension EditProfileVC{
         uploadMetaData.contentType = "image/jpeg"
         
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
-           
-                        activityIndicator.stopAnimating()
-                        activityIndicator.removeFromSuperview()
+            PKHUD.sharedHUD.hide()
             
             if error != nil
             {
@@ -764,6 +1016,7 @@ extension EditProfileVC{
             }
         }
     }
+    
     func uploadVideoTofirebase(file: URL) {
         Utility.showLoading()
 //        let activityIndicator = UIActivityIndicatorView.init(style: .gray)

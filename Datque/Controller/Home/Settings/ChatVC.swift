@@ -31,11 +31,11 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     @IBOutlet weak var btnBlock: UIButton!
     @IBOutlet weak var btnReport: UIButton!
     {
-            didSet {
-                btnReport.setTitleColor(UIColor.init(white: 1, alpha: 0.3), for: .disabled)
-                btnReport.setTitleColor(UIColor.init(white: 1, alpha: 1), for: .normal)
-            }
+        didSet {
+            btnReport.setTitleColor(UIColor.init(white: 1, alpha: 0.3), for: .disabled)
+            btnReport.setTitleColor(UIColor.init(white: 1, alpha: 1), for: .normal)
         }
+    }
     @IBOutlet weak var ImgTik: UIImageView!
     @IBOutlet weak var lblReceiverName: UILabel!
     @IBOutlet weak var imgReceiverImg: UIImageViewX!
@@ -59,7 +59,7 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     var strLastMsgId = ""
     var timer = Timer()
     var videoURL : NSURL?
-
+    
     func didTapInfoButton(data: String) {
         print("data = \(data)")
     }
@@ -82,10 +82,104 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     
     let giphy = GiphyViewController()
     let emoji = GiphyViewController()
+    var isFrom = ""
+    var notificationSenderID = ""
+    var notificationRecieverID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if isFrom == "messageNotification"{
+           notificationSenderID = notificationData?["senderid"] as? String ?? ""
+            let categoryImage = notificationData?["icon"] as? String ?? ""
+            notificationRecieverID = notificationData?["receiverid"] as? String ?? ""
+            let latitude = notificationData?["title"] as? String ?? ""
+            
+            self.is_user_chat_blocked(receiverId: notificationRecieverID)
+            //for gif view
+            self.viewGif()
+            self.viewEmoji()
+            
+            //for giphy Gif
+            giphy.delegate = self
+            emoji.delegate = self
+            
+            //set user if self fb_if(firebaseid)
+            self.UserId = Defaults[PDUserDefaults.UserID]
+            
+            //for get default sender info
+            self.getSenderUserDetails()
+            
+            //for recever firebase token
+            self.detailGetFirebase(receiverId: "\(notificationRecieverID)")
+            
+            //show receiver image and name
+            self.showReceiverNameAndImg(receiverName: "\(ReceiverName)",receiverImg: "\(ReceiverImg)" )
+            
+            //call API for get receiverInfo (get_user_info_detail)
+            self.getReceiverInfo(receiverId: "\(notificationRecieverID)")
+            
+            //Call all services
+            self.CallAllServices()
+            
+            //call API get chat data (real time)
+            self.getChatData1()
+            
+            // Do any additional setup after loading the view.
+            print("ChatVC")
+            
+            self.txtMessage.text = "Enter Message"
+            self.txtMessage.textColor = UIColor.lightGray
+            
+            self.messageCointainerScroll.contentSize = CGSize(width: messageCointainerScroll.frame.width, height: lastChatBubbleY + internalPadding)
+            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            
+            btnReport.isEnabled = false
+        }else{
+            self.is_user_chat_blocked(receiverId: ReceiverID)
+            //for gif view
+            self.viewGif()
+            self.viewEmoji()
+            
+            //for giphy Gif
+            giphy.delegate = self
+            emoji.delegate = self
+            
+            //set user if self fb_if(firebaseid)
+            self.UserId = Defaults[PDUserDefaults.UserID]
+            
+            //for get default sender info
+            self.getSenderUserDetails()
+            
+            //for recever firebase token
+            self.detailGetFirebase(receiverId: "\(ReceiverID)")
+            
+            //show receiver image and name
+            self.showReceiverNameAndImg(receiverName: "\(ReceiverName)",receiverImg: "\(ReceiverImg)" )
+            
+            //call API for get receiverInfo (get_user_info_detail)
+            self.getReceiverInfo(receiverId: "\(ReceiverID)")
+            
+            //Call all services
+            self.CallAllServices()
+            
+            //call API get chat data (real time)
+            self.getChatData1()
+            
+            // Do any additional setup after loading the view.
+            print("ChatVC")
+            
+            self.txtMessage.text = "Enter Message"
+            self.txtMessage.textColor = UIColor.lightGray
+            
+            self.messageCointainerScroll.contentSize = CGSize(width: messageCointainerScroll.frame.width, height: lastChatBubbleY + internalPadding)
+            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            
+            btnReport.isEnabled = false
+        }
+    }
+    
+    func loadContent(){
         self.is_user_chat_blocked(receiverId: ReceiverID)
         //for gif view
         self.viewGif()
@@ -118,14 +212,14 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
         
         // Do any additional setup after loading the view.
         print("ChatVC")
-                
+        
         self.txtMessage.text = "Enter Message"
         self.txtMessage.textColor = UIColor.lightGray
         
         self.messageCointainerScroll.contentSize = CGSize(width: messageCointainerScroll.frame.width, height: lastChatBubbleY + internalPadding)
         self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-
-        btnReport.isEnabled = false           
+        
+        btnReport.isEnabled = false
     }
     
     @objc func timerAction() {
@@ -142,7 +236,7 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
             self.receiverIsBlockorNot(userID: "\(Defaults[PDUserDefaults.UserID])", recverID: "\(ReceiverID)")
             
             //check Last Msg Seen Or not
-           // self.latMsgSeen(userID: "\(Defaults[PDUserDefaults.UserID])", recverID: "\(ReceiverID)")
+            // self.latMsgSeen(userID: "\(Defaults[PDUserDefaults.UserID])", recverID: "\(ReceiverID)")
             
             //for set status (seen at)
             self.statusCheckInbox(receiverId: "\(ReceiverID)")
@@ -180,7 +274,7 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     @IBAction func ActionVideoCall(_ sender: Any) {
         let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
         let currentLogin = UserDefaults.standard.bool(forKey: "current")
-        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
+        //        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
         if PaymentSuccessed == true{
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "VideoChatViewController" ) as! VideoChatViewController
             VC.UserName = self.UserName
@@ -195,26 +289,26 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
             VC.ReceiverID = self.ReceiverID
             self.navigationController?.pushViewController(VC, animated: true)
         }
-        if ThreeDays == true{
-            displayMyAlertMessage()
-        }
-       
-    }
-    @objc func displayMyAlertMessage(){
+        //        if ThreeDays == true{
+        //            displayMyAlertMessage()
+        //        }
         
-        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
-        // Create OK button with action handler
-        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
-            self.navigationController?.pushViewController(vc, animated: false)
-            NavigationBool = true
-        })
-        //Add OK and Cancel button to an Alert object
-        dialogMessage.addAction(ok)
-        // Present alert message to user
-        self.present(dialogMessage, animated: true, completion: nil)
     }
+    //    @objc func displayMyAlertMessage(){
+    //
+    //        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
+    //        // Create OK button with action handler
+    //        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
+    //            let sb = UIStoryboard(name: "Main", bundle: nil)
+    //            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
+    //            self.navigationController?.pushViewController(vc, animated: false)
+    //            NavigationBool = true
+    //        })
+    //        //Add OK and Cancel button to an Alert object
+    //        dialogMessage.addAction(ok)
+    //        // Present alert message to user
+    //        self.present(dialogMessage, animated: true, completion: nil)
+    //    }
     
     @IBAction func ActionVoiceCall(_ sender: Any) {
         
@@ -238,8 +332,8 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
     }
     
     @IBAction func ActionBlockUser(_ sender: UIButton) {
-       
-//        self.BlockUserServices(senderID: "\(Defaults[PDUserDefaults.UserID])", receiverId: "\(ReceiverID)", btnTag: "\(sender.tag)")
+        
+        //        self.BlockUserServices(senderID: "\(Defaults[PDUserDefaults.UserID])", receiverId: "\(ReceiverID)", btnTag: "\(sender.tag)")
         
         if blockuser == true {//0 is for unblock
             self.btnBlock.setTitle("Block User", for: .normal)
@@ -251,25 +345,25 @@ class ChatVC: UIViewController, GiphyDelegate, UINavigationControllerDelegate, U
         
         
     }
-//    @IBAction func ActionReportUser(_ sender: UIButton) {
-//        lblReportTitle.text = "Report \(ReceiverName)?"
-//        lblReportUser.text = "\(ReceiverName) I'm no longer matched with"
-//        self.viewReportUser.superview?.bringSubviewToFront(self.viewReportUser)
-//    }
+    //    @IBAction func ActionReportUser(_ sender: UIButton) {
+    //        lblReportTitle.text = "Report \(ReceiverName)?"
+    //        lblReportUser.text = "\(ReceiverName) I'm no longer matched with"
+    //        self.viewReportUser.superview?.bringSubviewToFront(self.viewReportUser)
+    //    }
     @IBAction func ActionCheck(_ sender: UIButton) {
         if strSelection == false {
             self.strSelection = true
             btnReport.isEnabled = true
             self.ImgTik.image = #imageLiteral(resourceName: "deselect")
-       }else if strSelection == true {
+        }else if strSelection == true {
             self.strSelection = false
-           self.ImgTik.image = #imageLiteral(resourceName: "untick")
-           btnReport.isEnabled = false
-       }
+            self.ImgTik.image = #imageLiteral(resourceName: "untick")
+            btnReport.isEnabled = false
+        }
     }
     @IBAction func ActionReport(_ sender: UIButton) {
         ReportServices()
-       
+        
     }
     @IBAction func ActionReportCancel(_ sender: UIButton) {
         self.viewChat.superview?.bringSubviewToFront(self.viewChat)
@@ -304,12 +398,12 @@ extension ChatVC {
             let curDateMSG = dateFormatterGet.string(from: Date())
             dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
             let curDateFIREBASE = dateFormatterGet.string(from: Date())
-                            
+            
             if self.txtMessage.text!.count > 0 && self.txtMessage.text! != "Enter Message"{
                 //
-               /* let bubbleData = ChatBubbleData(text: self.txtMessage.text! + "\n\(curDateMSG)", image: nil, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
-                
-                addChatBubble(data: bubbleData)*/
+                /* let bubbleData = ChatBubbleData(text: self.txtMessage.text! + "\n\(curDateMSG)", image: nil, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
+                 
+                 addChatBubble(data: bubbleData)*/
                 //MARK: - //API CALLING TO SEND MESSAGE
                 
                 if match_api_run == "0"{// for all times
@@ -322,9 +416,9 @@ extension ChatVC {
                 self.txtMessage.text = ""
             }
         }
-        if ThreeDays == true{
-            displayMyAlertMessage()
-        }
+        //        if ThreeDays == true{
+        //            displayMyAlertMessage()
+        //        }
         if currentLogin == true{
             let dateFormatterGet = DateFormatter()
             //dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -333,12 +427,12 @@ extension ChatVC {
             let curDateMSG = dateFormatterGet.string(from: Date())
             dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
             let curDateFIREBASE = dateFormatterGet.string(from: Date())
-                            
+            
             if self.txtMessage.text!.count > 0 && self.txtMessage.text! != "Enter Message"{
                 //
-               /* let bubbleData = ChatBubbleData(text: self.txtMessage.text! + "\n\(curDateMSG)", image: nil, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
-                
-                addChatBubble(data: bubbleData)*/
+                /* let bubbleData = ChatBubbleData(text: self.txtMessage.text! + "\n\(curDateMSG)", image: nil, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
+                 
+                 addChatBubble(data: bubbleData)*/
                 //MARK: - //API CALLING TO SEND MESSAGE
                 
                 if match_api_run == "0"{// for all times
@@ -362,7 +456,7 @@ extension ChatVC {
         chatBubble.delegate = self
         self.messageCointainerScroll.addSubview(chatBubble)
         lastChatBubbleY = chatBubble.frame.maxY
-                
+        
         self.messageCointainerScroll.contentSize = CGSize(width: messageCointainerScroll.frame.width, height: lastChatBubbleY + internalPadding)
         self.moveToLastMessage()
         lastMessageType = data.type
@@ -371,7 +465,7 @@ extension ChatVC {
     
     
     @objc func handleTap(_ tapGesture: UITapGestureRecognizer) {
-           print("clicked")
+        print("clicked")
     }
     
     
@@ -402,7 +496,7 @@ extension ChatVC {
             
             
             //self.AttachDocImgService(strType: "pdf")
-             self.txtMessage.text = ""
+            self.txtMessage.text = ""
         }else if path.contains("docx"){
             docUrl = urls[0]
             let bubbleData = ChatBubbleData(text: self.txtMessage.text! + " \(curDate)", image: UIImage.init(named: "docimg"), gif: nil, date: Date(), videoURL: nil, type: BubbleDataType(rawValue: 0)!)
@@ -412,33 +506,33 @@ extension ChatVC {
             
             
             //self.AttachDocImgService(strType: "doc")
-             self.txtMessage.text = ""
+            self.txtMessage.text = ""
         }
     }
-
-
+    
+    
     func selectOption () {
         
         //Create alert of selection
         let alert = UIAlertController(title: "Select" , message: nil, preferredStyle: UIAlertController.Style.alert)
-         let action1 = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { _ in
-              self.CameraMethod()
-         }
-         let action2  = UIAlertAction(title: "Choose from Gallery", style: UIAlertAction.Style.default) { (action) in
-              self.GalleryMethod()
-         }
+        let action1 = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { _ in
+            self.CameraMethod()
+        }
+        let action2  = UIAlertAction(title: "Choose from Gallery", style: UIAlertAction.Style.default) { (action) in
+            self.GalleryMethod()
+        }
         let action3  = UIAlertAction(title: "Select Video", style: UIAlertAction.Style.default) { (action) in
             self.openVideoGallery()
-
+            
         }
-          let action4 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
-             self.dismiss(animated: true, completion: nil)
-          }
-         alert.addAction(action1)
-         alert.addAction(action2)
-         alert.addAction(action3)
-         alert.addAction(action4)
-         self.present(alert, animated: true, completion: nil)
+        let action4 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        alert.addAction(action3)
+        alert.addAction(action4)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -470,78 +564,78 @@ extension ChatVC {
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.mediaTypes = [kUTTypeMovie as String]
-//        present(picker, animated: true){
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-//               picker.dismiss(animated: false, completion: nil)
-//            }
-//        }
+        //        present(picker, animated: true){
+        //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+        //               picker.dismiss(animated: false, completion: nil)
+        //            }
+        //        }
         picker.allowsEditing = false
         present(picker, animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let dateFormatterGet = DateFormatter()
-//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        let curDate = dateFormatterGet.string(from: Date())
-//
-//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-//           let optimizedImageData = image.jpegData(compressionQuality: 0.6)
-//        {
-//
-//            //to show image bubble chat
-////            let bubbleData = ChatBubbleData(text: "\(curDate)" + "\n\("sent")", image: image, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
-////
-////            addChatBubble(data: bubbleData)
-//            self.imgToSend = image
-//
-//            //MARK: //API Calling to send image message
-//            //first upload image on firebase storage and then update their firebase image url of firebase database
-//            self.uploadFirebaseImage(imageData: optimizedImageData)
-//
-//        }//if let mediaType =  info[UIImagePickerController.InfoKey.mediaURL] as? String {
-//            //if mediaType == kUTTypeMovie as String{
-//        else if let video = info[UIImagePickerController.InfoKey.mediaURL] as? Data {
-//            let optimizedVideoData = video
-//            //{
-//
-//              //  self.videoURL = video
-//                //self.videoURL as! URL = videoURL
-//                self.uploadFirebaseVideo(videoData: optimizedVideoData)
-//                print("Video URL: \(videoURL)")
-//                //}
-//                //}
-//           // }
-//        }
-//        self.dismiss(animated: true,  completion: nil)
-//        //self.dismiss(animated: true, completion: nil)
+        //        let dateFormatterGet = DateFormatter()
+        //        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //        let curDate = dateFormatterGet.string(from: Date())
+        //
+        //        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+        //           let optimizedImageData = image.jpegData(compressionQuality: 0.6)
+        //        {
+        //
+        //            //to show image bubble chat
+        ////            let bubbleData = ChatBubbleData(text: "\(curDate)" + "\n\("sent")", image: image, gif: nil, date: Date(), type: BubbleDataType(rawValue: 0)!)
+        ////
+        ////            addChatBubble(data: bubbleData)
+        //            self.imgToSend = image
+        //
+        //            //MARK: //API Calling to send image message
+        //            //first upload image on firebase storage and then update their firebase image url of firebase database
+        //            self.uploa(imageData: optimizedImageData)
+        //
+        //        }//if let mediaType =  info[UIImagePickerController.InfoKey.mediaURL] as? String {
+        //            //if mediaType == kUTTypeMovie as String{
+        //        else if let video = info[UIImagePickerController.InfoKey.mediaURL] as? Data {
+        //            let optimizedVideoData = video
+        //            //{
+        //
+        //              //  self.videoURL = video
+        //                //self.videoURL as! URL = videoURL
+        //                self.uploadFirebaseVideo(videoData: optimizedVideoData)
+        //                print("Video URL: \(videoURL)")
+        //                //}
+        //                //}
+        //           // }
+        //        }
+        //        self.dismiss(animated: true,  completion: nil)
+        //        //self.dismiss(animated: true, completion: nil)
         if let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String {
-                if mediaType == kUTTypeImage as String,
-                   let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-                   let optimizedImageData = image.jpegData(compressionQuality: 0.6) {
-                    
-                    // Handle image selection and uploading
-                    self.uploadFirebaseImage(imageData: optimizedImageData)
-                } else if mediaType == kUTTypeMovie as String,
-                          let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
-                    print("Media type is video")
-                    print("Video URL: \(videoURL)")
-                    do {
-                                    let videoData = try Data(contentsOf: videoURL)
-                                    // Now you have the video as Data and can use it as needed
-                                    // For example, you can upload the video to Firebase Storage
-                                    self.uploadFirebaseVideo(videoData: videoData)
-                                } catch {
-                                    print("Error converting video URL to data: \(error.localizedDescription)")
-                                }
-                    // Handle video selection and uploading
-                   // self.uploadFirebaseVideo(videoData: videoURL)
+            if mediaType == kUTTypeImage as String,
+               let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+               let optimizedImageData = image.jpegData(compressionQuality: 0.6) {
+                
+                // Handle image selection and uploading
+                self.uploadImages(imageData: optimizedImageData)
+            } else if mediaType == kUTTypeMovie as String,
+                      let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                print("Media type is video")
+                print("Video URL: \(videoURL)")
+                do {
+                    let videoData = try Data(contentsOf: videoURL)
+                    // Now you have the video as Data and can use it as needed
+                    // For example, you can upload the video to Firebase Storage
+                    self.uploadVideos(videoData: videoData)
+                } catch {
+                    print("Error converting video URL to data: \(error.localizedDescription)")
                 }
+                // Handle video selection and uploading
+                // self.uploadFirebaseVideo(videoData: videoURL)
             }
-            
+        }
+        
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -550,9 +644,103 @@ extension ChatVC {
 //MARK: - Extension for upload image on firebase storage
 extension ChatVC{
     
-func uploadFirebaseImage(imageData: Data)
-    {
+    
+    func uploadImages(imageData: Data) {
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.upload_mediaURL()
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "file_upload", fileName: "image.jpg", mimeType: "image/jpeg")
+                // You can also append other fields like parameters here if needed
+            },
+            to: url,
+            method: .post,
+            headers: nil
+        )
+        .responseDecodable(of: ImageUpload.self) { response in
+            PKHUD.sharedHUD.hide()
 
+            switch response.result {
+            case .success(let value):
+                print("Code:", value.code)
+                print("Message:", value.msg)
+                // if let data = value.data {
+                print("Image URL:", value.data ?? "")
+                // }
+                // Handle your success response here
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "hh:mm a"
+                let curDateMSG = dateFormatterGet.string(from: Date())
+                dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                let curDateFIREBASE = dateFormatterGet.string(from: Date())
+                if self.match_api_run == "0"{// for all times
+                    self.sendMessageOnFirebase(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverName: self.ReceiverName, receiverImg: self.ReceiverImg, timestamp: "\(curDateFIREBASE)", picUrl: "\(value.data ?? "")", type: "image")
+                }else if self.match_api_run == "1"{// for only first times chat will create
+                    //Call API firstchat
+                    self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(value.data ?? "")", type: "image")
+                }
+            case .failure(let error):
+                print("Error:", error)
+                // Handle your error here
+            }
+        }
+    }
+    
+    func uploadVideos(videoData: Data) {
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.upload_mediaURL()
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(videoData, withName: "file_upload", fileName: "Video.mp4", mimeType: "Video/mp4")
+                // You can also append other fields like parameters here if needed
+            },
+            to: url,
+            method: .post,
+            headers: nil
+        )
+        .responseDecodable(of: VideoUpload.self) { response in
+            PKHUD.sharedHUD.hide()
+
+            switch response.result {
+            case .success(let value):
+                print("Code:", value.code)
+                print("Message:", value.msg)
+                // if let data = value.data {
+                print("Video URL:", value.data ?? "")
+                // }
+                // Handle your success response here
+                
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "hh:mm a"
+                let curDateMSG = dateFormatterGet.string(from: Date())
+                dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                let curDateFIREBASE = dateFormatterGet.string(from: Date())
+                if self.match_api_run == "0"{// for all times
+                    self.sendMessageOnFirebase(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverName: self.ReceiverName, receiverImg: self.ReceiverImg, timestamp: "\(curDateFIREBASE)", picUrl: "\(value.data ?? "")", type: "video")
+                }else if self.match_api_run == "1"{// for only first times chat will create
+                    //Call API firstchat
+                    self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(value.data ?? "")", type: "video")
+                }
+            case .failure(let error):
+                print("Error:", error)
+                // Handle your error here
+            }
+        }
+    }
+    func uploadFirebaseImage(imageData: Data)
+    {
+        
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child("images/\(UUID().uuidString)")
         
@@ -586,21 +774,27 @@ func uploadFirebaseImage(imageData: Data)
                         self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(img)", type: "image")
                     }
                     
-                   
+                    
                 })
             }
         }
     }
+    
     func uploadFirebaseVideo(videoData: Data){
-
+        
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
         let storageReference = Storage.storage().reference()
         let profileVideoRef = storageReference.child("Video/\(UUID().uuidString).mp4")
-
+        
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "Video/mp4"
         
         profileVideoRef.putData(videoData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
-
+            
             if error != nil
             {
                 print("Error took place \(String(describing: error?.localizedDescription))")
@@ -609,29 +803,29 @@ func uploadFirebaseImage(imageData: Data)
                 print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                 profileVideoRef.downloadURL(completion: { [self] (url, error) in
                     print("imgFireBasePath URL: \((url?.absoluteString)!)")
-
+                    
                     //send image url on firebase database
                     let Video = (url?.absoluteString)!
-
+                    
                     let dateFormatterGet = DateFormatter()
                     dateFormatterGet.dateFormat = "hh:mm a"
                     let curDateMSG = dateFormatterGet.string(from: Date())
                     dateFormatterGet.dateFormat = "dd-MM-yyyy HH:mm:ss"
                     let curDateFIREBASE = dateFormatterGet.string(from: Date())
-
+                    
                     if match_api_run == "0"{// for all times
                         self.sendMessageOnFirebase(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverName: self.ReceiverName, receiverImg: self.ReceiverImg, timestamp: "\(curDateFIREBASE)", picUrl: "\(Video)", type: "video")
                     }else if match_api_run == "1"{// for only first times chat will create
                         //Call API firstchat
                         self.callFirstChat(message: "", userID: self.UserId, userName: self.UserName, userImg: self.UserImg, receiverId: self.ReceiverID, receiverImg: self.ReceiverImg, receiverName: self.ReceiverName, timestamp: "\(curDateFIREBASE)", picUrl: "\(Video)", type: "video")
                     }
-
-
+                    
+                    
                 })
             }
         }
         
-      
+        
     }
 }
 
@@ -659,212 +853,226 @@ extension ChatVC {
     
     func getChatData1() {
         
-        let ref = Database.database().reference()
-        ref.child("chat").child("\(self.UserId)" + "-" + "\(self.ReceiverID)").observe(.childAdded) { snapshot in
-            let dicObject = snapshot.value as! [String: AnyObject]
-            print("New_Chat_Added_Child_added",dicObject)
-            
-            self.ShowSingleChatMessage(objData: UserChatDetailData(json: dicObject))
-            
-            //update status as read message
-            self.statusCheckInbox(receiverId: "\(self.ReceiverID)")
-        }
+        if isFrom == "messageNotification"{
+            let ref = Database.database().reference()
+            ref.child("chat").child("\(self.notificationSenderID)" + "-" + "\(self.notificationRecieverID)").observe(.childAdded) { snapshot in
+                let dicObject = snapshot.value as! [String: AnyObject]
+                print("New_Chat_Added_Child_added",dicObject)
                 
+                self.ShowSingleChatMessage(objData: UserChatDetailData(json: dicObject))
+                
+                //update status as read message
+                self.statusCheckInbox(receiverId: "\(self.notificationRecieverID)")
+            }
+        }
+        else{
+            let ref = Database.database().reference()
+            ref.child("chat").child("\(self.UserId)" + "-" + "\(self.ReceiverID)").observe(.childAdded) { snapshot in
+                let dicObject = snapshot.value as! [String: AnyObject]
+                print("New_Chat_Added_Child_added",dicObject)
+                
+                self.ShowSingleChatMessage(objData: UserChatDetailData(json: dicObject))
+                
+                //update status as read message
+                self.statusCheckInbox(receiverId: "\(self.ReceiverID)")
+            }
+        }
+        
     }
     
-   /* func getChatData() {
-        //blank array chat list
-        self.arrChatDic = []
-        
-        let ref = Database.database().reference()
-        ref.child("chat").child("\(self.UserId)" + "-" + "\(self.ReceiverID)").observeSingleEvent(of: .value, with: { snapshot in
-            // Get user value
-            let dicValue = snapshot.value as? NSDictionary
-            // list all values
-            self.arrChatDic = []
-            
-            if dicValue != nil {
-                for (key, valueq) in dicValue! {
-                    self.arrChatDic.append(UserChatDetailData(json: valueq as! [String : Any]))
-                }
-            }
-            
-            //short an array according to timestamp (short with date and time)
-            self.arrChatDic = self.arrChatDic.sorted { (firstItem, secondItem) -> Bool in
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-                if let dateAString = firstItem.timestamp,
-                   let dateBString = secondItem.timestamp,
-                    let dateA = dateFormatter.date(from: dateAString),
-                    let dateB = dateFormatter.date(from: dateBString) {
-                    return dateA.compare(dateB) == .orderedAscending
-                }
-                return false
-            }
-            
-          //  self.arrChatDic = self.arrChatDic.sorted { ($0.timestamp!) < ($1.timestamp!) }
-            print("After Sort",self.arrChatDic)
-            
-            if self.arrChatDic.count > 0 {
-                self.ShowChatHistory()
-            }
-            
-        }) { error in
-          print(error.localizedDescription)
-        }
-        
-    }
-    */
+    /* func getChatData() {
+     //blank array chat list
+     self.arrChatDic = []
+     
+     let ref = Database.database().reference()
+     ref.child("chat").child("\(self.UserId)" + "-" + "\(self.ReceiverID)").observeSingleEvent(of: .value, with: { snapshot in
+     // Get user value
+     let dicValue = snapshot.value as? NSDictionary
+     // list all values
+     self.arrChatDic = []
+     
+     if dicValue != nil {
+     for (key, valueq) in dicValue! {
+     self.arrChatDic.append(UserChatDetailData(json: valueq as! [String : Any]))
+     }
+     }
+     
+     //short an array according to timestamp (short with date and time)
+     self.arrChatDic = self.arrChatDic.sorted { (firstItem, secondItem) -> Bool in
+     let dateFormatter = DateFormatter()
+     dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+     
+     if let dateAString = firstItem.timestamp,
+     let dateBString = secondItem.timestamp,
+     let dateA = dateFormatter.date(from: dateAString),
+     let dateB = dateFormatter.date(from: dateBString) {
+     return dateA.compare(dateB) == .orderedAscending
+     }
+     return false
+     }
+     
+     //  self.arrChatDic = self.arrChatDic.sorted { ($0.timestamp!) < ($1.timestamp!) }
+     print("After Sort",self.arrChatDic)
+     
+     if self.arrChatDic.count > 0 {
+     self.ShowChatHistory()
+     }
+     
+     }) { error in
+     print(error.localizedDescription)
+     }
+     
+     }
+     */
     
     func ShowSingleChatMessage(objData:UserChatDetailData) {
-
         
-            let strDate = self.convertDateForiLearning(objData.timestamp!)
+        
+        let strDate = self.convertDateForiLearning(objData.timestamp!)
+        
+        if objData.senderID == Defaults[PDUserDefaults.UserID] {
             
-            if objData.senderID == Defaults[PDUserDefaults.UserID] {
+            //check chat status(seen or not)
+            var chat_Status = "\(objData.status!)"
+            if chat_Status == "1"{
+                let chng_Status_time = self.convertDateForiLearningSecond(objData.time!)
+                chat_Status = "seen at " + "\(chng_Status_time)"
+            }else{
+                chat_Status = "sent"
+            }
+            //check message type:-
+            let msg_Type = "\(objData.type!)"
+            
+            switch msg_Type {
+                ////////////////sender case first
+            case "text":
+                print("msg_Type:- text")
+                let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)" + "\n\(chat_Status)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
+                self.addChatBubble(data: chatBubbleData2)
                 
-                //check chat status(seen or not)
-                var chat_Status = "\(objData.status!)"
-                if chat_Status == "1"{
-                    let chng_Status_time = self.convertDateForiLearningSecond(objData.time!)
-                    chat_Status = "seen at " + "\(chng_Status_time)"
-                }else{
-                    chat_Status = "sent"
+                ////////////////sender case second
+            case "image":
+                print("msg_Type: image")
+                //convert imageUrl to UIImage
+                var image:UIImage = UIImage(named:"imageFail")!
+                let imageSent = "\(String(describing: objData.picURL!))"
+                
+                if imageSent != "0" && imageSent != "" {
+                    
+                    let url = URL(string:"\(String(describing: objData.picURL!))")
+                    if let data = try? Data(contentsOf: url!)
+                    {
+                        image = UIImage(data: data)!
+                    }
+                    
                 }
-                //check message type:-
-                let msg_Type = "\(objData.type!)"
+                let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
+                self.addChatBubble(data: chatBubbleData2)
                 
-                switch msg_Type {
-                  ////////////////sender case first
-                  case "text":
-                    print("msg_Type:- text")
-                    let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)" + "\n\(chat_Status)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
+                ////////////////sender case thied
+            case "gif":
+                print("msg_Type:- gif")
+                //convert gifUrl to UIImage
+                var image:UIImage = UIImage(named:"imageFail")!
+                let imageSent = "\(String(describing: objData.picURL!))"
+                
+                if imageSent != "0" && imageSent != "" {
+                    
+                    let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
+                    
+                    let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Mine)
                     self.addChatBubble(data: chatBubbleData2)
                     
-                  ////////////////sender case second
-                  case "image":
-                    print("msg_Type: image")
-                    //convert imageUrl to UIImage
-                    var image:UIImage = UIImage(named:"imageFail")!
-                    let imageSent = "\(String(describing: objData.picURL!))"
-                    
-                    if imageSent != "0" && imageSent != "" {
-                        
-                        let url = URL(string:"\(String(describing: objData.picURL!))")
-                        if let data = try? Data(contentsOf: url!)
-                        {
-                            image = UIImage(data: data)!
-                        }
-                        
-                    }
+                }else{ //if GIf image is blank
                     let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
                     self.addChatBubble(data: chatBubbleData2)
-                    
-                  ////////////////sender case thied
-                  case "gif":
-                    print("msg_Type:- gif")
-                    //convert gifUrl to UIImage
-                    var image:UIImage = UIImage(named:"imageFail")!
-                    let imageSent = "\(String(describing: objData.picURL!))"
-
-                    if imageSent != "0" && imageSent != "" {
-                        
-                        let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
-                        
-                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Mine)
-                        self.addChatBubble(data: chatBubbleData2)
-
-                    }else{ //if GIf image is blank
-                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
-                        self.addChatBubble(data: chatBubbleData2)
-                    }
-                    
-                  ///////////////sender case fourth
-                  case "video":
-                    print("msg_Type:- video")
-                    let videoURLString = "\(objData.picURL!)"
-                      if !videoURLString.isEmpty {
-                          let videoURL = URL(string: videoURLString)
-                          let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Mine)
-                          self.addChatBubble(data: chatBubbleData2)
-                      }
-                 ////////////////sender case five default
-                 default:
-                    print("Invalid msg_Type")
                 }
                 
-                
-            }else{
-                
-                //check message type:-
-                let msg_Type = "\(objData.type!)"
-                switch msg_Type {
-                    ////////////////receiver case first
-                  case "text":
-                    print("msg_Type:- text")
-                    
-                    let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
+                ///////////////sender case fourth
+            case "video":
+                print("msg_Type:- video")
+                let videoURLString = "\(objData.picURL!)"
+                if !videoURLString.isEmpty {
+                    let videoURL = URL(string: videoURLString)
+                    let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Mine)
                     self.addChatBubble(data: chatBubbleData2)
+                }
+                ////////////////sender case five default
+            default:
+                print("Invalid msg_Type")
+            }
+            
+            
+        }else{
+            
+            //check message type:-
+            let msg_Type = "\(objData.type!)"
+            switch msg_Type {
+                ////////////////receiver case first
+            case "text":
+                print("msg_Type:- text")
+                
+                let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
+                self.addChatBubble(data: chatBubbleData2)
+                
+                ////////////////receiver case second
+            case "image":
+                print("msg_Type: image")
+                //convert imageUrl to UIImage
+                var image:UIImage = UIImage(named:"imageFail")!
+                let imageSent = "\(String(describing: objData.picURL!))"
+                
+                if imageSent != "0" && imageSent != "" {
                     
-                    ////////////////receiver case second
-                  case "image":
-                    print("msg_Type: image")
-                    //convert imageUrl to UIImage
-                    var image:UIImage = UIImage(named:"imageFail")!
-                    let imageSent = "\(String(describing: objData.picURL!))"
-                    
-                    if imageSent != "0" && imageSent != "" {
-                        
-                        let url = URL(string:"\(String(describing: objData.picURL!))")
-                        if let data = try? Data(contentsOf: url!)
-                        {
-                            image = UIImage(data: data)!
-                        }
-                        
+                    let url = URL(string:"\(String(describing: objData.picURL!))")
+                    if let data = try? Data(contentsOf: url!)
+                    {
+                        image = UIImage(data: data)!
                     }
                     
+                }
+                
+                let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
+                self.addChatBubble(data: chatBubbleData2)
+                
+                ////////////////receiver case third
+            case "gif":
+                print("msg_Type:- gif")
+                //convert gifUrl to UIImage
+                var image:UIImage = UIImage(named:"imageFail")!
+                let imageSent = "\(String(describing: objData.picURL!))"
+                
+                if imageSent != "0" && imageSent != "" {
+                    
+                    let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
+                    
+                    let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Opponent)
+                    self.addChatBubble(data: chatBubbleData2)
+                    
+                }else{ //if GIf image is blank
                     let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
                     self.addChatBubble(data: chatBubbleData2)
-                  
-                    ////////////////receiver case third
-                  case "gif":
-                    print("msg_Type:- gif")
-                    //convert gifUrl to UIImage
-                    var image:UIImage = UIImage(named:"imageFail")!
-                    let imageSent = "\(String(describing: objData.picURL!))"
-
-                    if imageSent != "0" && imageSent != "" {
-                        
-                        let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
-                        
-                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Opponent)
-                        self.addChatBubble(data: chatBubbleData2)
-
-                    }else{ //if GIf image is blank
-                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
-                        self.addChatBubble(data: chatBubbleData2)
-                    }
-                    
-                    ////////////////receiver case fourth
-                  case "video":
-                    print("msg_Type:- video")
-                    let videoURLString = "\(objData.picURL!)"
-                      if !videoURLString.isEmpty {
-                          let videoURL = URL(string: videoURLString)
-                          let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Opponent)
-                          self.addChatBubble(data: chatBubbleData2)
-                      }
-                    ////////////////receiver case five default
-                 default:
-                    print("Invalid msg_Type")
                 }
                 
-                
+                ////////////////receiver case fourth
+            case "video":
+                print("msg_Type:- video")
+                let videoURLString = "\(objData.picURL!)"
+                if !videoURLString.isEmpty {
+                    let videoURL = URL(string: videoURLString)
+                    let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Opponent)
+                    self.addChatBubble(data: chatBubbleData2)
+                }
+                ////////////////receiver case five default
+            default:
+                print("Invalid msg_Type")
             }
-     
+            
+            
+        }
         
-
+        
+        
         
     }
     
@@ -891,14 +1099,14 @@ extension ChatVC {
                 let msg_Type = "\(objData.type!)"
                 
                 switch msg_Type {
-                  ////////////////sender case first
-                  case "text":
+                    ////////////////sender case first
+                case "text":
                     print("msg_Type:- text")
                     let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)" + "\n\(chat_Status)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
                     self.addChatBubble(data: chatBubbleData2)
                     
-                  ////////////////sender case second
-                  case "image":
+                    ////////////////sender case second
+                case "image":
                     print("msg_Type: image")
                     //convert imageUrl to UIImage
                     var image:UIImage = UIImage(named:"imageFail")!
@@ -916,37 +1124,37 @@ extension ChatVC {
                     let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
                     self.addChatBubble(data: chatBubbleData2)
                     
-                  ////////////////sender case thied
-                  case "gif":
+                    ////////////////sender case thied
+                case "gif":
                     print("msg_Type:- gif")
                     //convert gifUrl to UIImage
                     var image:UIImage = UIImage(named:"imageFail")!
                     let imageSent = "\(String(describing: objData.picURL!))"
-
+                    
                     if imageSent != "0" && imageSent != "" {
                         
                         let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
                         
                         let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Mine)
                         self.addChatBubble(data: chatBubbleData2)
-
+                        
                     }else{ //if GIf image is blank
                         let chatBubbleData2 = ChatBubbleData(text: "\(strDate)" + "\n\(chat_Status)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Mine)
                         self.addChatBubble(data: chatBubbleData2)
                     }
                     
-                  ///////////////sender case fourth
-                  case "video":
+                    ///////////////sender case fourth
+                case "video":
                     print("msg_Type:- video")
                     let videoURLString = "\(objData.picURL!)"
-                      if !videoURLString.isEmpty {
-                          let videoURL = URL(string: videoURLString)
-                          
-                          let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Mine)
-                          self.addChatBubble(data: chatBubbleData2)
-                      }
-                 ////////////////sender case five default
-                 default:
+                    if !videoURLString.isEmpty {
+                        let videoURL = URL(string: videoURLString)
+                        
+                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Mine)
+                        self.addChatBubble(data: chatBubbleData2)
+                    }
+                    ////////////////sender case five default
+                default:
                     print("Invalid msg_Type")
                 }
                 
@@ -957,14 +1165,14 @@ extension ChatVC {
                 let msg_Type = "\(objData.type!)"
                 switch msg_Type {
                     ////////////////receiver case first
-                  case "text":
+                case "text":
                     print("msg_Type:- text")
                     
                     let chatBubbleData2 = ChatBubbleData(text: objData.text! + "\n\(strDate)", image:nil, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
                     self.addChatBubble(data: chatBubbleData2)
                     
                     ////////////////receiver case second
-                  case "image":
+                case "image":
                     print("msg_Type: image")
                     //convert imageUrl to UIImage
                     var image:UIImage = UIImage(named:"imageFail")!
@@ -982,9 +1190,9 @@ extension ChatVC {
                     
                     let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
                     self.addChatBubble(data: chatBubbleData2)
-                  
+                    
                     ////////////////receiver case third
-                  case "gif":
+                case "gif":
                     print("msg_Type:- gif")
                     //convert gifUrl to UIImage
                     var image:UIImage = UIImage(named:"imageFail")!
@@ -993,26 +1201,26 @@ extension ChatVC {
                         let urlgif = "\(AppUrl.gifFirstURL())" + "\(String(describing: objData.picURL!))" + "\(AppUrl.gifThirdURL())"
                         let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: "\(urlgif)", date: NSDate() as Date, videoURL: nil, type: .Opponent)
                         self.addChatBubble(data: chatBubbleData2)
-
+                        
                     }else{ //if GIf image is blank
                         let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: image, gif: nil, date: NSDate() as Date, videoURL: nil, type: .Opponent)
                         self.addChatBubble(data: chatBubbleData2)
                     }
                     
                     ////////////////receiver case fourth
-                  case "video":
+                case "video":
                     print("msg_Type:- video")
                     let videoURLString = "\(objData.picURL!)"
-                      if !videoURLString.isEmpty {
-                          let videoURL = URL(string: videoURLString)
-                          let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Opponent)  
-                          self.addChatBubble(data: chatBubbleData2)
-                         
-                      }
+                    if !videoURLString.isEmpty {
+                        let videoURL = URL(string: videoURLString)
+                        let chatBubbleData2 = ChatBubbleData(text: "\(strDate)", image: nil, gif: nil, date: NSDate() as Date, videoURL: videoURL, type: .Opponent)
+                        self.addChatBubble(data: chatBubbleData2)
+                        
+                    }
                     
                     ////////////////receiver case five default
                     ///
-                 default:
+                default:
                     print("Invalid msg_Type")
                 }
                 
@@ -1099,10 +1307,10 @@ extension ChatVC {
         let curDateFIREBASE = dateFormatterGet.string(from: Date())
         
         if Gippy_id != "" {
-//            let urlgif = "\(AppUrl.gifFirstURL())" + "\(Gippy_id)" + "\(AppUrl.gifThirdURL())"
-//
-//            let chatBubbleData2 = ChatBubbleData(text: "\(curDateMSG)" + "\n\("sent")", image: nil, gif: "\(urlgif)", date: NSDate() as Date, type: .Mine)
-//            self.addChatBubble(data: chatBubbleData2)
+            //            let urlgif = "\(AppUrl.gifFirstURL())" + "\(Gippy_id)" + "\(AppUrl.gifThirdURL())"
+            //
+            //            let chatBubbleData2 = ChatBubbleData(text: "\(curDateMSG)" + "\n\("sent")", image: nil, gif: "\(urlgif)", date: NSDate() as Date, type: .Mine)
+            //            self.addChatBubble(data: chatBubbleData2)
             
             //MARK: //API Calling to send url GIF message
             if match_api_run == "0"{// for all times
@@ -1117,9 +1325,9 @@ extension ChatVC {
     }
     
     func didDismiss(controller: GiphyViewController?) {
-            // your user dismissed the controller without selecting a GIF.
+        // your user dismissed the controller without selecting a GIF.
         print("close Gif_Ayush")
-       }
+    }
     
 }
 
@@ -1181,7 +1389,7 @@ extension ChatVC {
         }
     }
     
-
+    
 }
 
 //exteniosn for statusCheckInbox (deliver read or not)
@@ -1206,7 +1414,7 @@ extension ChatVC{
             }
             
         }) { error in
-          print(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
@@ -1220,7 +1428,7 @@ extension ChatVC{
             // handle errors or anything related to completion block
             if err == nil {
                 //reload chat
-               // print("change_status_successfully")
+                // print("change_status_successfully")
             }
         }
     }
@@ -1272,7 +1480,7 @@ extension ChatVC{
             // handle errors or anything related to completion block
             if err == nil {
                 //reload chat
-              //  print("change_status_successfully_inChat_First")
+                //  print("change_status_successfully_inChat_First")
             }
         }
     }
@@ -1324,7 +1532,7 @@ extension ChatVC{
             // handle errors or anything related to completion block
             if err == nil {
                 //reload chat
-              //  print("change_status_successfully_inChat_Second")
+                //  print("change_status_successfully_inChat_Second")
             }
         }
     }
@@ -1340,11 +1548,11 @@ extension ChatVC {
         //for image
         if receiverImg != nil && receiverImg != "" {
             var image = "\(receiverImg)"
-          //  print("image_receiver_is_not_Nil :-\(image)")
+            //  print("image_receiver_is_not_Nil :-\(image)")
             image = image.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
             self.imgReceiverImg.sd_setImage(with: URL(string: image), placeholderImage: nil)
         }else{
-          //  print("Receiver_image_Nil")
+            //  print("Receiver_image_Nil")
             self.imgReceiverImg.image = #imageLiteral(resourceName: "ic_avatar")
         }
         
@@ -1358,23 +1566,23 @@ extension ChatVC {
     func getReceiverInfo(receiverId: String){
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
-      //  print("getReceiverInfo")
+        //  print("getReceiverInfo")
         let url = AppUrl.getUserInfoURL()
         
         let strPhone = receiverId.replacingOccurrences(of: "+", with: "")
         let parameters: [String: Any] = ["fb_id" : strPhone,
                                          "device" : "ios"]
         
-      //  print("Url_getReceiverInfo_is_here:-" , url)
-      //  print("Param_getReceiverInfo_is_here:-" , parameters)
+        //  print("Url_getReceiverInfo_is_here:-" , url)
+        //  print("Param_getReceiverInfo_is_here:-" , parameters)
         
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
-         //   print("Response",response)
+            //   print("Response",response)
             if response.value != nil {
                 let responseJson = JSON(response.value!)
-           //     print("Code_is_getReceiverInfo",responseJson["code"])
-                               
+                //     print("Code_is_getReceiverInfo",responseJson["code"])
+                
                 if responseJson["code"] == "200" {
                     if let responseData = response.data {
                         do {
@@ -1392,23 +1600,23 @@ extension ChatVC {
                                 //for image
                                 if receiverImg != nil && receiverImg != "" {
                                     var image = "\(receiverImg)"
-                           //         print("image_receiver_is_not_Nil :-\(image)")
+                                    //         print("image_receiver_is_not_Nil :-\(image)")
                                     image = image.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
                                     self.imgReceiverImg.sd_setImage(with: URL(string: image), placeholderImage: nil)
                                 }else{
-                            //        print("Receiver_image_Nil")
+                                    //        print("Receiver_image_Nil")
                                     self.imgReceiverImg.image = #imageLiteral(resourceName: "ic_avatar")
                                 }
-
+                                
                             }
                         } catch {
-                      //      print("Something went wrong in json.")
+                            //      print("Something went wrong in json.")
                         }
                     }
                 }else if responseJson["code"] == "201" {
-              //      print("Something went wrong error code 201")
+                    //      print("Something went wrong error code 201")
                 }else{
-             //       print("Something went wrong in json")
+                    //       print("Something went wrong in json")
                 }
             }
         }
@@ -1431,7 +1639,7 @@ extension ChatVC{
             print("Response",response)
             if response.value != nil {
                 let responseJson = JSON(response.value!)
-              if responseJson["code"] == "200" {
+                if responseJson["code"] == "200" {
                     self.view.makeToast("\(responseJson["msg"])")
                     self.viewChat.superview?.bringSubviewToFront(self.viewChat)
                 }else{
@@ -1454,16 +1662,16 @@ extension ChatVC{
         
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
-         //   print("Response",response)
+            //   print("Response",response)
             if response.value != nil {
                 let responseJson = JSON(response.value!)
                 print("Code_is_firstChatURL",responseJson["code"])
-                               
+                
                 if responseJson["code"] == "200" {
                     
-                   // call firebase API to store data on firebase
+                    // call firebase API to store data on firebase
                     self.sendMessageOnFirebase(message: message, userID: userID, userName: userName, userImg: userImg, receiverId: receiverId, receiverName: receiverName, receiverImg: receiverImg, timestamp: timestamp, picUrl: picUrl, type: type)
-
+                    
                 }else if responseJson["code"] == "201" {
                     print("Something went wrong error code 201")
                 }else if responseJson["code"] == "202"{
@@ -1473,7 +1681,7 @@ extension ChatVC{
         }
     }
     
-   //Upload texte message on firebase chat folder
+    //Upload texte message on firebase chat folder
     func sendMessageOnFirebase(message: String, userID: String,userName: String,userImg: String, receiverId: String, receiverName: String, receiverImg: String, timestamp: String, picUrl: String, type: String){
         let ref = Database.database().reference()
         let childCreateChatSender = ref.child("chat").child("\(userID)" + "-" + "\(receiverId)")
@@ -1531,16 +1739,16 @@ extension ChatVC{
         let childInboxRecever = ref.child("Inbox").child("\(userID)").child("\(receiverId)")
         
         let valuesSender = ["block" : "0",
-                      "date" : "\(timestamp)",
-                      "like" : "0",
-                      "msg" : "\(msg)",
-                      "name" : "\(userName)",
-                      "pic" : "\(userImg)",
-                      "read" : "0",
-                      "rid" : "\(userID)",
-                      "sort" : "",
-                      "status" : "0",
-                      "timestamp" : "\(timestamp)"]
+                            "date" : "\(timestamp)",
+                            "like" : "0",
+                            "msg" : "\(msg)",
+                            "name" : "\(userName)",
+                            "pic" : "\(userImg)",
+                            "read" : "0",
+                            "rid" : "\(userID)",
+                            "sort" : "",
+                            "status" : "0",
+                            "timestamp" : "\(timestamp)"]
         
         childInboxSender.updateChildValues(valuesSender) { (err, reference) in
             // handle errors or anything related to completion block
@@ -1551,16 +1759,16 @@ extension ChatVC{
         }
         
         let valuesRecever = ["block" : "0",
-                      "date" : "\(timestamp)",
-                      "like" : "0",
-                      "msg" : "\(msg)",
-                      "name" : "\(receiverName)",
-                      "pic" : "\(receiverImg)",
-                      "read" : "0",
-                      "rid" : "\(receiverId)",
-                      "sort" : "",
-                      "status" : "1",
-                      "timestamp" : "\(timestamp)"]
+                             "date" : "\(timestamp)",
+                             "like" : "0",
+                             "msg" : "\(msg)",
+                             "name" : "\(receiverName)",
+                             "pic" : "\(receiverImg)",
+                             "read" : "0",
+                             "rid" : "\(receiverId)",
+                             "sort" : "",
+                             "status" : "1",
+                             "timestamp" : "\(timestamp)"]
         
         childInboxRecever.updateChildValues(valuesRecever) { (err, reference) in
             // handle errors or anything related to completion block
@@ -1587,7 +1795,7 @@ extension ChatVC{
         }
         
         let url = AppUrl.sendPushNotificationURL()
-       
+        
         let parameters: [String: Any] = ["title" : "\(userName)" ,
                                          "message" : "\(msg)",
                                          "icon" : "\(userImg)" ,
@@ -1601,7 +1809,7 @@ extension ChatVC{
         print("Param_sendPushNotification_is_here:-" , parameters)
         
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default).responseJSON { (response) in
-          //  PKHUD.sharedHUD.hide()
+            //  PKHUD.sharedHUD.hide()
             print("Response",response)
             if response.data != nil {
                 
@@ -1622,10 +1830,10 @@ extension ChatVC{
                             
                             if dicData.success == 1 {
                                 print("Push Notification success_true = ",dicData.success!)
-                              //  //self.updateFromFirbaseServices()
+                                //  //self.updateFromFirbaseServices()
                             }else{
                                 print("Push Notification success_false = ",dicData.success!)
-                             //  // self.updateFromFirbaseServices()
+                                //  // self.updateFromFirbaseServices()
                             }
                             
                         } catch {
@@ -1672,7 +1880,7 @@ extension ChatVC{
         print("ActionUnMatchUser")
         
         let url = AppUrl.unMatchURL()
-       
+        
         let parameters: [String: Any] = ["fb_id" : "\(senderID)" ,
                                          "other_id" : "\(receiverId)",
                                          "device" : "ios"]
@@ -1681,14 +1889,14 @@ extension ChatVC{
         print("Param_UnMatchUser_is_here:-" , parameters)
         
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default).responseJSON { (response) in
-          //  PKHUD.sharedHUD.hide()
+            //  PKHUD.sharedHUD.hide()
             print("Response_UnMatchUser",response)
             if response.data != nil {
                 
                 //GO to back screen
                 self.navigationController!.popViewController(animated: true)
                 print("API Run UnMatchUser successfully")
-
+                
             }
         }
         
@@ -1739,8 +1947,8 @@ extension ChatVC{
                             //print("dicData = \(String(describing: dicData.msg?.first))")
                             let message = dicData.msg?.first
                             let response = message?.response!
-                           // self.blockedLbl.isHidden = false
-                         //   self.blockedLbl.text = "\(response!)"
+                            // self.blockedLbl.isHidden = false
+                            //   self.blockedLbl.text = "\(response!)"
                             self.txtMessage.isUserInteractionEnabled = false
                             self.view.makeToast("\(response!)")
                             
@@ -1808,7 +2016,7 @@ extension ChatVC{
     }
     
     func unBlockUserChat(receiverId: String){
-
+        
         print("Block_Report_User_API _Call")
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
@@ -1817,17 +2025,17 @@ extension ChatVC{
                                          "fb_id" : "\(Defaults[PDUserDefaults.UserID])",
                                          "other_id" : "\(receiverId)",
                                          "device" : "ios"]
-
+        
         print("Url_blockReportUser_is_here:-" , url)
         print("Param_blockReportUser_is_here:-" , parameters)
-
+        
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             PKHUD.sharedHUD.hide()
             print("Response",response)
             if response.value != nil {
                 let responseJson = JSON(response.value!)
                 print("Code_is_blockReportUser",responseJson["code"])
-
+                
                 if responseJson["code"] == "200" {
                     if let responseData = response.data {
                         do {
@@ -1858,21 +2066,21 @@ extension ChatVC{
 extension ChatVC{
     func getSenderUserDetails(){
         // Read/Get Data/decode userDefault data *****
-            if let data = UserDefaults.standard.data(forKey: "encodeUserData") {
-                do {
-                    // Create JSON Decoder
-                    let decoder = JSONDecoder()
-                    // Decode Note
-                    let userSaveData = try decoder.decode(Msg.self, from: data)
-                    
-                    //for user name(sender name)
-                    self.UserName = "\(userSaveData.firstName!)" + "\(userSaveData.lastName!)"
-                    self.UserImg = "\(userSaveData.image1!)"
-                    
-                } catch {
-                    print("Unable to Decode Note (\(error))")
-                }
+        if let data = UserDefaults.standard.data(forKey: "encodeUserData") {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+                // Decode Note
+                let userSaveData = try decoder.decode(Msg.self, from: data)
+                
+                //for user name(sender name)
+                self.UserName = "\(userSaveData.firstName!)" + "\(userSaveData.lastName!)"
+                self.UserImg = "\(userSaveData.image1!)"
+                
+            } catch {
+                print("Unable to Decode Note (\(error))")
             }
+        }
     }
     
     func detailGetFirebase(receiverId: String){
@@ -1885,9 +2093,9 @@ extension ChatVC{
             if firebaseTokenValue != nil{
                 self.ReceiverFirebaseTokn = firebaseTokenValue!
             }
-           
+            
         }) { error in
-          print(error.localizedDescription)
+            print(error.localizedDescription)
         }
         
     }

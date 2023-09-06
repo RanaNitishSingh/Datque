@@ -24,10 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
     @objc var navigationController: UINavigationController? = nil
     @objc var mainStoryboard : UIStoryboard? = nil
     
-//    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_Free = "Key_free"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatqueAnnual"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "Datquehalfyearly"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatqueyMonth"
+        let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatQueoneyear"
+        let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "DatQuesixmonth"
+        let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatQueonemonth"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        AIzaSyC1mqYWzor-LYneOzNgdOzHNr8BpoI5-0A
@@ -131,7 +130,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
         }else if call_type == "audio" {
            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"ChatAtLawyerNotification"), object: userInfo)
             
-        }else{}
+        }else if call_type == "message" {
+            notificationData = userInfo
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"messageNotification"), object: userInfo)
+
+         }else{}
     }
     
     //Notification Tapped by user//
@@ -144,7 +147,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate, UNUse
             print("Hello notification")
             NotificationCenter.default.post(name: NSNotification.Name(rawValue:"ChatAtLawyerNotification"), object: userInfo)
             
-        }else{}
+        }else if call_type == "message" {
+            notificationData = userInfo
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"messageNotification"), object: userInfo)
+             
+         }else{}
         print(response.notification.request.content.categoryIdentifier)
     }
     
