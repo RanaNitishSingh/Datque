@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 let  APPDELEGATE =  UIApplication.shared.delegate as! AppDelegate
+var notificationData : [AnyHashable : Any]?
 func getContextObj() -> NSManagedObjectContext {
     
     let appDel = UIApplication.shared.delegate as! AppDelegate

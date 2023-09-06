@@ -67,7 +67,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
+//    func scene(_ scene: UIScene, openURLContexts URLContexts: Set) { //2
+//        if let url = URLContexts.first?.url {
+//            print(url)
+//        }
+//    }
 }
 

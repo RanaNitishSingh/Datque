@@ -39,9 +39,9 @@ class IAPHandler: NSObject {
    
     
 //    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_Free = "key_free"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatqueAnnual"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "Datquehalfyearly"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatqueyMonth"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_ANNUAL = "DatQueoneyear"
+     let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_QUARTER = "DatQuesixmonth"
+     let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_MONTHLY = "DatQueonemonth"
     
    // let NON_CONSUMABLE_PURCHASE_PRODUCT_ID_Free = "key_free"
     fileprivate var productID = ""

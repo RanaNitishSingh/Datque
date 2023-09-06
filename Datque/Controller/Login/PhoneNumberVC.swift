@@ -32,7 +32,7 @@ class PhoneNumberVC: UIViewController, CountryPickerViewDataSource,CountryPicker
         currentdate()
         countryPicker.dataSource = self
         countryPicker.delegate = self
-        countryPicker.setCountryByCode("US")
+        countryPicker.setCountryByCode("IN")
         self.txtPhoneNumber.delegate = self
         self.txtPhoneNumber.maxLength = 12
     }

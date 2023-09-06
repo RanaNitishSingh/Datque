@@ -25,11 +25,19 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
     @IBOutlet weak var btnMale: UIButton!
     @IBOutlet weak var btnFemale: UIButton!
     
+    @IBOutlet weak var btnNext: UIButtonX!
     var userID = ""
     var ref: DatabaseReference!
-    
+    var match_api_run = ""
     var gender = "Male" //1 for male 2 for female
-    
+    var UserId = ""
+    var UserName = ""
+    var UserImg = ""
+    var ReceiverID = ""
+    var ReceiverName = ""
+    var ReceiverImg = ""
+    var ReceiverFirebaseTokn = ""
+    var imgData = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,7 +97,7 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
                         if ImgProfile.image != nil {
                             
                             let optimizedImageData = self.ImgProfile.image!.jpegData(compressionQuality: 0.6)
-                            self.uploadFirebaseImage(imageData: optimizedImageData!)
+                            self.uploadProfileImage(imageData: optimizedImageData!)
                             // self.uploadImgOnFirebaseStorage()
                             
                         }else{
@@ -117,6 +125,36 @@ class CreateProfileVC: UIViewController, UIImagePickerControllerDelegate & UINav
 
 //MARK:- Extension for upload image on firebase storage
 extension CreateProfileVC{
+    
+    func uploadProfileImage(imageData: Data) {
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let url = AppUrl.upload_mediaURL()
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "file_upload", fileName: "image.jpg", mimeType: "image/jpeg")
+            },
+            to: url,
+            method: .post,
+            headers: nil
+        )
+        .responseDecodable(of: ImageUpload.self) { response in
+            PKHUD.sharedHUD.hide()
+            switch response.result {
+            case .success(let value):
+                print("Code:", value.code)
+                print("Message:", value.msg)
+                // if let data = value.data {
+                print("Image URL:", value.data ?? "")
+                  self.SignUpServices(Img: url)
+                
+            case .failure(let error):
+                print("Error:", error)
+            }
+        }
+    }
     
     func uploadFirebaseImage(imageData: Data)
     {
@@ -252,7 +290,6 @@ extension CreateProfileVC {
         self.ImgProfile.image = selectedImage.normalizedImage()
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 //MARK:- Extenction for signup API call
@@ -271,7 +308,8 @@ extension CreateProfileVC {
                                          "email" : self.txtEnterEmailID.text!,
                                          "gender" : "\(self.gender)",
                                          "image1" : "\(Img)",
-                                         "device" : "ios"]
+                                         "device" : "ios",
+                                         "username": self.txtFirstName.text!]
         
         print("Url_SignUpServices_is_here:-" , url)
         print("Param_SignUpServices_is_here:-" , parameters)

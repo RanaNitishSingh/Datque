@@ -55,7 +55,11 @@ class AppUrl : NSObject {
     class func is_user_existURL () -> String {
         return mainDomain+"is_user_exist"
     }//http://52.90.40.219/xodating/API//index.php?p=is_user_exist
-    
+
+    class func upload_mediaURL () -> String {
+        return mainDomain+"upload_media"
+    }//http://52.90.40.219/xodating/API//index.php?p=upload_media
+
     class func getUserNotificationsURL () -> String {
         return mainDomain+"getUserNotifications"
     }//http://52.90.40.219/xodating/API//index.php?p=getUserNotifications
@@ -83,6 +87,14 @@ class AppUrl : NSObject {
     class func uploadImagesURL() -> String {
         return mainDomain+"uploadImages"
     }//http://52.90.40.219/xodating/API//index.php?p=uploadImages
+    
+    class func check_username_existURL() -> String {
+        return mainDomain+"check_username_exist"
+    }//http://52.90.40.219/xodating/API//index.php?p=check_username_exist
+
+    class func search_by_usernameURL() -> String {
+        return mainDomain+"search_by_username"
+    }//http://52.90.40.219/xodating/API//index.php?p=check_username_exist
     
     class func deleteImagesURL() -> String {
         return mainDomain+"deleteImages"

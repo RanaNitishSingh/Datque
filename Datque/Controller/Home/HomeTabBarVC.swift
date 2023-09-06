@@ -120,8 +120,8 @@ class HomeTabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     func setUpImagaOntabbar(){
         let myTabBarItem1 = (self.tabBar.items?[0])! as UITabBarItem
-        myTabBarItem1.image = UIImage(named: "icon-park_world 1")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        myTabBarItem1.selectedImage = UIImage(named: "icon-park_world 2")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem1.image = UIImage(named: "global-circle")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem1.selectedImage = UIImage(named: "circle-global")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         let myTabBarItem2 = (self.tabBar.items?[1])! as UITabBarItem
         myTabBarItem2.image = UIImage(named: "mdi_video 1")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         myTabBarItem2.selectedImage = UIImage(named: "ph_video-camera-fill")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
@@ -132,8 +132,8 @@ class HomeTabBarVC: UITabBarController, UITabBarControllerDelegate {
         myTabBarItem4.image = UIImage(named: "ic_round-message 1")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         myTabBarItem4.selectedImage = UIImage(named: "ic_round-message 2")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         let myTabBarItem5 = (self.tabBar.items?[4])! as UITabBarItem
-        myTabBarItem5.image = UIImage(named: "mdi_user-circle 1")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        myTabBarItem5.selectedImage = UIImage(named: "mdi_user-circle 2")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem5.image = UIImage(named: "profile-img")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem5.selectedImage = UIImage(named: "profile-imgage")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
     
     }
 }

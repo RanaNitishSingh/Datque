@@ -33,14 +33,6 @@ class MyProfileVC: UIViewController,UIImagePickerControllerDelegate & UINavigati
         super.viewDidLoad()
         perform(#selector(startUpload), with: nil, afterDelay: 1.0)
         
-        if self.userPurchasedData?.purchased == "0"{
-            self.lowHighLbl.text = "Very Low"
-            self.activeLbl.text = "Not Activate"
-        }else {
-            self.lowHighLbl.text = "Very High"
-            self.activeLbl.text = "Activate"
-
-        }
     }
     
     //MARK: - Start uploading
@@ -195,10 +187,9 @@ extension MyProfileVC {
 extension MyProfileVC{
     
     func uploadFirebaseImage(imageData: Data) {
-        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
-        activityIndicator.startAnimating()
-        activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
 //            Utility.showLoading()
             let storageReference = Storage.storage().reference()
             let profileImageRef = storageReference.child("images/\(Defaults[PDUserDefaults.UserID]).jpg")
@@ -208,8 +199,7 @@ extension MyProfileVC{
             
             profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
                 
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
+                PKHUD.sharedHUD.hide()
                 
                 if error != nil {
                     print("Error took place \(String(describing: error?.localizedDescription))")
@@ -234,6 +224,10 @@ extension MyProfileVC{
 
 extension MyProfileVC {
     func ChangeProfilePictureServices(Img: String) {
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
         let url = AppUrl.changeProfilePictureURL()
         let parameters: [String: Any] = ["fb_id" : "\(Defaults[PDUserDefaults.UserID])",
                                          "image_link" : "\(Img)",
@@ -244,6 +238,7 @@ extension MyProfileVC {
         
         AF.request(url, method:.post, parameters: parameters,encoding: JSONEncoding.default) .responseJSON { (response) in
             Utility.hideLoading()
+            PKHUD.sharedHUD.hide()
             print("Response",response)
             if response.value != nil {
                 let responseJson = JSON(response.value!)
@@ -290,6 +285,14 @@ extension MyProfileVC {
                                 Defaults[PDUserDefaults.UserID] = "\(objProfileRes.fbID!)"
                                 print("Defaults_PDUser_Defaults_UserID",objProfileRes.fbID!)
                                 self.meterView.needleValue = 30
+                                if self.userPurchasedData?.purchased == "0"{
+                                    self.lowHighLbl.text = "Very Low"
+                                    self.activeLbl.text = "Not Activate"
+                                }else {
+                                    self.lowHighLbl.text = "Very High"
+                                    self.activeLbl.text = "Activate"
+
+                                }
                                 do {
                                     let encoder = JSONEncoder()
                                     let data = try encoder.encode(objProfileRes)

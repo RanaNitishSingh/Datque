@@ -88,6 +88,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notificationObserver()
         self.viewAnimated.startAnimation(setThemeColor: true)
         if Defaults[PDUserDefaults.ResetFilter] == "ResetFilter"{
             currentdate()
@@ -185,17 +187,35 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             Database.database().reference().child("LiveUsers").child("\(defaultID )").removeValue()
         }
     }
-  @objc func displayMyAlertMessage(){
-        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
-            self.navigationController?.pushViewController(vc, animated: false)
-            NavigationBool = true
-        })
-        dialogMessage.addAction(ok)
-        self.present(dialogMessage, animated: true, completion: nil)
+//  @objc func displayMyAlertMessage(){
+//        let dialogMessage = UIAlertController(title: "Your Free Trial Expired ", message: "", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "Renew", style: .default, handler: { (action) -> Void in
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "SelectPlaneVC") as! SelectPlaneVC
+//            self.navigationController?.pushViewController(vc, animated: false)
+//            NavigationBool = true
+//        })
+//        dialogMessage.addAction(ok)
+//        self.present(dialogMessage, animated: true, completion: nil)
+//    }
+    
+    
+    func notificationObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showJobRequest),
+            name: NSNotification.Name(rawValue: "messageNotification"),
+            object: nil
+        )
     }
+    
+    @objc func showJobRequest() {
+        let vc: ChatVC = UIStoryboard.controller(storyboardName: .main)
+        vc.modalPresentationStyle = .fullScreen
+        vc.isFrom = "messageNotification"
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     
     func currentdate(){
         let todaysDate = NSDate()
@@ -1074,7 +1094,7 @@ extension HomeVC {
         var currentLoc: CLLocation!
         let PaymentSuccessed = UserDefaults.standard.bool(forKey: "Payment")
         let currentLogin = UserDefaults.standard.bool(forKey: "current")
-        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
+//        let ThreeDays = UserDefaults.standard.bool(forKey: "threedays")
         if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == .authorizedAlways) {
             
